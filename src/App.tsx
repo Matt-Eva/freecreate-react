@@ -8,11 +8,9 @@ function App() {
   return (
     <div>
       <Header />
-      <div>
+      <div className="w-full h-screen bg-red-100 ">
         <Sidebar />
-        <main>
-          <Outlet />
-        </main>
+        <Outlet />
       </div>
       <Footer />
     </div>
