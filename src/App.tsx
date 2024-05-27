@@ -15,9 +15,9 @@ function App() {
     testFetch();
   }, []);
   return (
-    <div>
+    <div className="h-screen">
       <Header />
-      <div className="w-full h-screen bg-red-100 ">
+      <div className="fixed top-10 flex w-full h-full bg-red-100 ">
         <Sidebar />
         <Outlet />
       </div>
