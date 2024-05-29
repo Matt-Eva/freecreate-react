@@ -101,14 +101,42 @@ function SimpleSearch() {
     },
   };
   const [genres, setGenres] = useState(defaultGenreState);
+  const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
 
   const handleSelection = (e: React.ChangeEvent) => {
     const target = e.target as HTMLInputElement;
     const name: string = target.name;
+    const selected = !genres[name].selected;
     const updated = {
       ...genres,
-      [name]: { ...genres[name], selected: !genres[name].selected },
+      [name]: { ...genres[name], selected: selected },
     };
+
+    if (selected && selectedGenres.length < 3) {
+      const updatedSelectedGenres = [...selectedGenres, genres[name].value];
+      if (updatedSelectedGenres.length === 3) {
+        for (const key in updated) {
+          const value = updated[key].value;
+          let isSelected = false;
+          for (const genre of updatedSelectedGenres) {
+            if (value === genre) {
+              isSelected = true;
+            }
+          }
+          updated[key].disabled = !isSelected;
+        }
+      }
+      setSelectedGenres(updatedSelectedGenres);
+    } else {
+      const oneLess = selectedGenres.filter(
+        (genre) => genre !== genres[name].value
+      );
+      setSelectedGenres(oneLess);
+      for (const key in updated) {
+        updated[key].disabled = false;
+      }
+    }
+
     setGenres(updated);
   };
 
@@ -130,16 +158,6 @@ function SimpleSearch() {
       </select>
       <label>Select up to 3 genres</label>
       <ul>
-        <li>
-          <input
-            onChange={handleSelection}
-            type="checkbox"
-            name="none"
-            checked={genres.none.selected}
-            disabled={genres.none.disabled}
-          />
-          None
-        </li>
         <li>
           <input
             onChange={handleSelection}
@@ -218,7 +236,7 @@ function SimpleSearch() {
             checked={genres.literary.selected}
             disabled={genres.literary.disabled}
           />
-          Literary
+          Literary Fiction
         </li>
         <li>
           <input
