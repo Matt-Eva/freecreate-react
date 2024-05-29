@@ -1,11 +1,28 @@
 import { useState } from "react";
 
 function SimpleSearch() {
-  const defaultGenreState = {
+  interface GenreObject {
+    [index: string]: {
+      selected: boolean;
+      disabled: boolean;
+      value: string;
+    };
+  }
+  const defaultGenreState: GenreObject = {
     none: {
       selected: false,
       disabled: false,
       value: "None",
+    },
+    action: {
+      selected: false,
+      disabled: false,
+      value: "Action",
+    },
+    adventure: {
+      selected: false,
+      disabled: false,
+      value: "Adventure",
     },
     fantasy: {
       selected: false,
@@ -30,7 +47,7 @@ function SimpleSearch() {
     historical: {
       selected: false,
       disabled: false,
-      value: "Historical",
+      value: "HistoricalFiction",
     },
     drama: {
       selected: false,
@@ -67,16 +84,51 @@ function SimpleSearch() {
       disabled: false,
       value: "SliceOfLife",
     },
+    realism: {
+      selected: false,
+      disabled: false,
+      value: "Realism",
+    },
+    social: {
+      selected: false,
+      disabled: false,
+      value: "SocialFiction",
+    },
+    superhero: {
+      selected: false,
+      disabled: false,
+      value: "Superhero",
+    },
   };
   const [genres, setGenres] = useState(defaultGenreState);
 
   const handleSelection = (e: React.ChangeEvent) => {
     const target = e.target as HTMLInputElement;
-    console.log(target.name);
+    const name: string = target.name;
+    const updated = {
+      ...genres,
+      [name]: { ...genres[name], selected: !genres[name].selected },
+    };
+    setGenres(updated);
   };
 
   return (
     <section>
+      <label>Writing type</label>
+      <select>
+        <option>Short Story</option>
+        <option>Novel</option>
+      </select>
+      <label>Date posted</label>
+      <select>
+        <option>All time</option>
+        <option>Past Year</option>
+        <option>Past Month</option>
+        <option>Past Week</option>
+        <option>Past Day</option>
+        <option>Most Recent</option>
+      </select>
+      <label>Select up to 3 genres</label>
       <ul>
         <li>
           <input
@@ -92,6 +144,26 @@ function SimpleSearch() {
           <input
             onChange={handleSelection}
             type="checkbox"
+            name="action"
+            checked={genres.action.selected}
+            disabled={genres.action.disabled}
+          />
+          Action
+        </li>
+        <li>
+          <input
+            onChange={handleSelection}
+            type="checkbox"
+            name="adventure"
+            checked={genres.adventure.selected}
+            disabled={genres.adventure.disabled}
+          />
+          Adventure
+        </li>
+        <li>
+          <input
+            onChange={handleSelection}
+            type="checkbox"
             name="comedy"
             checked={genres.comedy.selected}
             disabled={genres.comedy.disabled}
@@ -102,101 +174,141 @@ function SimpleSearch() {
           <input
             onChange={handleSelection}
             type="checkbox"
-            name="none"
-            checked={genres.none.selected}
-            disabled={genres.none.disabled}
+            name="drama"
+            checked={genres.drama.selected}
+            disabled={genres.drama.disabled}
           />
-          None
+          Drama
         </li>
         <li>
           <input
             onChange={handleSelection}
             type="checkbox"
-            name="none"
-            checked={genres.none.selected}
-            disabled={genres.none.disabled}
+            name="fantasy"
+            checked={genres.fantasy.selected}
+            disabled={genres.fantasy.disabled}
           />
-          None
+          Fantasy
         </li>
         <li>
           <input
             onChange={handleSelection}
             type="checkbox"
-            name="none"
-            checked={genres.none.selected}
-            disabled={genres.none.disabled}
+            name="historical"
+            checked={genres.historical.selected}
+            disabled={genres.historical.disabled}
           />
-          None
+          Historical Fiction
         </li>
         <li>
           <input
             onChange={handleSelection}
             type="checkbox"
-            name="none"
-            checked={genres.none.selected}
-            disabled={genres.none.disabled}
+            name="horror"
+            checked={genres.horror.selected}
+            disabled={genres.horror.disabled}
           />
-          None
+          Horror
         </li>
         <li>
           <input
             onChange={handleSelection}
             type="checkbox"
-            name="none"
-            checked={genres.none.selected}
-            disabled={genres.none.disabled}
+            name="literary"
+            checked={genres.literary.selected}
+            disabled={genres.literary.disabled}
           />
-          None
+          Literary
         </li>
         <li>
           <input
             onChange={handleSelection}
             type="checkbox"
-            name="none"
-            checked={genres.none.selected}
-            disabled={genres.none.disabled}
+            name="magicalRealism"
+            checked={genres.magicalRealism.selected}
+            disabled={genres.magicalRealism.disabled}
           />
-          None
+          Magical Realism
         </li>
         <li>
           <input
             onChange={handleSelection}
             type="checkbox"
-            name="none"
-            checked={genres.none.selected}
-            disabled={genres.none.disabled}
+            name="mystery"
+            checked={genres.mystery.selected}
+            disabled={genres.mystery.disabled}
           />
-          None
+          Mystery
         </li>
         <li>
           <input
             onChange={handleSelection}
             type="checkbox"
-            name="none"
-            checked={genres.none.selected}
-            disabled={genres.none.disabled}
+            name="realism"
+            checked={genres.realism.selected}
+            disabled={genres.realism.disabled}
           />
-          None
+          Realism
         </li>
         <li>
           <input
             onChange={handleSelection}
             type="checkbox"
-            name="none"
-            checked={genres.none.selected}
-            disabled={genres.none.disabled}
+            name="romance"
+            checked={genres.romance.selected}
+            disabled={genres.romance.disabled}
           />
-          None
+          Romance
         </li>
         <li>
           <input
             onChange={handleSelection}
             type="checkbox"
-            name="none"
-            checked={genres.none.selected}
-            disabled={genres.none.disabled}
+            name="sciFi"
+            checked={genres.sciFi.selected}
+            disabled={genres.sciFi.disabled}
           />
-          None
+          Science Fiction
+        </li>
+        <li>
+          <input
+            onChange={handleSelection}
+            type="checkbox"
+            name="sliceOfLife"
+            checked={genres.sliceOfLife.selected}
+            disabled={genres.sliceOfLife.disabled}
+          />
+          Slice of Life
+        </li>
+        <li>
+          <input
+            onChange={handleSelection}
+            type="checkbox"
+            name="social"
+            checked={genres.social.selected}
+            disabled={genres.social.disabled}
+          />
+          Social Fiction
+        </li>
+        <li>
+          <input
+            onChange={handleSelection}
+            type="checkbox"
+            name="superhero"
+            checked={genres.superhero.selected}
+            disabled={genres.superhero.disabled}
+          />
+          Superhero
+        </li>
+        <li>
+          <input
+            onChange={handleSelection}
+            type="checkbox"
+            name="thriller"
+            checked={genres.thriller.selected}
+            disabled={genres.thriller.disabled}
+          />
+          Thriller
         </li>
       </ul>
     </section>
