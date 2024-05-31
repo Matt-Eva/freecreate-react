@@ -15,7 +15,7 @@ function DateSelect({
     <div>
       <label>Date posted</label>
       <select value={date} onChange={handleChange}>
-        <option>All time</option>
+        <option>All Time</option>
         <option>Past Year</option>
         <option>Past Month</option>
         <option>Past Week</option>
