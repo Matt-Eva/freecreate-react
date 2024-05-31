@@ -3,6 +3,7 @@ import SearchNav from "./SearchNav";
 import SearchTypeSelect from "./SearchTypeSelect";
 import WritingTypeSelect from "./WritingTypeSelect";
 import DateSelect from "./DateSelect";
+import WriterSearchInput from "./WriterSearchInput";
 import GenreSelect from "./GenreSelect/GenreSelect";
 import TagInput from "./TagInput";
 
@@ -16,6 +17,9 @@ function SearchBox() {
 
   const toggleSearch = (bool: boolean) => {
     setSimpleSearch(bool);
+    if (bool) {
+      setSearchType("writing");
+    }
   };
 
   const updateSearchType = (newType: string) => {

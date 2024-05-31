@@ -1,5 +1,9 @@
 function WriterSearchInput() {
-  return <div>WriterSearchInput</div>;
+  return (
+    <section>
+      <label>Writer Name: </label>
+    </section>
+  );
 }
 
 export default WriterSearchInput;

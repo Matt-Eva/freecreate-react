@@ -61,7 +61,7 @@ function GenreSelect({
           checked={genres[key].selected}
           disabled={genres[key].disabled}
         />
-        <label htmlFor={key}>{genres[key].value}</label>
+        <label htmlFor={key}>{genres[key].display}</label>
       </li>
     );
   }
