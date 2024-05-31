@@ -21,6 +21,19 @@ function SimpleSearch() {
     setSelectedGenres(newGenres);
   };
 
+  const search = async () => {
+    const writingQuery = `?type=${writingType}`;
+    const dateQuery = `&date=${date}`;
+    let genreQuery = "";
+    for (const genre of selectedGenres) {
+      genreQuery += `&genre=${genre}`;
+    }
+    const query = writingQuery + dateQuery + genreQuery;
+    const res = await fetch(`/api/search${query}`);
+    const data = await res.json();
+    console.log(data);
+  };
+
   return (
     <section>
       <WritingTypeSelect
@@ -32,7 +45,9 @@ function SimpleSearch() {
         selectedGenres={selectedGenres}
         updateSelectedGenres={updateSelectedGenres}
       />
-      <button className="border border-solid border-black">search</button>
+      <button onClick={search} className="border border-solid border-black">
+        search
+      </button>
     </section>
   );
 }
