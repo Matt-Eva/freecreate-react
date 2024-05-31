@@ -2,9 +2,14 @@ import { useState } from "react";
 
 import { defaultGenreState } from "./UtilsGenreSelect";
 
-function GenreSelect() {
+function GenreSelect({
+  selectedGenres,
+  updateSelectedGenres,
+}: {
+  selectedGenres: string[];
+  updateSelectedGenres: Function;
+}) {
   const [genres, setGenres] = useState(defaultGenreState);
-  const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
 
   const handleSelection = (e: React.ChangeEvent) => {
     const target = e.target as HTMLInputElement;
@@ -30,12 +35,12 @@ function GenreSelect() {
         }
       }
 
-      setSelectedGenres(updatedSelectedGenres);
+      updateSelectedGenres(updatedSelectedGenres);
     } else {
       const oneLess = selectedGenres.filter(
         (genre) => genre !== genres[name].value
       );
-      setSelectedGenres(oneLess);
+      updateSelectedGenres(oneLess);
 
       for (const key in updated) {
         updated[key].disabled = false;
