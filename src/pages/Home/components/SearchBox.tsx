@@ -10,6 +10,7 @@ import TagInput from "./TagInput";
 function SearchBox() {
   const [simpleSearch, setSimpleSearch] = useState(true);
   const [searchType, setSearchType] = useState("writing");
+  const [writerName, setWriterName] = useState("");
   const [writingType, setWritingType] = useState<string>("ShortStory");
   const [date, setDate] = useState<string>("All time");
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
@@ -24,6 +25,10 @@ function SearchBox() {
 
   const updateSearchType = (newType: string) => {
     setSearchType(newType);
+  };
+
+  const updateWriterName = (newName: string) => {
+    setWriterName(newName);
   };
 
   const updateWritingType = (newType: string) => {
@@ -74,7 +79,12 @@ function SearchBox() {
       {searchType === "writing" ? (
         <DateSelect date={date} updateDate={updateDate} />
       ) : null}
-      {searchType === "writers" ? <WriterSearchInput /> : null}
+      {searchType === "writers" ? (
+        <WriterSearchInput
+          writerName={writerName}
+          updateWriterName={updateWriterName}
+        />
+      ) : null}
       {simpleSearch ? null : <TagInput tags={tags} updateTags={updateTags} />}
       <GenreSelect
         selectedGenres={selectedGenres}
