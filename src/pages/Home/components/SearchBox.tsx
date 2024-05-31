@@ -74,6 +74,7 @@ function SearchBox() {
       {searchType === "writing" ? (
         <DateSelect date={date} updateDate={updateDate} />
       ) : null}
+      {searchType === "writers" ? <WriterSearchInput /> : null}
       {simpleSearch ? null : <TagInput tags={tags} updateTags={updateTags} />}
       <GenreSelect
         selectedGenres={selectedGenres}
