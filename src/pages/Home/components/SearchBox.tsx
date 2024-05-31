@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SearchNav from "./SearchNav";
+import SearchTypeSelect from "./SearchTypeSelect";
 import WritingTypeSelect from "./WritingTypeSelect";
 import DateSelect from "./DateSelect";
 import GenreSelect from "./GenreSelect/GenreSelect";
@@ -7,6 +8,7 @@ import TagInput from "./TagInput";
 
 function SearchBox() {
   const [simpleSearch, setSimpleSearch] = useState(true);
+  const [searchType, setSearchType] = useState("writing");
   const [writingType, setWritingType] = useState<string>("ShortStory");
   const [date, setDate] = useState<string>("All time");
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
@@ -33,21 +35,23 @@ function SearchBox() {
   };
 
   const search = async () => {
-    const writingQuery = `?type=${writingType}`;
+    const searchTypeQuery = `?type=${searchType}`;
+    const writingQuery = `&writing=${writingType}`;
     const dateQuery = `&date=${date}`;
     let genreQuery = "";
     for (const genre of selectedGenres) {
       genreQuery += `&genre=${genre}`;
     }
     const query = writingQuery + dateQuery + genreQuery;
-    const res = await fetch(`/api/search${query}`);
-    const data = await res.json();
-    console.log(data);
+    // const res = await fetch(`/api/search${query}`);
+    // const data = await res.json();
+    // console.log(data);
   };
 
   return (
     <section>
       <SearchNav toggleSearch={toggleSearch} />
+      {simpleSearch ? null : <SearchTypeSelect />}
       <WritingTypeSelect
         writingType={writingType}
         updateWritingType={updateWritingType}
