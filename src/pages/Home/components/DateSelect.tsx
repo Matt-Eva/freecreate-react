@@ -12,7 +12,7 @@ function DateSelect({
     updateDate(target.value);
   };
   return (
-    <div>
+    <section>
       <label>Date posted</label>
       <select value={date} onChange={handleChange}>
         <option>All Time</option>
@@ -22,7 +22,7 @@ function DateSelect({
         <option>Past Day</option>
         <option>Most Recent</option>
       </select>
-    </div>
+    </section>
   );
 }
 

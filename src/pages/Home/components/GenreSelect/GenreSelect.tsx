@@ -67,10 +67,10 @@ function GenreSelect({
   }
 
   return (
-    <div>
+    <section>
       <label>Select up to 3 Genres</label>
       <ul>{displayGenres}</ul>
-    </div>
+    </section>
   );
 }
 

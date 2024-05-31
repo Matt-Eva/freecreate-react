@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TagButton from "./TagButton";
 
 function TagInput({
   tags,
@@ -30,8 +31,18 @@ function TagInput({
     setTagInput("");
   };
 
+  const removeTag = (tag: string) => {
+    const oneLess = tags.filter((t) => t !== tag);
+    updateTags(oneLess);
+    setDisabled(false);
+  };
+
+  const tagButtons = tags.map((tag) => (
+    <TagButton tag={tag} removeTag={removeTag} />
+  ));
+
   return (
-    <div>
+    <section>
       <form onSubmit={handleSubmit}>
         <label>Add up to 5 tags</label>
         <input
@@ -47,8 +58,8 @@ function TagInput({
           className="border border-solid border-black"
         />
       </form>
-      <section>{tags}</section>
-    </div>
+      <section>{tagButtons}</section>
+    </section>
   );
 }
 
