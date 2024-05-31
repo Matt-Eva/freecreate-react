@@ -32,6 +32,7 @@ function SimpleSearch() {
         selectedGenres={selectedGenres}
         updateSelectedGenres={updateSelectedGenres}
       />
+      <button className="border border-solid border-black">search</button>
     </section>
   );
 }
