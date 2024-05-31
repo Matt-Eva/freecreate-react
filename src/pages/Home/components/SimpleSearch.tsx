@@ -24,7 +24,6 @@ function SimpleSearch() {
         <option>Past Day</option>
         <option>Most Recent</option>
       </select>
-      <label>Select up to 3 genres</label>
       <GenreSelect
         selectedGenres={selectedGenres}
         updateSelectedGenres={updateSelectedGenres}

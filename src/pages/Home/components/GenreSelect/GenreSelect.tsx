@@ -67,7 +67,12 @@ function GenreSelect({
     );
   }
 
-  return <ul>{displayGenres}</ul>;
+  return (
+    <div>
+      <label>Select up to 3 Genres</label>
+      <ul>{displayGenres}</ul>
+    </div>
+  );
 }
 
 export default GenreSelect;
