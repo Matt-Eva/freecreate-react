@@ -1,5 +1,5 @@
 import { useState } from "react";
-import GenreSelect from "./GenreSelect";
+import GenreSelect from "./GenreSelect/GenreSelect";
 
 function SimpleSearch() {
   return (
