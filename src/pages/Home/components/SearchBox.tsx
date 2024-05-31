@@ -52,11 +52,15 @@ function SearchBox() {
     <section>
       <SearchNav toggleSearch={toggleSearch} />
       {simpleSearch ? null : <SearchTypeSelect />}
-      <WritingTypeSelect
-        writingType={writingType}
-        updateWritingType={updateWritingType}
-      />
-      <DateSelect date={date} updateDate={updateDate} />
+      {searchType === "writing" ? (
+        <WritingTypeSelect
+          writingType={writingType}
+          updateWritingType={updateWritingType}
+        />
+      ) : null}
+      {searchType === "writing" ? (
+        <DateSelect date={date} updateDate={updateDate} />
+      ) : null}
       {simpleSearch ? null : <TagInput tags={tags} updateTags={updateTags} />}
       <GenreSelect
         selectedGenres={selectedGenres}
