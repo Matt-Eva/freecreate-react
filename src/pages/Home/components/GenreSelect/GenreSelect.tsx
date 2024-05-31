@@ -51,7 +51,6 @@ function GenreSelect({
   };
 
   const displayGenres: React.ReactElement[] = [];
-
   for (const key in genres) {
     displayGenres.push(
       <li key={key}>
