@@ -1,8 +1,15 @@
 import { useState } from "react";
+import WritingTypeSelect from "./GenreSelect/WritingTypeSelect";
 import GenreSelect from "./GenreSelect/GenreSelect";
 
 function SimpleSearch() {
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
+  const [writingType, setWritingType] = useState<string>("ShortStory");
+
+  const updateWritingType = (newType: string) => {
+    setWritingType(newType);
+  };
+
   const updateSelectedGenres = (newGenres: string[]) => {
     setSelectedGenres(newGenres);
   };
@@ -10,11 +17,10 @@ function SimpleSearch() {
   console.log(selectedGenres);
   return (
     <section>
-      <label>Writing type</label>
-      <select>
-        <option>Short Story</option>
-        <option>Novel</option>
-      </select>
+      <WritingTypeSelect
+        writingType={writingType}
+        updateWritingType={updateWritingType}
+      />
       <label>Date posted</label>
       <select>
         <option>All time</option>
