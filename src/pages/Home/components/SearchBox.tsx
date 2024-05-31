@@ -18,6 +18,10 @@ function SearchBox() {
     setSimpleSearch(bool);
   };
 
+  const updateSearchType = (newType: string) => {
+    setSearchType(newType);
+  };
+
   const updateWritingType = (newType: string) => {
     setWritingType(newType);
   };
@@ -51,7 +55,12 @@ function SearchBox() {
   return (
     <section>
       <SearchNav toggleSearch={toggleSearch} />
-      {simpleSearch ? null : <SearchTypeSelect />}
+      {simpleSearch ? null : (
+        <SearchTypeSelect
+          searchType={searchType}
+          updateSearchType={updateSearchType}
+        />
+      )}
       {searchType === "writing" ? (
         <WritingTypeSelect
           writingType={writingType}
