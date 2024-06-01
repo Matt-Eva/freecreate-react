@@ -55,20 +55,31 @@ function SearchBox() {
 
   const search = async () => {
     const searchTypeQuery = `?searchType=${searchType}`;
+    let genreQuery = "";
+    for (const genre of selectedGenres) {
+      genreQuery += `&genre=${genre}`;
+    }
+    let tagQuery = "";
+    for (const tag of tags) {
+      tagQuery += `&tag=${tag}`;
+    }
     if (searchType === "writing") {
-      const writingQuery = `&writingType=${writingType}`;
-      const writingNameQuery = `&writingTitle=${writingTitle}`;
+      const writingTypeQuery = `&writingType=${writingType}`;
+      const writingTitleQuery = `&writingTitle=${writingTitle}`;
       const dateQuery = `&date=${date}`;
-      let genreQuery = "";
-      for (const genre of selectedGenres) {
-        genreQuery += `&genre=${genre}`;
-      }
       const query =
         searchTypeQuery +
-        writingQuery +
-        writingNameQuery +
+        writingTypeQuery +
+        writingTitleQuery +
         dateQuery +
-        genreQuery;
+        genreQuery +
+        tagQuery;
+      const res = await fetch(`/api/search${query}`);
+      const data = await res.json();
+      console.log(data);
+    } else {
+      const writerNameQuery = `&writerName=${writerName}`;
+      const query = searchTypeQuery + genreQuery + tagQuery + writerNameQuery;
       const res = await fetch(`/api/search${query}`);
       const data = await res.json();
       console.log(data);
@@ -99,12 +110,12 @@ function SearchBox() {
           updateWriterName={updateWriterName}
         />
       ) : null}
-      {simpleSearch && searchType === "writing" ? null : (
+      {!simpleSearch && searchType === "writing" ? (
         <WritingSearchInput
           writingTitle={writingTitle}
           updateWritingTitle={updateWritingTitle}
         />
-      )}
+      ) : null}
       {simpleSearch ? null : <TagInput tags={tags} updateTags={updateTags} />}
       <GenreSelect
         selectedGenres={selectedGenres}
