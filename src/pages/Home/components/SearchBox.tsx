@@ -87,41 +87,46 @@ function SearchBox() {
   };
 
   return (
-    <section>
+    <section className="grid grid-cols-2 auto-rows-auto">
       <SearchNav toggleSearch={toggleSearch} />
-      {simpleSearch ? null : (
-        <SearchTypeSelect
-          searchType={searchType}
-          updateSearchType={updateSearchType}
-        />
-      )}
-      {searchType === "writing" ? (
-        <WritingTypeSelect
-          writingType={writingType}
-          updateWritingType={updateWritingType}
-        />
-      ) : null}
-      {searchType === "writing" ? (
-        <DateSelect date={date} updateDate={updateDate} />
-      ) : null}
-      {searchType === "writers" ? (
-        <WriterSearchInput
-          writerName={writerName}
-          updateWriterName={updateWriterName}
-        />
-      ) : null}
-      {!simpleSearch && searchType === "writing" ? (
-        <WritingSearchInput
-          writingTitle={writingTitle}
-          updateWritingTitle={updateWritingTitle}
-        />
-      ) : null}
-      {simpleSearch ? null : <TagInput tags={tags} updateTags={updateTags} />}
+      <section>
+        {simpleSearch ? null : (
+          <SearchTypeSelect
+            searchType={searchType}
+            updateSearchType={updateSearchType}
+          />
+        )}
+        {searchType === "writing" ? (
+          <WritingTypeSelect
+            writingType={writingType}
+            updateWritingType={updateWritingType}
+          />
+        ) : null}
+        {searchType === "writing" ? (
+          <DateSelect date={date} updateDate={updateDate} />
+        ) : null}
+        {searchType === "writers" ? (
+          <WriterSearchInput
+            writerName={writerName}
+            updateWriterName={updateWriterName}
+          />
+        ) : null}
+        {!simpleSearch && searchType === "writing" ? (
+          <WritingSearchInput
+            writingTitle={writingTitle}
+            updateWritingTitle={updateWritingTitle}
+          />
+        ) : null}
+        {simpleSearch ? null : <TagInput tags={tags} updateTags={updateTags} />}
+      </section>
       <GenreSelect
         selectedGenres={selectedGenres}
         updateSelectedGenres={updateSelectedGenres}
       />
-      <button onClick={search} className="border border-solid border-black">
+      <button
+        onClick={search}
+        className="col-start-2 border border-solid border-black"
+      >
         search
       </button>
     </section>

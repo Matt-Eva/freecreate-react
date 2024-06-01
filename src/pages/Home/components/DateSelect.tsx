@@ -12,7 +12,7 @@ function DateSelect({
     updateDate(target.value);
   };
   return (
-    <section>
+    <section className="col-start-1">
       <label>Date posted</label>
       <select value={date} onChange={handleChange}>
         <option>All Time</option>

@@ -10,7 +10,7 @@ function WriterSearchInput({
     updateWriterName(target.value.toLowerCase());
   };
   return (
-    <section>
+    <section className="col-start-1">
       <label>Writer Name: </label>
       <input type="text" value={writerName} onChange={handleChange} />
     </section>

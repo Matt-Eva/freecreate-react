@@ -42,9 +42,9 @@ function TagInput({
   ));
 
   return (
-    <section>
+    <section className="col-start-1">
       <form onSubmit={handleSubmit}>
-        <label>Add up to 5 tags</label>
+        <label>Add up to 5 tags:</label>
         <input
           type="text"
           value={tagInput}

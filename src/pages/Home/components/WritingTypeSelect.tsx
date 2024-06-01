@@ -13,7 +13,7 @@ function WritingTypeSelect({
     updateWritingType(target.value);
   };
   return (
-    <div>
+    <section className="col-start-1">
       <label>Writing type</label>
       <select value={writingType} onChange={handleChange}>
         <option value="ShortStory">Short Story</option>
@@ -21,7 +21,7 @@ function WritingTypeSelect({
         <option value="Novella">Novella</option>
         <option value="Novel">Novel</option>
       </select>
-    </div>
+    </section>
   );
 }
 
