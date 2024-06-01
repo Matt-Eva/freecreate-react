@@ -13,8 +13,8 @@ function WritingTypeSelect({
     updateWritingType(target.value);
   };
   return (
-    <section className="col-start-1">
-      <label>Writing type</label>
+    <section className="col-start-1 grid w-24">
+      <label>Writing type:</label>
       <select value={writingType} onChange={handleChange}>
         <option value="ShortStory">Short Story</option>
         <option value="Novellette">Novellette</option>

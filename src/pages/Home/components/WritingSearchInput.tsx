@@ -13,7 +13,12 @@ function WritingSearchInput({
   return (
     <section className="col-start-1">
       <label>Title: </label>
-      <input type="text" value={writingTitle} onChange={handleChange} />
+      <input
+        type="text"
+        value={writingTitle}
+        onChange={handleChange}
+        className="w-40"
+      />
     </section>
   );
 }

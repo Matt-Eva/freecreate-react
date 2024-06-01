@@ -42,20 +42,21 @@ function TagInput({
   ));
 
   return (
-    <section className="col-start-1">
-      <form onSubmit={handleSubmit}>
+    <section className="col-start-1 grid">
+      <form onSubmit={handleSubmit} className="grid w-40">
         <label>Add up to 5 tags:</label>
         <input
           type="text"
           value={tagInput}
           onChange={handleChange}
           disabled={disabled}
+          className="row-start-2 w-28"
         />
         <input
           type="submit"
           value="add"
           disabled={disabled}
-          className="border border-solid border-black"
+          className="row-start-2 border border-solid border-black"
         />
       </form>
       <section>{tagButtons}</section>
