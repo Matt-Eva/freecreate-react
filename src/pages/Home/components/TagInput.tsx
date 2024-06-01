@@ -38,7 +38,7 @@ function TagInput({
   };
 
   const tagButtons = tags.map((tag) => (
-    <TagButton tag={tag} removeTag={removeTag} />
+    <TagButton key={tag} tag={tag} removeTag={removeTag} />
   ));
 
   return (
