@@ -1,6 +1,6 @@
 function SearchNav({ toggleSearch }: { toggleSearch: Function }) {
   return (
-    <section className="cols-start-1 col-span-2 flex justify-around w-full bg-red-50 divide-x divide-black">
+    <section className="cols-start-1 col-span-2 flex justify-around h-10 w-full bg-red-50 divide-x divide-black">
       <button onClick={() => toggleSearch(true)} className="w-full ">
         Simple Search
       </button>

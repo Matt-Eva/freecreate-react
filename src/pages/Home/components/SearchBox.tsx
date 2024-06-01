@@ -87,7 +87,7 @@ function SearchBox() {
   };
 
   return (
-    <section className="grid grid-cols-2 auto-rows-auto">
+    <section className="grid grid-cols-2">
       <SearchNav toggleSearch={toggleSearch} />
       <section>
         {simpleSearch ? null : (
@@ -119,16 +119,18 @@ function SearchBox() {
         ) : null}
         {simpleSearch ? null : <TagInput tags={tags} updateTags={updateTags} />}
       </section>
-      <GenreSelect
-        selectedGenres={selectedGenres}
-        updateSelectedGenres={updateSelectedGenres}
-      />
-      <button
-        onClick={search}
-        className="col-start-2 border border-solid border-black"
-      >
-        search
-      </button>
+      <section className="grid">
+        <GenreSelect
+          selectedGenres={selectedGenres}
+          updateSelectedGenres={updateSelectedGenres}
+        />
+        <button
+          onClick={search}
+          className="row-start-2 border border-solid border-black"
+        >
+          search
+        </button>
+      </section>
     </section>
   );
 }
