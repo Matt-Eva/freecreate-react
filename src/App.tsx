@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="h-screen">
       <Header />
-      <div className="fixed top-10 flex w-full h-full bg-red-100 ">
+      <div className="fixed top-10 flex w-full h-full">
         <Sidebar />
         <Outlet />
       </div>
