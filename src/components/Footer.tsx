@@ -1,7 +1,13 @@
 function Footer() {
   return (
-    <footer className="sm:hidden">
-      <nav>Footer</nav>
+    <footer className="border-t border-black sm:hidden">
+      <nav className="flex justify-evenly">
+        <span>Browse</span>
+        <span>Subscriptions</span>
+        <span>Read</span>
+        <span>Library</span>
+        <span>Write</span>
+      </nav>
     </footer>
   );
 }
