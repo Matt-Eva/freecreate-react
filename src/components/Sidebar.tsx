@@ -1,6 +1,6 @@
 function Sidebar() {
   return (
-    <aside className="hidden sm:block border-x border-black">
+    <aside className="hidden sm:block">
       <nav>Sidebar</nav>
     </aside>
   );

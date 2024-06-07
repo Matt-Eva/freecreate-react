@@ -2,7 +2,7 @@ import styles from "./Header.module.css";
 
 function Header() {
   return (
-    <header className="flex border-b border-black items-center">
+    <header className="flex items-center">
       <p className="mr-2">Icon</p>
       <h1 className="mr-2 text-xl sm:mr-4">FreeCreate</h1>
       <nav className={`${styles.navGrid} w-full mt-0.5 content-end`}>

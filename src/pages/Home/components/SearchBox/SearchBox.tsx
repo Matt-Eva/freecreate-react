@@ -89,7 +89,7 @@ function SearchBox() {
   };
 
   return (
-    <section className={`${styles.grid} border-b border-black`}>
+    <section className={`${styles.grid}`}>
       <SearchNav toggleSearch={toggleSearch} />
       <section>
         {simpleSearch ? null : (
