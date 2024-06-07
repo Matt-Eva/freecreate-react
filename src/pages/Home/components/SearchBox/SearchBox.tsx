@@ -89,7 +89,7 @@ function SearchBox() {
   };
 
   return (
-    <section className="grid grid-cols-2">
+    <section className={`${styles.grid}`}>
       <SearchNav toggleSearch={toggleSearch} />
       <section>
         {simpleSearch ? null : (
@@ -121,18 +121,18 @@ function SearchBox() {
         ) : null}
         {simpleSearch ? null : <TagInput tags={tags} updateTags={updateTags} />}
       </section>
-      <section className="grid">
+      <section>
         <GenreSelect
           selectedGenres={selectedGenres}
           updateSelectedGenres={updateSelectedGenres}
         />
-        <button
-          onClick={search}
-          className="row-start-2 border border-solid border-black"
-        >
-          search
-        </button>
       </section>
+      <button
+        onClick={search}
+        className="col-span-2 mt-4 border border-solid border-black"
+      >
+        search
+      </button>
     </section>
   );
 }

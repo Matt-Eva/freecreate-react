@@ -67,9 +67,9 @@ function GenreSelect({
   }
 
   return (
-    <section className="">
+    <section className="col-start-2">
       <label>Select up to 3 Genres</label>
-      <ul className="h-44 overflow-auto">{displayGenres}</ul>
+      <ul className="h-48 mt-1 overflow-auto">{displayGenres}</ul>
     </section>
   );
 }
