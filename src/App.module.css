@@ -1,0 +1,14 @@
+.appGrid {
+  display: grid;
+  grid-template-rows: 2rem calc(100% - 4rem) 2rem;
+}
+
+.sidebarGrid {
+  display: grid;
+}
+
+@media (min-width: 640px) {
+  .sidebarGrid {
+    grid-template-columns: 10rem calc(100% - 10rem);
+  }
+}

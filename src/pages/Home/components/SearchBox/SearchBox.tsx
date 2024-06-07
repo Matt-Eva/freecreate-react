@@ -1,12 +1,14 @@
 import { useState } from "react";
-import SearchNav from "./SearchNav";
-import SearchTypeSelect from "./SearchTypeSelect";
-import WritingTypeSelect from "./WritingTypeSelect";
-import DateSelect from "./DateSelect";
-import WriterSearchInput from "./WriterSearchInput";
-import WritingSearchInput from "./WritingSearchInput";
-import GenreSelect from "./GenreSelect/GenreSelect";
-import TagInput from "./TagInput";
+import SearchNav from "../SearchNav";
+import SearchTypeSelect from "../SearchTypeSelect";
+import WritingTypeSelect from "../WritingTypeSelect";
+import DateSelect from "../DateSelect";
+import WriterSearchInput from "../WriterSearchInput";
+import WritingSearchInput from "../WritingSearchInput";
+import GenreSelect from "../GenreSelect/GenreSelect";
+import TagInput from "../TagInput";
+
+import styles from "./SearchBox.module.css";
 
 function SearchBox() {
   const [simpleSearch, setSimpleSearch] = useState(true);

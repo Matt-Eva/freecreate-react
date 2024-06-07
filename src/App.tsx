@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
-import "./App.css";
+import styles from "./App.module.css";
 
 function App() {
   useEffect(() => {
@@ -15,9 +15,9 @@ function App() {
     testFetch();
   }, []);
   return (
-    <div className="h-screen">
+    <div className={`h-screen ${styles.appGrid}`}>
       <Header />
-      <div className="fixed top-10 flex w-full h-full">
+      <div className={`${styles.sidebarGrid}`}>
         <Sidebar />
         <Outlet />
       </div>

@@ -1,6 +1,6 @@
 function Header() {
   return (
-    <header className="fixed top-0 w-full h-10 ">
+    <header className="">
       <nav>Header</nav>
     </header>
   );
