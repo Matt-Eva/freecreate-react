@@ -2,11 +2,11 @@ function Footer() {
   return (
     <footer className="border-t border-black sm:hidden">
       <nav className="flex justify-evenly">
-        <span>Browse</span>
-        <span>Subscriptions</span>
-        <span>Read</span>
-        <span>Library</span>
-        <span>Write</span>
+        <span>browse</span>
+        <span>subscriptions</span>
+        <span>read</span>
+        <span>library</span>
+        <span>write</span>
       </nav>
     </footer>
   );
