@@ -1,6 +1,6 @@
 function Header() {
   return (
-    <header className="">
+    <header className="border-b border-black">
       <nav>Header</nav>
     </header>
   );
