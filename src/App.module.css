@@ -1,6 +1,6 @@
 .appGrid {
   display: grid;
-  grid-template-rows: 2rem calc(100% - 4rem) 2rem;
+  grid-template-rows: 3rem calc(100% - 6rem) 3rem;
 }
 
 .sidebarGrid {

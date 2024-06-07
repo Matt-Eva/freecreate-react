@@ -1,7 +1,7 @@
 function Footer() {
   return (
     <footer className="sm:hidden">
-      <nav className="flex justify-evenly">
+      <nav className="flex justify-evenly items-center h-full">
         <span>browse</span>
         <span>subscriptions</span>
         <span>read</span>
