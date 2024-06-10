@@ -9,7 +9,7 @@
 
 @media (min-width: 640px) {
   .appGrid {
-    grid-template-rows: 2rem calc(100% - 2rem);
+    grid-template-rows: 3rem calc(100% - 3rem);
   }
 
   .sidebarGrid {
