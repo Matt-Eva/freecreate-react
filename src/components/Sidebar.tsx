@@ -1,6 +1,6 @@
 function Sidebar() {
   return (
-    <aside className="hidden sm:block">
+    <aside className="hidden sm:block p-2">
       <nav>
         <ul>
           <li>Subscriptions</li>
