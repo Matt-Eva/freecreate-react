@@ -1,6 +1,6 @@
 function ScrollButton() {
   const handleScroll = () => {
-    const element = document.getElementById("searchNav");
+    const element = document.getElementById("searchBox");
     element?.scrollIntoView({ behavior: "smooth" });
   };
 

@@ -10,6 +10,9 @@ function GenreSelect({
   updateSelectedGenres: Function;
 }) {
   const [genres, setGenres] = useState(defaultGenreState);
+  const [displaySelectedGenres, setDisplaySelectedGenres] = useState<string[]>(
+    []
+  );
 
   const handleSelection = (e: React.ChangeEvent) => {
     const target = e.target as HTMLInputElement;
@@ -22,6 +25,11 @@ function GenreSelect({
 
     if (selected && selectedGenres.length < 3) {
       const updatedSelectedGenres = [...selectedGenres, genres[name].value];
+      const updatedDisplaySelectedGenres = [
+        ...displaySelectedGenres,
+        genres[name].display,
+      ];
+
       if (updatedSelectedGenres.length === 3) {
         for (const key in updated) {
           const value = updated[key].value;
@@ -36,11 +44,17 @@ function GenreSelect({
       }
 
       updateSelectedGenres(updatedSelectedGenres);
+      setDisplaySelectedGenres(updatedDisplaySelectedGenres);
     } else {
       const oneLess = selectedGenres.filter(
         (genre) => genre !== genres[name].value
       );
+      const oneLessDisplay = displaySelectedGenres.filter(
+        (genre) => genre !== genres[name].value
+      );
+
       updateSelectedGenres(oneLess);
+      setDisplaySelectedGenres(oneLessDisplay);
 
       for (const key in updated) {
         updated[key].disabled = false;
@@ -66,10 +80,17 @@ function GenreSelect({
     );
   }
 
+  const selectedGenresString = displaySelectedGenres.join(", ");
+
   return (
     <section>
       <label>Select up to 3 Genres</label>
-      <ul className="h-[237px] mt-1 px-3 overflow-auto">{displayGenres}</ul>
+      <ul className="h-[237px] mt-1 px-3 overflow-auto bg-gray-100 rounded-lg">
+        {displayGenres}
+      </ul>
+      <section className="h-8 mt-2 px-3 bg-gray-200 rounded-lg overflow-auto">
+        {selectedGenresString}
+      </section>
     </section>
   );
 }

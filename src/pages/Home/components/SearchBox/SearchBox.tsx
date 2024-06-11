@@ -90,7 +90,10 @@ function SearchBox() {
   };
 
   return (
-    <section className={`${styles.grid} m-1 p-1 rounded-lg bg-gray-50`}>
+    <section
+      id="searchBox"
+      className={`${styles.grid} m-1 p-1 rounded-lg bg-gray-50`}
+    >
       {/* <SearchNav toggleSearch={toggleSearch} /> */}
       <section className="justify-self-end">
         <SearchLevelSelect toggleSearch={toggleSearch} />
@@ -130,7 +133,7 @@ function SearchBox() {
         />
         <button
           onClick={search}
-          className="justify-self-end self-end mt-8 mr-4 border border-solid border-black rounded-lg p-0.5"
+          className="justify-self-end self-end mt-4 mr-4 border border-solid border-black rounded-lg p-0.5"
         >
           search
         </button>
