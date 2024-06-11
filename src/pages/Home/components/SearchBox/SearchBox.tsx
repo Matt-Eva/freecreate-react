@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SearchNav from "../SearchNav";
+// import SearchNav from "../SearchNav";
 import SearchLevelSelect from "../SearchLevelSelect";
 import SearchTypeSelect from "../SearchTypeSelect";
 import WritingTypeSelect from "../WritingTypeSelect";
