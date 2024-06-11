@@ -11,7 +11,7 @@ function WritingSearchInput({
   };
 
   return (
-    <section className="col-start-1">
+    <section className="col-start-1 grid">
       <label>Title: </label>
       <input
         type="text"

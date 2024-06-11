@@ -90,9 +90,9 @@ function SearchBox() {
   };
 
   return (
-    <section className={`${styles.grid} p-1 bg-gray-50`}>
+    <section className={`${styles.grid} m-1 p-1 rounded-lg bg-gray-50`}>
       {/* <SearchNav toggleSearch={toggleSearch} /> */}
-      <section>
+      <section className="justify-self-end">
         <SearchLevelSelect toggleSearch={toggleSearch} />
         {simpleSearch ? null : (
           <SearchTypeSelect

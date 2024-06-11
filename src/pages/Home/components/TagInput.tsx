@@ -59,7 +59,7 @@ function TagInput({
           className="row-start-2 border border-solid border-black px-0.5"
         />
       </form>
-      <section className="w-28 h-12 bg-gray-100 mt-1 rounded-lg">
+      <section className="w-28 h-12 bg-gray-100 mt-1 rounded-lg overflow-auto">
         {tagButtons}
       </section>
     </section>
