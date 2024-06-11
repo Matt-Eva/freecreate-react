@@ -56,10 +56,12 @@ function TagInput({
           type="submit"
           value="add"
           disabled={disabled}
-          className="row-start-2 border border-solid border-black"
+          className="row-start-2 border border-solid border-black px-0.5"
         />
       </form>
-      <section>{tagButtons}</section>
+      <section className="w-28 h-12 bg-gray-100 mt-1 rounded-lg">
+        {tagButtons}
+      </section>
     </section>
   );
 }

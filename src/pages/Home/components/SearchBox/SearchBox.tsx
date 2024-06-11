@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SearchNav from "../SearchNav";
+import SearchLevelSelect from "../SearchLevelSelect";
 import SearchTypeSelect from "../SearchTypeSelect";
 import WritingTypeSelect from "../WritingTypeSelect";
 import DateSelect from "../DateSelect";
@@ -89,9 +90,10 @@ function SearchBox() {
   };
 
   return (
-    <section className={`${styles.grid}`}>
-      <SearchNav toggleSearch={toggleSearch} />
+    <section className={`${styles.grid} p-1 bg-gray-50`}>
+      {/* <SearchNav toggleSearch={toggleSearch} /> */}
       <section>
+        <SearchLevelSelect toggleSearch={toggleSearch} />
         {simpleSearch ? null : (
           <SearchTypeSelect
             searchType={searchType}
@@ -121,18 +123,18 @@ function SearchBox() {
         ) : null}
         {simpleSearch ? null : <TagInput tags={tags} updateTags={updateTags} />}
       </section>
-      <section>
+      <section className="grid">
         <GenreSelect
           selectedGenres={selectedGenres}
           updateSelectedGenres={updateSelectedGenres}
         />
+        <button
+          onClick={search}
+          className="justify-self-end self-end mt-8 mr-4 border border-solid border-black rounded-lg p-0.5"
+        >
+          search
+        </button>
       </section>
-      <button
-        onClick={search}
-        className="col-span-2 justify-self-end m-4 border border-solid border-black"
-      >
-        search
-      </button>
     </section>
   );
 }

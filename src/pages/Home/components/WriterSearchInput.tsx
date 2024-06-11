@@ -16,7 +16,7 @@ function WriterSearchInput({
         type="text"
         value={writerName}
         onChange={handleChange}
-        className="w-36"
+        className="w-40"
       />
     </section>
   );
