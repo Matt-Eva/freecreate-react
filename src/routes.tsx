@@ -5,6 +5,8 @@ import About from "./pages/About/About";
 import Donate from "./pages/Donate/Donate";
 import Read from "./pages/Read/Read";
 import Write from "./pages/Write/Write";
+import Profile from "./pages/Profile/Profile";
+import Subscriptions from "./pages/Subscriptions/Subscriptions";
 
 const routes = [
   {
@@ -34,6 +36,14 @@ const routes = [
       {
         path: "/write",
         element: <Write />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/subscriptions",
+        element: <Subscriptions />,
       },
     ],
   },
