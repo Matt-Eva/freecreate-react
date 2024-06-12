@@ -1,15 +1,15 @@
 function LibraryNav() {
   return (
-    <nav className="grid grid-flow-col justify-center">
-      <span className="px-1 border-r">writing</span>
+    <nav className="grid grid-flow-col">
+      <p className="w-full text-center border-r">writing</p>
 
-      <span className="px-1 border-r">bookshelves</span>
+      <p className="w-full text-center border-r">bookshelves</p>
 
-      <span className="px-1 border-r">writers</span>
+      <p className="w-full text-center border-r">writers</p>
 
-      <span className="px-1 border-r">to read</span>
+      <p className="w-full text-center border-r">to read</p>
 
-      <span className="px-1">likes</span>
+      <p className="w-full text-center">likes</p>
     </nav>
   );
 }
