@@ -4,11 +4,11 @@ import styles from "./Header.module.css";
 
 function Header() {
   return (
-    <header className="flex items-center">
+    <header className="flex items-start pt-3">
       <h1 className="ml-1 mr-2 text-xl sm:mr-4">
         <Link to="/">FreeCreate</Link>
       </h1>
-      <nav className={`${styles.navGrid} w-full mt-0.5 content-end`}>
+      <nav className={`${styles.navGrid} w-full mt-0.5 pt-px content-end`}>
         <Link to="/" className="hidden sm:block">
           browse
         </Link>
