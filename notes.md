@@ -8,6 +8,7 @@ We'll need the following page views:
 - Profile
 - Read
 - Library
+  - Reading List
   - Writing
   - Bookshelves
   - Writers (includes writers who you are following and whose works you have liked or added to library)
