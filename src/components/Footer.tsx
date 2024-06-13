@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className="sm:hidden bg-gray-50">
+    <footer className="sm:hidden bg-gray-100">
       <nav className="grid grid-flow-col items-center h-full">
         <Link to="/" className="text-center w-full border-r ">
           browse

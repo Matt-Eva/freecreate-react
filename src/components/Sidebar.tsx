@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Sidebar() {
   return (
-    <aside className="hidden sm:block bg-gray-50 rounded-lg overflow-auto">
+    <aside className="hidden sm:block bg-gray-100 rounded-lg overflow-auto">
       <nav>
         <ul>
           <li>

@@ -13,14 +13,22 @@ function Read() {
 
   const toggleFullScreen = () => {
     setIsFullScreen(!isFullScreen);
+    const readContainer = document.getElementById("read-container");
+    if (isFullScreen) {
+      document.exitFullscreen();
+    } else {
+      if (readContainer?.requestFullscreen) {
+        readContainer.requestFullscreen();
+      }
+    }
   };
 
   return (
-    <div className={`bg-gray-50 ${fullScreenClass}`}>
+    <div id="read-container" className={`bg-gray-50 ${fullScreenClass}`}>
       Read
       <button
         onClick={toggleFullScreen}
-        className={`fixed h-8 ${buttonPosition} right-2 bg-gray-100 px-2 py-1`}
+        className={`fixed h-8 ${buttonPosition} right-2 bg-gray-100 px-2 py-1 rounded-lg`}
       >
         {isFullScreen ? "><" : "<>"}
       </button>

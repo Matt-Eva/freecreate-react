@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function LibraryNav() {
   return (
-    <nav className="grid grid-flow-col sm:hidden bg-gray-50 h-9 items-center">
+    <nav className="grid grid-flow-col sm:hidden bg-gray-100 h-9 items-center">
       <Link to="/library" className="w-full text-center border-r">
         writing
       </Link>
