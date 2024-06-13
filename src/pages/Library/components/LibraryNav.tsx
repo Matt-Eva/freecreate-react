@@ -1,6 +1,6 @@
 function LibraryNav() {
   return (
-    <nav className="grid grid-flow-col">
+    <nav className="grid grid-flow-col sm:hidden">
       <p className="w-full text-center border-r">writing</p>
 
       <p className="w-full text-center border-r">bookshelves</p>
