@@ -15,7 +15,7 @@ function App() {
     testFetch();
   }, []);
   return (
-    <div className={`h-screen ${styles.appGrid}`}>
+    <div className={`h-screen ${styles.appGrid} bg-gray-50`}>
       <Header />
       <div className={`${styles.sidebarGrid}`}>
         <Sidebar />
