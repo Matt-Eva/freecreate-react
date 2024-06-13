@@ -1,5 +1,5 @@
 function LibWriting() {
-  return <div>LibWriting</div>;
+  return <div></div>;
 }
 
 export default LibWriting;
