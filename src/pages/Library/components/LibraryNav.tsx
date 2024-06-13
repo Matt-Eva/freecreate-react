@@ -1,15 +1,27 @@
+import { Link } from "react-router-dom";
+
 function LibraryNav() {
   return (
     <nav className="grid grid-flow-col sm:hidden">
-      <p className="w-full text-center border-r">writing</p>
+      <Link to="/library" className="w-full text-center border-r">
+        writing
+      </Link>
 
-      <p className="w-full text-center border-r">bookshelves</p>
+      <Link to="/library/bookshelves" className="w-full text-center border-r">
+        bookshelves
+      </Link>
 
-      <p className="w-full text-center border-r">writers</p>
+      <Link to="/library/writers" className="w-full text-center border-r">
+        writers
+      </Link>
 
-      <p className="w-full text-center border-r">to read</p>
+      <Link to="/library/reading-list" className="w-full text-center border-r">
+        to read
+      </Link>
 
-      <p className="w-full text-center">likes</p>
+      <Link to="/library/likes" className="w-full text-center">
+        likes
+      </Link>
     </nav>
   );
 }
