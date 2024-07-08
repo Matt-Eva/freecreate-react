@@ -15,3 +15,7 @@ const slice = createSlice({
     },
   },
 });
+
+export const { updateSearchResults } = slice.actions;
+
+export default slice.reducer;
