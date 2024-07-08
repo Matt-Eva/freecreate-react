@@ -1,8 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector, useStore } from "react-redux";
+import SearchResultReducer from "./state/searchResultSlice";
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    searchResults: SearchResultReducer,
+  },
 });
 
 export type AppStore = typeof store;
