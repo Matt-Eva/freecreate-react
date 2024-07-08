@@ -68,7 +68,10 @@ function SearchBox() {
     }
     if (searchType === "writing") {
       const writingTypeQuery = `&writingType=${writingType}`;
-      const writingTitleQuery = `&writingTitle=${writingTitle}`;
+      let writingTitleQuery = "";
+      if (writingTitle !== "") {
+        writingTitleQuery += `&writingTitle=${writingTitle}`;
+      }
       const dateQuery = `&date=${date}`;
       const query =
         searchTypeQuery +

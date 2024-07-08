@@ -52,7 +52,7 @@ export const defaultGenreState: GenreObject = {
   literary: {
     selected: false,
     disabled: false,
-    value: "Literary",
+    value: "LiteraryFiction",
     display: "Literary Fiction",
   },
   magicalRealism: {

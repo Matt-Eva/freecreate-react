@@ -30,7 +30,7 @@ function Read() {
         onClick={toggleFullScreen}
         className={`fixed h-8 ${buttonPosition} right-2 bg-gray-100 px-2 py-1 rounded-lg`}
       >
-        {isFullScreen ? "><" : "<>"}
+        {isFullScreen ? "> <" : "<>"}
       </button>
     </div>
   );
