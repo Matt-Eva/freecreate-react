@@ -1,30 +1,27 @@
-# React + TypeScript + Vite
+# FreeCreate
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+FreeCreate is a web-based hosting platform for fiction writers. It is currently under active development.
 
-Currently, two official plugins are available:
+This repository contains its frontend code, written in React.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+You can view the backend repository <a href="https://github.com/Matt-Eva/freecreate-go">here</a>.
 
-## Expanding the ESLint configuration
+## Build
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+FreeCreate's frontend is built using React and Vite.
 
-- Configure the top-level `parserOptions` property like this:
+It uses React-Router for client-side routing and Redux for a global state store.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+Styling is currently being implemented using both Tailwind CSS and custom CSS.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Features
+
+- A dynamic search interface to allow users fine-tuned control over searching content written on the platform.
+
+- A custom built rich text editor for content creators that outputs JSON.
+
+- A user library, reading-list, reading-history, and repository for liked-content.
+
+- The ability for users to subscribe and follow writers, receiving updates with their latest posted content.
+
+- Direct donation from user to creator, facilitated by Stripe.
