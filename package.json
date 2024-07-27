@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@editorjs/editorjs": "^2.30.2",
+    "@editorjs/header": "^2.8.7",
     "@reduxjs/toolkit": "^2.2.5",
     "@types/react-router-dom": "^5.3.3",
     "react": "^18.2.0",

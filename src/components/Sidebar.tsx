@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
+import styles from "./Sidebar.module.css";
 
 function Sidebar() {
   return (
-    <aside className="hidden sm:block bg-gray-100 rounded-lg overflow-auto">
+    <aside
+      className={`${styles.sidebar} hidden sm:block bg-gray-100 rounded-lg overflow-auto`}
+    >
       <nav>
         <ul>
           <li>

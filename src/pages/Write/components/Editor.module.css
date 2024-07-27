@@ -1,0 +1,49 @@
+.container {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 20rem calc(100% - 2rem);
+  overflow: auto;
+}
+
+.infoContainer button {
+  display: none;
+}
+
+.wrapper {
+  height: 100%;
+  background-color: white;
+  padding: 10px;
+  display: grid;
+  grid-template-rows: 20px calc(100% - 40px) 20px;
+}
+
+.exitContainer {
+  display: flex;
+}
+
+.exitContainer button {
+  padding: 0px 5px;
+  border-radius: 10px;
+  width: 100%;
+  text-align: start;
+}
+
+.editor {
+  grid-row: 2;
+  height: 100%;
+  overflow: auto;
+}
+
+@media (min-width: 640px) {
+  .infoContainer button {
+    display: block;
+  }
+
+  .exitContainer {
+    color: white;
+  }
+
+  .exitContainer:hover {
+    color: black;
+  }
+}
