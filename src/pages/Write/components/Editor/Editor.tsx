@@ -58,21 +58,6 @@ function Editor() {
     <div className={styles.container}>
       <div className={styles.infoContainer}>
         <form>
-          <label>Writing Type</label>
-          <select>
-            <option>Flash Fiction</option>
-            <option>Short Story</option>
-            <option>Novelette</option>
-            <option>Novella</option>
-            <option>Novel</option>
-            <option>Collection</option>
-            <option>Fictional Universe</option>
-          </select>
-          <label>Title</label>
-          <input type="text" />
-          <label>Description</label>
-          <input type="text" />
-          <label>Genres (select up to 3)</label>
           <label>Tags (add up to 20)</label>
           <input type="text" />
         </form>

@@ -12,7 +12,7 @@ function App() {
       const data = await res.json();
       console.log(data);
     };
-    testFetch();
+    // testFetch();
   }, []);
   return (
     <div className={`h-screen ${styles.appGrid}`}>

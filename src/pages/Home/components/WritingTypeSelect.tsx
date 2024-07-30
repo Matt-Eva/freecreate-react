@@ -14,12 +14,12 @@ function WritingTypeSelect({
   };
   return (
     <section className="col-start-1 grid w-40">
-      <label>Writing type:</label>
+      <label>Writing type</label>
       <select value={writingType} onChange={handleChange}>
-        <option value="ShortStory">Short Story</option>
-        <option value="Novellette">Novellette</option>
-        <option value="Novella">Novella</option>
-        <option value="Novel">Novel</option>
+        <option value="shortStory">Short Story</option>
+        <option value="novellette">Novellette</option>
+        <option value="novella">Novella</option>
+        <option value="novel">Novel</option>
       </select>
     </section>
   );
