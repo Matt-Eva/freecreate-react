@@ -6,14 +6,14 @@ import Footer from "./components/Footer";
 import styles from "./App.module.css";
 
 function App() {
-  // useEffect(() => {
-  //   const testFetch = async () => {
-  //     const res = await fetch("/api");
-  //     const data = await res.json();
-  //     console.log(data);
-  //   };
-  //   testFetch();
-  // }, []);
+  useEffect(() => {
+    const testFetch = async () => {
+      const res = await fetch("/api/master-user");
+      const data = await res.json();
+      console.log(data);
+    };
+    testFetch();
+  }, []);
   return (
     <div className={`h-screen ${styles.appGrid}`}>
       <Header />
