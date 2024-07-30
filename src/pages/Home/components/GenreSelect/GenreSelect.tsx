@@ -50,7 +50,7 @@ function GenreSelect({
         (genre) => genre !== genres[name].value
       );
       const oneLessDisplay = displaySelectedGenres.filter(
-        (genre) => genre !== genres[name].value
+        (genre) => genre !== genres[name].display
       );
 
       updateSelectedGenres(oneLess);
