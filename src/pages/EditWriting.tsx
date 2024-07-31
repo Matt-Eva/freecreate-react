@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Info from "../components/Info";
-import Editor from "../components/Editor/Editor";
+
 import FontSelect from "../components/FontSelect";
 
-function Edit() {
+function EditWriting() {
   const [writingType, setWritingType] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -62,4 +62,4 @@ function Edit() {
   );
 }
 
-export default Edit;
+export default EditWriting;
