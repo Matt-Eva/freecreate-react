@@ -8,7 +8,7 @@ function CreatorProfileForm() {
         <input type="text" />
         <label>Creator Id</label>
         <input type="text" />
-        <input type="submit" value="create" className={styles.submit} />
+        <input type="submit" value="save" className={styles.submit} />
       </form>
       <p>
         The creator id serves as a unique identifier for this creator profile on
