@@ -21,6 +21,7 @@
   grid-row: 2;
   height: 100%;
   overflow: auto;
+  font-feature-settings: "quot" off;
 }
 
 @media (min-width: 640px) {

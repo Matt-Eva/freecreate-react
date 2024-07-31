@@ -7,10 +7,7 @@ import Header from "@editorjs/header";
 import "./Editor.css";
 import styles from "./Editor.module.css";
 
-function Editor() {
-  // const [content, setContent] = useState<OutputData>();
-  const [font, setFont] = useState("Helvetica");
-
+function Editor({ font }: { font: string }) {
   const fontStyle = {
     fontFamily: font,
   };
@@ -55,23 +52,9 @@ function Editor() {
   }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.infoContainer}>
-        <form>
-          <label>Tags (add up to 20)</label>
-          <input type="text" />
-        </form>
-        <label>Font:</label>
-        <select onChange={(e) => setFont(e.target.value)}>
-          <option>Helvetica</option>
-          <option>Lora</option>
-          <option>IM Fell English</option>
-        </select>
-      </div>
-      <div className={styles.wrapper} id="editor-container">
-        <button onClick={handleFullScreen}>{"<>"}</button>
-        <div id="editorjs" className={styles.editor} style={fontStyle}></div>
-      </div>
+    <div className={styles.wrapper} id="editor-container">
+      <button onClick={handleFullScreen}>{"<>"}</button>
+      <div id="editorjs" className={styles.editor} style={fontStyle}></div>
     </div>
   );
 }

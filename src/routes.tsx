@@ -5,6 +5,10 @@ import About from "./pages/About/About";
 import Donate from "./pages/Donate/Donate";
 import Read from "./pages/Read/Read";
 import Write from "./pages/Write/Write";
+import New from "./pages/Write/pages/New";
+import Edit from "./pages/Write/pages/Edit";
+import Published from "./pages/Write/pages/Published";
+import Drafts from "./pages/Write/pages/Drafts";
 import Profile from "./pages/Profile/Profile";
 import Subscriptions from "./pages/Subscriptions/Subscriptions";
 import LibWriting from "./pages/Library/pages/LibWriting/LibWriting";
@@ -63,6 +67,24 @@ const routes = [
       {
         path: "/write",
         element: <Write />,
+        children: [
+          {
+            path: "/write/published",
+            element: <Published />,
+          },
+          {
+            path: "/write",
+            element: <Drafts />,
+          },
+        ],
+      },
+      {
+        path: "/new-writing",
+        element: <New />,
+      },
+      {
+        path: "/edit-writing",
+        element: <Edit />,
       },
       {
         path: "/profile",

@@ -17,6 +17,7 @@ function TypeSelect({
         <option value="novelette">Novelette</option>
         <option value="novella">Novella</option>
         <option value="novel">Novel</option>
+        <option value="series">Series</option>
         <option value="collection">Collection</option>
         <option value="universe">Fictional Universe</option>
       </select>
