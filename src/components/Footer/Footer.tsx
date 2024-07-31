@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 
+import styles from "./Footer.module.css";
+
 function Footer() {
   return (
-    <footer>
-      <nav>
+    <footer className={styles.footer}>
+      <nav className={styles.nav}>
         <Link to="/">browse</Link>
         <Link to="/subscriptions">subscriptions</Link>
         <Link to="/read">read</Link>
