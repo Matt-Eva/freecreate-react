@@ -26,3 +26,7 @@ body {
 h1 {
   font-size: 1rem;
 }
+
+#fullscreen-container {
+  background-color: white;
+}

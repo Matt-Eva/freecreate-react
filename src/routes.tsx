@@ -18,6 +18,7 @@ import Bookshelves from "./pages/Bookshelves/Bookshelves";
 import LibWriters from "./pages/LibWriters/LibWriters";
 import ReadingList from "./pages/ReadingList/ReadingList";
 import Likes from "./pages/Likes/Likes";
+import ReadChapter from "./pages/ReadChapter/ReadChapter";
 
 const routes = [
   {
@@ -65,6 +66,10 @@ const routes = [
       {
         path: "/read",
         element: <Read />,
+      },
+      {
+        path: "/read-chapter",
+        element: <ReadChapter />,
       },
       {
         path: "/profile",
