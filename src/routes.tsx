@@ -12,6 +12,7 @@ import Edit from "./pages/EditWriting";
 import NewChapter from "./pages/NewChapter";
 import EditChapter from "./pages/EditChapter";
 import Profile from "./pages/Profile/Profile";
+import NewCreatorProfile from "./pages/NewCreatorProfile/NewCreatorProfile";
 import Subscriptions from "./pages/Subscriptions/Subscriptions";
 import LibWriting from "./pages/LibWriting/LibWriting";
 import Bookshelves from "./pages/Bookshelves/Bookshelves";
@@ -74,6 +75,10 @@ const routes = [
       {
         path: "/profile",
         element: <Profile />,
+      },
+      {
+        path: "/new-creator-profile",
+        element: <NewCreatorProfile />,
       },
       {
         path: "/subscriptions",

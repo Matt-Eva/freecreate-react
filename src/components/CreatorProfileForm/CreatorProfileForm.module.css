@@ -1,0 +1,7 @@
+.form {
+  display: grid;
+}
+
+.submit {
+  justify-self: end;
+}
