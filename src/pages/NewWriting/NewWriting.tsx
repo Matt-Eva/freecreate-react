@@ -36,6 +36,8 @@ function NewWriting() {
 
   return (
     <div className={styles.container}>
+      <label>Pick Creator Profile</label>
+      <select></select>
       <Info
         writingType={writingType}
         updateWritingType={updateWritingType}
