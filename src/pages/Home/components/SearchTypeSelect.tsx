@@ -10,7 +10,7 @@ function SearchTypeSelect({
     updateSearchType(target.value);
   };
   return (
-    <section className="col-start-1 grid w-40">
+    <section>
       <label>Search for: </label>
       <select value={searchType} onChange={handleChange}>
         <option value="writing">Writing</option>

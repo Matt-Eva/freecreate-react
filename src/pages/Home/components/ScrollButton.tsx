@@ -4,11 +4,7 @@ function ScrollButton() {
     element?.scrollIntoView({ behavior: "smooth" });
   };
 
-  return (
-    <button onClick={handleScroll} className="fixed bottom-10 right-5">
-      top
-    </button>
-  );
+  return <button onClick={handleScroll}>top</button>;
 }
 
 export default ScrollButton;

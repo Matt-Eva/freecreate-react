@@ -6,7 +6,7 @@ function SearchLevelSelect({ toggleSearch }: { toggleSearch: Function }) {
   };
 
   return (
-    <section className="grid w-40">
+    <section>
       <label>Search Type: </label>
       <select onChange={handleChange}>
         <option value="simple">Simple</option>

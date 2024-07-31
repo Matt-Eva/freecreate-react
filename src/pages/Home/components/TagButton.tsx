@@ -4,9 +4,9 @@ function TagButton({ tag, removeTag }: { tag: string; removeTag: Function }) {
   };
 
   return (
-    <button onClick={handleClick} className="m-1 bg-gray-200 rounded-md">
+    <button onClick={handleClick}>
       {tag}
-      <span className="mx-0.5 bg-gray-300 rounded-lg px-1 pb-0.5">x</span>
+      <span>x</span>
     </button>
   );
 }

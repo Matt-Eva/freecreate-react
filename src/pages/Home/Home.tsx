@@ -12,7 +12,7 @@ function Home() {
   // };
 
   return (
-    <main className="h-full w-full overflow-auto">
+    <main>
       <SearchBox />
       <SearchResults />
       <ScrollButton />

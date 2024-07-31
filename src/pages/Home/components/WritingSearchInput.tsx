@@ -11,14 +11,9 @@ function WritingSearchInput({
   };
 
   return (
-    <section className="col-start-1 grid">
+    <section>
       <label>Title: </label>
-      <input
-        type="text"
-        value={writingTitle}
-        onChange={handleChange}
-        className="w-40"
-      />
+      <input type="text" value={writingTitle} onChange={handleChange} />
     </section>
   );
 }

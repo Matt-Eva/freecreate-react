@@ -85,12 +85,8 @@ function GenreSelect({
   return (
     <section>
       <label>Select up to 3 Genres</label>
-      <ul className="h-[237px] mt-1 px-3 overflow-auto bg-gray-100 rounded-lg">
-        {displayGenres}
-      </ul>
-      <section className="h-8 mt-2 px-3 bg-gray-200 rounded-lg overflow-auto">
-        {selectedGenresString}
-      </section>
+      <ul>{displayGenres}</ul>
+      <section>{selectedGenresString}</section>
     </section>
   );
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import SearchNav from "../SearchNav";
+import SearchNav from "../SearchNav";
 import SearchLevelSelect from "../SearchLevelSelect";
 import SearchTypeSelect from "../SearchTypeSelect";
 import WritingTypeSelect from "../WritingTypeSelect";
@@ -93,13 +93,10 @@ function SearchBox() {
   };
 
   return (
-    <section
-      id="searchBox"
-      className={`${styles.grid} m-1 p-1 rounded-lg bg-gray-50`}
-    >
-      {/* <SearchNav toggleSearch={toggleSearch} /> */}
-      <section className="justify-self-end">
-        <SearchLevelSelect toggleSearch={toggleSearch} />
+    <section id="searchBox" className={styles.grid}>
+      <SearchNav toggleSearch={toggleSearch} />
+      <section>
+        {/* <SearchLevelSelect toggleSearch={toggleSearch} /> */}
         {simpleSearch ? null : (
           <SearchTypeSelect
             searchType={searchType}
