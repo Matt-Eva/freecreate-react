@@ -80,7 +80,6 @@ function GenreSelect({
       </li>
     );
   }
-  console.log(displaySelectedGenres);
 
   const selectedGenresString = displaySelectedGenres.join(", ");
 
