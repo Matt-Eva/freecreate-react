@@ -5,5 +5,7 @@
 @media (min-width: 640px) {
   .sidebar {
     display: block;
+    grid-column: 1;
+    grid-row: 1;
   }
 }

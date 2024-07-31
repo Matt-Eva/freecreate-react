@@ -12,7 +12,7 @@
 }
 
 @media (min-width: 640px) {
-  .appGrid {
+  .app {
     grid-template-rows: 4rem calc(100% - 4rem);
   }
 
