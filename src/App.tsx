@@ -14,8 +14,9 @@ function App() {
     };
     // testFetch();
   }, []);
+
   return (
-    <div className={styles.appGrid}>
+    <div className={styles.app}>
       <Header />
       <div className={styles.sidebarGrid}>
         <Sidebar />
