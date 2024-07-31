@@ -7,7 +7,7 @@ import Read from "./pages/Read/Read";
 import Write from "./pages/Write/Write";
 import Published from "./pages/Published";
 import Drafts from "./pages/Drafts";
-import New from "./pages/New";
+import NewWriting from "./pages/NewWriting/NewWriting";
 import Edit from "./pages/Edit";
 import NewChapter from "./pages/NewChapter";
 import EditChapter from "./pages/EditChapter";
@@ -90,7 +90,7 @@ const routes = [
       },
       {
         path: "/new-writing",
-        element: <New />,
+        element: <NewWriting />,
       },
       {
         path: "/edit-writing",

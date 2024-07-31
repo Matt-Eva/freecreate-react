@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Info from "../components/Info";
+import Info from "../../components/Info";
 
-import styles from "./New.module.css";
+import styles from "./NewWriting.module.css";
 
-function New() {
+function NewWriting() {
   const [writingType, setWritingType] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -53,4 +53,4 @@ function New() {
   );
 }
 
-export default New;
+export default NewWriting;
