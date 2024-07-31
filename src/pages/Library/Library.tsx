@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 
-import LibraryNav from "./components/LibraryNav";
+import LibraryNav from "../../components/LibraryNav";
 
 function Library() {
   return (

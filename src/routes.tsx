@@ -5,19 +5,19 @@ import About from "./pages/About/About";
 import Donate from "./pages/Donate/Donate";
 import Read from "./pages/Read/Read";
 import Write from "./pages/Write/Write";
-import Published from "./pages/Write/pages/Published";
-import Drafts from "./pages/Write/pages/Drafts";
-import New from "./pages/Write/pages/New";
-import Edit from "./pages/Write/pages/Edit";
-import NewChapter from "./pages/Write/pages/NewChapter";
-import EditChapter from "./pages/Write/pages/EditChapter";
+import Published from "./pages/Published";
+import Drafts from "./pages/Drafts";
+import New from "./pages/New";
+import Edit from "./pages/Edit";
+import NewChapter from "./pages/NewChapter";
+import EditChapter from "./pages/EditChapter";
 import Profile from "./pages/Profile/Profile";
 import Subscriptions from "./pages/Subscriptions/Subscriptions";
-import LibWriting from "./pages/Library/pages/LibWriting/LibWriting";
-import Bookshelves from "./pages/Library/pages/Bookshelves/Bookshelves";
-import LibWriters from "./pages/Library/pages/LibWriters/LibWriters";
-import ReadingList from "./pages/Library/pages/ReadingList/ReadingList";
-import Likes from "./pages/Library/pages/Likes/Likes";
+import LibWriting from "./pages/LibWriting/LibWriting";
+import Bookshelves from "./pages/Bookshelves/Bookshelves";
+import LibWriters from "./pages/LibWriters/LibWriters";
+import ReadingList from "./pages/ReadingList/ReadingList";
+import Likes from "./pages/Likes/Likes";
 
 const routes = [
   {
