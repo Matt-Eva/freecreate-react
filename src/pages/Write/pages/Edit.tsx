@@ -1,4 +1,5 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Info from "../components/Info";
 import Editor from "../components/Editor/Editor";
 import FontSelect from "../components/FontSelect";
@@ -10,43 +11,34 @@ function Edit() {
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [tags, setTags] = useState<string[]>([]);
   const [font, setFont] = useState("Helvetica");
-  const timeoutRef = useRef(0);
 
-  function handleSave() {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = 0;
-    } else {
-      const id = window.setTimeout(() => {
-        console.log("saved!");
-      }, 3000);
-      timeoutRef.current = id;
-    }
-  }
+  const navigate = useNavigate();
 
   function updateWritingType(type: string) {
     setWritingType(type);
-    handleSave();
   }
   function updateTitle(t: string) {
     setTitle(t);
-    handleSave();
   }
   function updateDescription(d: string) {
     setDescription(d);
-    handleSave();
   }
   function updateSelectedGenres(genres: string[]) {
     setSelectedGenres(genres);
-    handleSave();
   }
   function updateTags(tags: string[]) {
     setTags(tags);
-    handleSave();
   }
   function updateFont(f: string) {
     setFont(f);
-    handleSave();
+  }
+
+  function handleInfoSave() {
+    console.log("saving");
+  }
+
+  function addNewChapter() {
+    navigate("/new-chapter");
   }
 
   return (
@@ -63,8 +55,9 @@ function Edit() {
         tags={tags}
         updateTags={updateTags}
       />
+      <button onClick={handleInfoSave}>Save changes</button>
+      <button onClick={addNewChapter}>New Chapter</button>
       <FontSelect font={font} updateFont={updateFont} />
-      <Editor font={font} />
     </div>
   );
 }

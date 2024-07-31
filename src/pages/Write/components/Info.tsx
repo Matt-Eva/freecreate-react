@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Editor from "./Editor/Editor";
 import TypeSelect from "./TypeSelect";
-import GenreSelect from "./GenreSelect";
+import GenreSelect from "./GenreSelect/GenreSelect";
 import TagInput from "./TagInput";
 import FontSelect from "./FontSelect";
 

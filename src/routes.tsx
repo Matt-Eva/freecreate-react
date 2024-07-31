@@ -5,10 +5,12 @@ import About from "./pages/About/About";
 import Donate from "./pages/Donate/Donate";
 import Read from "./pages/Read/Read";
 import Write from "./pages/Write/Write";
-import New from "./pages/Write/pages/New";
-import Edit from "./pages/Write/pages/Edit";
 import Published from "./pages/Write/pages/Published";
 import Drafts from "./pages/Write/pages/Drafts";
+import New from "./pages/Write/pages/New";
+import Edit from "./pages/Write/pages/Edit";
+import NewChapter from "./pages/Write/pages/NewChapter";
+import EditChapter from "./pages/Write/pages/EditChapter";
 import Profile from "./pages/Profile/Profile";
 import Subscriptions from "./pages/Subscriptions/Subscriptions";
 import LibWriting from "./pages/Library/pages/LibWriting/LibWriting";
@@ -65,6 +67,14 @@ const routes = [
         element: <Read />,
       },
       {
+        path: "/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/subscriptions",
+        element: <Subscriptions />,
+      },
+      {
         path: "/write",
         element: <Write />,
         children: [
@@ -87,12 +97,12 @@ const routes = [
         element: <Edit />,
       },
       {
-        path: "/profile",
-        element: <Profile />,
+        path: "/new-chapter",
+        element: <NewChapter />,
       },
       {
-        path: "/subscriptions",
-        element: <Subscriptions />,
+        path: "/edit-chapter",
+        element: <EditChapter />,
       },
     ],
   },

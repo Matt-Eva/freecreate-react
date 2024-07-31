@@ -7,7 +7,7 @@ import Header from "@editorjs/header";
 import "./Editor.css";
 import styles from "./Editor.module.css";
 
-function Editor({ font }: { font: string }) {
+function Editor({ font, readOnly }: { font: string; readOnly: boolean }) {
   const fontStyle = {
     fontFamily: font,
   };
@@ -19,6 +19,7 @@ function Editor({ font }: { font: string }) {
   function configureEditor() {
     const editor = new EditorJS({
       onChange: saveData,
+      readOnly: readOnly,
       tools: {
         header: {
           class: Header as unknown as BlockToolConstructable,
