@@ -1,13 +1,40 @@
+import { useState } from "react";
+
 import styles from "./CreatorProfileForm.module.css";
 
-function CreatorProfileForm() {
+function CreatorProfileForm({
+  save,
+  name,
+  id,
+  updateName,
+  updateId,
+}: {
+  save: Function;
+  name: string;
+  id: string;
+  updateName: Function;
+  updateId: Function;
+}) {
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    save();
+  }
+
   return (
     <div>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <label>Creator name</label>
-        <input type="text" />
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => updateName(e.target.value)}
+        />
         <label>Creator Id</label>
-        <input type="text" />
+        <input
+          type="text"
+          value={id}
+          onChange={(e) => updateId(e.target.value)}
+        />
         <input type="submit" value="save" className={styles.submit} />
       </form>
       <p>

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Editor from "../components/Editor/Editor";
 
 function Chapter() {
@@ -9,6 +9,7 @@ function Chapter() {
   }
   return (
     <div>
+      <Link to="/edit-writing">Back</Link>
       <label>Chapter title</label>
       <input type="text" />
       <button onClick={saveChapter}>create</button>

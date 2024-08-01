@@ -1,11 +1,9 @@
-import { useState } from "react";
-import Editor from "./Editor/Editor";
 import TypeSelect from "./TypeSelect";
 import GenreSelect from "./GenreSelect/GenreSelect";
 import TagInput from "./TagInput";
 import FontSelect from "./FontSelect";
 
-function Info({
+function WritingInfo({
   writingType,
   updateWritingType,
   title,
@@ -30,6 +28,8 @@ function Info({
 }) {
   return (
     <div>
+      <label>Pick Creator Profile</label>
+      <select></select>
       <TypeSelect
         writingType={writingType}
         updateWritingType={updateWritingType}
@@ -55,4 +55,4 @@ function Info({
   );
 }
 
-export default Info;
+export default WritingInfo;

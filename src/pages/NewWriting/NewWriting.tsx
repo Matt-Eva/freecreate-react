@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Info from "../../components/Info";
+import Info from "../../components/WritingInfo";
 
 import styles from "./NewWriting.module.css";
 
@@ -36,8 +36,6 @@ function NewWriting() {
 
   return (
     <div className={styles.container}>
-      <label>Pick Creator Profile</label>
-      <select></select>
       <Info
         writingType={writingType}
         updateWritingType={updateWritingType}

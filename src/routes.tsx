@@ -82,7 +82,7 @@ const routes = [
         element: <NewCreator />,
       },
       {
-        path: "/edit-creator",
+        path: "/edit-creator/:creatorName/:creatorId",
         element: <EditCreator />,
       },
       {
