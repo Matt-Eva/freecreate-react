@@ -1,12 +1,19 @@
 .container {
   grid-column: 2;
   width: 100%;
-  height: 16rem;
+  height: 22rem;
   padding: 5px;
+  padding-top: 10px;
+}
+
+.container label {
+  margin-top: 5px;
+  height: 1rem;
 }
 
 .container ul {
-  height: calc(100% - 4rem);
+  margin-top: 5px;
+  height: 17rem;
   overflow: auto;
 }
 
@@ -15,6 +22,7 @@
 }
 
 .selectedGenres {
+  margin-top: 5px;
   height: 4rem;
   background-color: hsl(0, 0%, 95%);
 }

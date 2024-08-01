@@ -43,7 +43,7 @@ function TagInput({
   }
 
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <form onSubmit={addTag} className={styles.form}>
         <label>Add Tag</label>
         <div className={styles.inputBox}>
@@ -58,7 +58,7 @@ function TagInput({
         </div>
       </form>
       <div className={styles.tagBox}>{displayTags}</div>
-    </div>
+    </section>
   );
 }
 

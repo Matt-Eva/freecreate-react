@@ -1,4 +1,5 @@
 .container {
+  height: 100%;
   width: 100%;
   display: grid;
   grid-template-rows: 3rem 4rem;
@@ -28,6 +29,7 @@
   align-content: start;
   flex-wrap: wrap;
   height: 100%;
+  margin-top: 5px;
   overflow: auto;
   background-color: hsl(0, 0%, 95%);
 }

@@ -1,10 +1,18 @@
 .grid {
   display: grid;
   grid-template-columns: 50% 50%;
+  grid-template-rows: 2rem 22rem 2rem;
+  height: 26rem;
 }
 
 .allButGenre {
   padding: 5px;
+  height: 22rem;
+}
+
+.allButGenre section {
+  margin-top: 5px;
+  height: 3rem;
 }
 
 .searchButton {
