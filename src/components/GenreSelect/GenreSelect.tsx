@@ -77,8 +77,11 @@ function GenreSelect({
           name={key}
           checked={genres[key].selected}
           disabled={genres[key].disabled}
+          className={styles.checkbox}
         />
-        <label htmlFor={key}>{genres[key].display}</label>
+        <label htmlFor={key} className={styles.genreLabel}>
+          {genres[key].display}
+        </label>
       </li>
     );
   }
@@ -87,7 +90,7 @@ function GenreSelect({
 
   return (
     <section className={styles.container}>
-      <label>Select up to 3 Genres</label>
+      <label className={styles.label}>Select up to 3 Genres</label>
       <ul>{displayGenres}</ul>
       <section className={styles.selectedGenres}>
         {selectedGenresString}
