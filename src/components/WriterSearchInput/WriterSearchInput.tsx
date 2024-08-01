@@ -1,3 +1,5 @@
+import styles from "./WriterSearchInput.module.css";
+
 function WriterSearchInput({
   writerName,
   updateWriterName,
@@ -10,7 +12,7 @@ function WriterSearchInput({
     updateWriterName(target.value.toLowerCase());
   };
   return (
-    <section>
+    <section className={styles.container}>
       <label>Writer Name:</label>
       <input type="text" value={writerName} onChange={handleChange} />
     </section>

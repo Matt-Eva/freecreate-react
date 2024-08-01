@@ -1,13 +1,13 @@
 import { useState } from "react";
-import SearchNav from "../SearchNav";
+import SearchNav from "../SearchNav/SearchNav";
 import SearchLevelSelect from "../SearchLevelSelect";
-import SearchTypeSelect from "../SearchTypeSelect";
-import WritingTypeSelect from "../WritingTypeSelect";
-import DateSelect from "../DateSelect";
-import WriterSearchInput from "../WriterSearchInput";
-import WritingSearchInput from "../WritingSearchInput";
+import SearchTypeSelect from "../SearchTypeSelect/SearchTypeSelect";
+import WritingTypeSelect from "../WritingTypeSelect/WritingTypeSelect";
+import DateSelect from "../DateSelect/DateSelect";
+import WriterSearchInput from "../WriterSearchInput/WriterSearchInput";
+import WritingSearchInput from "../WritingSearchInput/WritingSearchInput";
 import GenreSelect from "../GenreSelect/GenreSelect";
-import TagInput from "../TagInput";
+import TagInput from "../TagInput/TagInput";
 
 import styles from "./SearchBox.module.css";
 
@@ -95,7 +95,7 @@ function SearchBox() {
   return (
     <section id="searchBox" className={styles.grid}>
       <SearchNav toggleSearch={toggleSearch} />
-      <section>
+      <section className={styles.allButGenre}>
         {/* <SearchLevelSelect toggleSearch={toggleSearch} /> */}
         {simpleSearch ? null : (
           <SearchTypeSelect
@@ -126,18 +126,13 @@ function SearchBox() {
         ) : null}
         {simpleSearch ? null : <TagInput tags={tags} updateTags={updateTags} />}
       </section>
-      <section className="grid">
-        <GenreSelect
-          selectedGenres={selectedGenres}
-          updateSelectedGenres={updateSelectedGenres}
-        />
-        <button
-          onClick={search}
-          className="justify-self-end self-end mt-4 mr-4 border border-solid border-black rounded-lg p-0.5"
-        >
-          search
-        </button>
-      </section>
+      <GenreSelect
+        selectedGenres={selectedGenres}
+        updateSelectedGenres={updateSelectedGenres}
+      />
+      <button onClick={search} className={styles.searchButton}>
+        search
+      </button>
     </section>
   );
 }

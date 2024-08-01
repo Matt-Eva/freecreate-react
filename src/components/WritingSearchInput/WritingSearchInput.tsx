@@ -1,3 +1,4 @@
+import styles from "./WritingSearchInput.module.css";
 function WritingSearchInput({
   writingTitle,
   updateWritingTitle,
@@ -11,8 +12,8 @@ function WritingSearchInput({
   };
 
   return (
-    <section>
-      <label>Title: </label>
+    <section className={styles.container}>
+      <label>Title</label>
       <input type="text" value={writingTitle} onChange={handleChange} />
     </section>
   );

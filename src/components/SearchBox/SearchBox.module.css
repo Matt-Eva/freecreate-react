@@ -2,3 +2,14 @@
   display: grid;
   grid-template-columns: 50% 50%;
 }
+
+.allButGenre {
+  padding: 5px;
+}
+
+.searchButton {
+  grid-row: 3;
+  grid-column: span 2;
+  width: 4rem;
+  justify-self: center;
+}

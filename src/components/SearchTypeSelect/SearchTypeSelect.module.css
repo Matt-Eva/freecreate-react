@@ -1,0 +1,4 @@
+.container {
+  grid-column: 1;
+  display: grid;
+}

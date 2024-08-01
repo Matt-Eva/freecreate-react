@@ -1,4 +1,4 @@
-import React from "react";
+import styles from "./DateSelect.module.css";
 
 function DateSelect({
   date,
@@ -12,8 +12,8 @@ function DateSelect({
     updateDate(target.value);
   };
   return (
-    <section className="col-start-1 grid w-40">
-      <label>Date posted:</label>
+    <section className={styles.container}>
+      <label>Date posted</label>
       <select value={date} onChange={handleChange}>
         <option>All Time</option>
         <option>Past Year</option>

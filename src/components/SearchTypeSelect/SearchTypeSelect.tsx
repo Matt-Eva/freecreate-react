@@ -1,3 +1,5 @@
+import styles from "./SearchTypeSelect.module.css";
+
 function SearchTypeSelect({
   searchType,
   updateSearchType,
@@ -10,8 +12,8 @@ function SearchTypeSelect({
     updateSearchType(target.value);
   };
   return (
-    <section>
-      <label>Search for: </label>
+    <section className={styles.container}>
+      <label>Search for</label>
       <select value={searchType} onChange={handleChange}>
         <option value="writing">Writing</option>
         <option value="writers">Writers</option>

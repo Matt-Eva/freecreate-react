@@ -1,0 +1,6 @@
+.searchNav {
+  width: 100%;
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}

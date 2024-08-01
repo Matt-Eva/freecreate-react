@@ -1,0 +1,33 @@
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-rows: 3rem 4rem;
+}
+
+.form {
+  display: grid;
+  width: 100%;
+}
+
+.inputBox {
+  width: 100%;
+  display: flex;
+}
+
+.submit {
+  width: 3rem;
+}
+.textInput {
+  margin-right: 5px;
+  width: calc(100% - 3rem);
+}
+
+.tagBox {
+  display: flex;
+  justify-content: start;
+  align-content: start;
+  flex-wrap: wrap;
+  height: 100%;
+  overflow: auto;
+  background-color: hsl(0, 0%, 95%);
+}

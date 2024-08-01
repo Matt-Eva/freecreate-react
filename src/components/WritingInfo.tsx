@@ -1,6 +1,6 @@
 import TypeSelect from "./TypeSelect";
 import GenreSelect from "./GenreSelect/GenreSelect";
-import TagInput from "./TagInput";
+import TagInput from "./TagInput/TagInput";
 import FontSelect from "./FontSelect";
 
 function WritingInfo({

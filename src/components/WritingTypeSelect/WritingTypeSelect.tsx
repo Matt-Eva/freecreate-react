@@ -1,4 +1,4 @@
-import React from "react";
+import styles from "./WritingTypeSelect.module.css";
 
 function WritingTypeSelect({
   writingType,
@@ -13,7 +13,7 @@ function WritingTypeSelect({
     updateWritingType(target.value);
   };
   return (
-    <section>
+    <section className={styles.container}>
       <label>Writing type</label>
       <select value={writingType} onChange={handleChange}>
         <option value="shortStory">Short Story</option>

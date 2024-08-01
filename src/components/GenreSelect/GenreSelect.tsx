@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import { defaultGenreState } from "./UtilsGenreSelect";
 
+import styles from "./GenreSelect.module.css";
+
 function GenreSelect({
   selectedGenres,
   updateSelectedGenres,
@@ -84,10 +86,12 @@ function GenreSelect({
   const selectedGenresString = displaySelectedGenres.join(", ");
 
   return (
-    <section>
+    <section className={styles.container}>
       <label>Select up to 3 Genres</label>
       <ul>{displayGenres}</ul>
-      <section>{selectedGenresString}</section>
+      <section className={styles.selectedGenres}>
+        {selectedGenresString}
+      </section>
     </section>
   );
 }

@@ -1,5 +1,7 @@
 import { useState } from "react";
-import Tag from "./Tag";
+import Tag from "../Tag";
+
+import styles from "./TagInput.module.css";
 
 function TagInput({
   tags,
@@ -41,18 +43,21 @@ function TagInput({
   }
 
   return (
-    <div>
-      <form onSubmit={addTag}>
+    <div className={styles.container}>
+      <form onSubmit={addTag} className={styles.form}>
         <label>Add Tag</label>
-        <input
-          type="text"
-          value={tag}
-          onChange={(e) => updateTag(e.target.value)}
-          disabled={inputDisabled}
-        />
-        <input type="submit" value="add tag" />
+        <div className={styles.inputBox}>
+          <input
+            type="text"
+            value={tag}
+            onChange={(e) => updateTag(e.target.value)}
+            disabled={inputDisabled}
+            className={styles.textInput}
+          />
+          <input type="submit" value="add tag" className={styles.submit} />
+        </div>
       </form>
-      <div>{displayTags}</div>
+      <div className={styles.tagBox}>{displayTags}</div>
     </div>
   );
 }
