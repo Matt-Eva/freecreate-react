@@ -2,10 +2,11 @@ import WritingTypeSelect from "../WritingTypeSelect/WritingTypeSelect";
 import GenreSelect from "../GenreSelect/GenreSelect";
 import TitleInput from "../TitleInput/TitleInput";
 import TagInput from "../TagInput/TagInput";
-import FontSelect from "../FontSelect";
+import FontSelect from "../FontSelect/FontSelect";
 
 import styles from "./WritingInfo.module.css";
 import Editor from "../Editor/Editor";
+import { Link } from "react-router-dom";
 
 function WritingInfo({
   writingType,
@@ -32,40 +33,77 @@ function WritingInfo({
 }) {
   return (
     <section className={styles.container}>
-      <section className={styles.allButGenre}>
-        <section className={styles.creatorSelect}>
+      <h2 className={styles.header}>Writing Info</h2>
+      <div>
+        <div className={styles.creatorSelect}>
           <label>Creator Profile</label>
           <select></select>
-        </section>
-        <WritingTypeSelect
-          writingType={writingType}
-          updateWritingType={updateWritingType}
-        />
-        <TitleInput writingTitle={title} updateWritingTitle={updateTitle} />
-        <section className={styles.description}>
+        </div>
+        <div className={styles.writingSelect}>
+          <WritingTypeSelect
+            writingType={writingType}
+            updateWritingType={updateWritingType}
+          />
+        </div>
+        <div className={styles.titleInput}>
+          <TitleInput writingTitle={title} updateWritingTitle={updateTitle} />
+        </div>
+        <div className={styles.description}>
           <label>Description</label>
           <textarea
             value={description}
             onChange={(e) => updateDescription(e.target.value)}
-            style={{ padding: "5px" }}
           />
+        </div>
+        <div className={styles.fontSelect}>
+          <FontSelect font="Helvetica" updateFont={() => {}} />
+        </div>
+        <div className={styles.editor}>
+          <Editor
+            font="Helvetica"
+            readOnly={false}
+            displayFullscreen={false}
+            placeHolder="Test out font"
+          />
+        </div>
+      </div>
+      <div>
+        <div className={styles.genreSelect}>
+          <GenreSelect
+            selectedGenres={selectedGenres}
+            updateSelectedGenres={updateSelectedGenres}
+          />
+        </div>
+        <div className={styles.tagInput}>
+          <TagInput tags={tags} updateTags={updateTags} />
+        </div>
+      </div>
+      <button className={styles.saveButton}>save</button>
+      <div className={styles.chapterSection}>
+        <h2>Chapters</h2>
+        <section>
+          <h3>Add Chapter</h3>
+          <form className={styles.chapterForm}>
+            <label>Chapter Title</label>
+            <input type="text" disabled={true} />
+            <label>Chapter Number</label>
+            <input type="text" placeholder="chapter number" disabled={true} />
+            <input type="submit" value="create" disabled={true} />
+          </form>
         </section>
-        <TagInput tags={tags} updateTags={updateTags} />
-      </section>
-      <GenreSelect
-        selectedGenres={selectedGenres}
-        updateSelectedGenres={updateSelectedGenres}
-      />
-      <button>save</button>
-      <form>
-        <label>Add chapter</label>
-        <input type="text" placeholder="chapter title" disabled={true} />
-        <input type="text" placeholder="chapter number" disabled={true} />
-        <input type="submit" value="start writing!" disabled={true} />
-      </form>
-      <FontSelect font="Helvetica" updateFont={() => {}} />
-      <label>Test out font</label>
-      <Editor font="Helvetica" readOnly={false} />
+        <div>
+          <div>
+            <h3>Chapter title</h3>
+            <p>Chapter number</p>
+            <Link to="/edit-chapter">Edit</Link>
+            <form>
+              <label>Edit chapter number</label>
+              <input type="number" />
+              <input type="submit" value="save" />
+            </form>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

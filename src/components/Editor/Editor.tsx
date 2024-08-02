@@ -7,19 +7,33 @@ import Header from "@editorjs/header";
 import "./Editor.css";
 import styles from "./Editor.module.css";
 
-function Editor({ font, readOnly }: { font: string; readOnly: boolean }) {
+function Editor({
+  font,
+  readOnly,
+  displayFullscreen,
+  placeHolder,
+}: {
+  font: string;
+  readOnly: boolean;
+  displayFullscreen: boolean;
+  placeHolder: string;
+}) {
+  const editorRef = useRef<EditorJS | null>(null);
   const fontStyle = {
     fontFamily: font,
   };
 
   useEffect(() => {
     configureEditor();
+    if (editorRef === null) {
+    }
   }, []);
 
-  function configureEditor() {
+  async function configureEditor() {
     const editor = new EditorJS({
       onChange: saveData,
       readOnly: readOnly,
+      placeholder: placeHolder,
       tools: {
         header: {
           class: Header as unknown as BlockToolConstructable,
@@ -37,6 +51,9 @@ function Editor({ font, readOnly }: { font: string; readOnly: boolean }) {
       // setContent(outPutData);
       console.log(outPutData);
     }
+    console.log("editorConfigured");
+    await editor.isReady;
+    editorRef.current = editor;
   }
 
   function handleFullScreen() {
@@ -54,7 +71,7 @@ function Editor({ font, readOnly }: { font: string; readOnly: boolean }) {
 
   return (
     <div className={styles.wrapper} id="editor-container">
-      <button onClick={handleFullScreen}></button>
+      {displayFullscreen ? <button onClick={handleFullScreen}></button> : null}
       <div id="editorjs" className={styles.editor} style={fontStyle}></div>
     </div>
   );

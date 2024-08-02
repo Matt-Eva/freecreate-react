@@ -1,3 +1,5 @@
+import styles from "./FontSelect.module.css";
+
 function FontSelect({
   font,
   updateFont,
@@ -6,8 +8,8 @@ function FontSelect({
   updateFont: Function;
 }) {
   return (
-    <div>
-      <label>Select Font</label>
+    <div className={styles.container}>
+      <label>Font</label>
       <select value={font} onChange={(e) => updateFont(e.target.value)}>
         <option>Helvetica</option>
         <option>Lora</option>

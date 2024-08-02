@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Info from "../components/WritingInfo/WritingInfo";
 
-import FontSelect from "../components/FontSelect";
+import FontSelect from "../components/FontSelect/FontSelect";
 
 function EditWriting() {
   const [writingType, setWritingType] = useState("");

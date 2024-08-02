@@ -1,16 +1,8 @@
-.container {
-  height: 100%;
-  display: grid;
-  grid-template-rows: 20rem calc(100% - 2rem);
-  overflow: auto;
-}
-
 .wrapper {
   height: 100%;
   background-color: hsl(0, 0%, 98%);
   padding: 10px;
   display: grid;
-  grid-template-rows: 20px calc(100% - 20px);
 }
 
 .wrapper button {

@@ -88,13 +88,11 @@ function GenreSelect({
   const selectedGenresString = displaySelectedGenres.join(", ");
 
   return (
-    <section className={styles.container}>
+    <div className={styles.container}>
       <label className={styles.label}>Select up to 3 Genres</label>
       <ul>{displayGenres}</ul>
-      <section className={styles.selectedGenres}>
-        {selectedGenresString}
-      </section>
-    </section>
+      <div className={styles.selectedGenres}>{selectedGenresString}</div>
+    </div>
   );
 }
 
