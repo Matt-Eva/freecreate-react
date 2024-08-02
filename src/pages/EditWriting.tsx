@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Info from "../components/WritingInfo";
+import Info from "../components/WritingInfo/WritingInfo";
 
 import FontSelect from "../components/FontSelect";
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Info from "../../components/WritingInfo";
+import Info from "../../components/WritingInfo/WritingInfo";
 
 import styles from "./NewWriting.module.css";
 
@@ -48,7 +48,9 @@ function NewWriting() {
         tags={tags}
         updateTags={updateTags}
       />
-      <button onClick={handleSave}>Save</button>
+      <button onClick={handleSave} className={styles.saveButton}>
+        Save
+      </button>
     </div>
   );
 }

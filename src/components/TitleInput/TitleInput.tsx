@@ -1,4 +1,4 @@
-import styles from "./WritingSearchInput.module.css";
+import styles from "./TitleInput.module.css";
 function WritingSearchInput({
   writingTitle,
   updateWritingTitle,

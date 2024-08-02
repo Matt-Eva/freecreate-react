@@ -1,0 +1,22 @@
+.container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  height: 22rem;
+}
+
+.allButGenre {
+  padding: 5px;
+}
+
+.allButGenre section {
+  margin-top: 5px;
+  height: 3rem;
+}
+
+.creatorSelect {
+  display: grid;
+}
+
+.description {
+  display: grid;
+}

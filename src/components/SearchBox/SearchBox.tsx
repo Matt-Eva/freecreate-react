@@ -5,7 +5,7 @@ import SearchTypeSelect from "../SearchTypeSelect/SearchTypeSelect";
 import WritingTypeSelect from "../WritingTypeSelect/WritingTypeSelect";
 import DateSelect from "../DateSelect/DateSelect";
 import WriterSearchInput from "../WriterSearchInput/WriterSearchInput";
-import WritingSearchInput from "../WritingSearchInput/WritingSearchInput";
+import WritingSearchInput from "../TitleInput/TitleInput";
 import GenreSelect from "../GenreSelect/GenreSelect";
 import TagInput from "../TagInput/TagInput";
 
