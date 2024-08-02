@@ -5,6 +5,7 @@ import TagInput from "../TagInput/TagInput";
 import FontSelect from "../FontSelect";
 
 import styles from "./WritingInfo.module.css";
+import Editor from "../Editor/Editor";
 
 function WritingInfo({
   writingType,
@@ -33,7 +34,7 @@ function WritingInfo({
     <section className={styles.container}>
       <section className={styles.allButGenre}>
         <section className={styles.creatorSelect}>
-          <label>Pick Creator Profile</label>
+          <label>Creator Profile</label>
           <select></select>
         </section>
         <WritingTypeSelect
@@ -43,10 +44,10 @@ function WritingInfo({
         <TitleInput writingTitle={title} updateWritingTitle={updateTitle} />
         <section className={styles.description}>
           <label>Description</label>
-          <input
-            type="text"
+          <textarea
             value={description}
             onChange={(e) => updateDescription(e.target.value)}
+            style={{ padding: "5px" }}
           />
         </section>
         <TagInput tags={tags} updateTags={updateTags} />
@@ -55,6 +56,16 @@ function WritingInfo({
         selectedGenres={selectedGenres}
         updateSelectedGenres={updateSelectedGenres}
       />
+      <button>save</button>
+      <form>
+        <label>Add chapter</label>
+        <input type="text" placeholder="chapter title" disabled={true} />
+        <input type="text" placeholder="chapter number" disabled={true} />
+        <input type="submit" value="start writing!" disabled={true} />
+      </form>
+      <FontSelect font="Helvetica" updateFont={() => {}} />
+      <label>Test out font</label>
+      <Editor font="Helvetica" readOnly={false} />
     </section>
   );
 }

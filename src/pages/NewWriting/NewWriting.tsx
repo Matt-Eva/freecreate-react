@@ -36,6 +36,7 @@ function NewWriting() {
 
   return (
     <div className={styles.container}>
+      <h2>Writing Info</h2>
       <Info
         writingType={writingType}
         updateWritingType={updateWritingType}
@@ -48,9 +49,18 @@ function NewWriting() {
         tags={tags}
         updateTags={updateTags}
       />
-      <button onClick={handleSave} className={styles.saveButton}>
-        Save
-      </button>
+      <h2>Chapters</h2>
+      <div>
+        <div>
+          <h3>Chapter title</h3>
+          <p>Chapter number</p>
+          <form>
+            <label>Edit chapter number</label>
+            <input type="number" />
+            <input type="submit" value="save" />
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

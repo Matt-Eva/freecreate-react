@@ -8,9 +8,6 @@ function FontSelect({
   return (
     <div>
       <label>Select Font</label>
-      <p>
-        <em>{"Note: to use opening quotes, press option '[' on Mac"}</em>
-      </p>
       <select value={font} onChange={(e) => updateFont(e.target.value)}>
         <option>Helvetica</option>
         <option>Lora</option>

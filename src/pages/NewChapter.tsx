@@ -4,15 +4,18 @@ import Editor from "../components/Editor/Editor";
 function Chapter() {
   const navigate = useNavigate();
 
-  function saveChapter() {
+  function saveChapter(e: React.FormEvent) {
+    e.preventDefault();
     navigate("/edit-chapter");
   }
   return (
     <div>
       <Link to="/edit-writing">Back</Link>
-      <label>Chapter title</label>
-      <input type="text" />
-      <button onClick={saveChapter}>create</button>
+      <form onSubmit={saveChapter}>
+        <label>Chapter title</label>
+        <input type="text" />
+        <button onClick={saveChapter}>create</button>
+      </form>
       <Editor font="Helvetica" readOnly={true} />
     </div>
   );

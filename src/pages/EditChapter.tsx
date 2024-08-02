@@ -7,6 +7,7 @@ function EditChapter() {
       <Link to="/edit-writing">Back</Link>
       <label>Chapter title</label>
       <input type="text" />
+      <button>Publish</button>
       <Editor font="Helvetica" readOnly={false} />
     </div>
   );

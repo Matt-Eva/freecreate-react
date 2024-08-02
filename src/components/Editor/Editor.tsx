@@ -54,7 +54,7 @@ function Editor({ font, readOnly }: { font: string; readOnly: boolean }) {
 
   return (
     <div className={styles.wrapper} id="editor-container">
-      <button onClick={handleFullScreen}>{"<>"}</button>
+      <button onClick={handleFullScreen}></button>
       <div id="editorjs" className={styles.editor} style={fontStyle}></div>
     </div>
   );

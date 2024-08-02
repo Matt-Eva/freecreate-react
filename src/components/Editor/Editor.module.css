@@ -14,7 +14,10 @@
 }
 
 .wrapper button {
-  justify-self: start;
+  justify-self: end;
+  width: 30px;
+  border: none;
+  background-color: hsl(0, 0%, 90%);
 }
 
 .editor {

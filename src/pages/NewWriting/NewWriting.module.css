@@ -1,5 +1,6 @@
 .container {
   padding-left: 20px;
+  display: grid;
 }
 
 .saveButton {
