@@ -11,7 +11,7 @@ function LibraryNav() {
 
       <Link to="/library/writers">writers</Link>
 
-      <Link to="/library/reading-list">to read</Link>
+      <Link to="/library/reading-list">reading list</Link>
 
       <Link to="/library/likes">likes</Link>
     </nav>
