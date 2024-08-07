@@ -1,0 +1,9 @@
+.profile {
+  display: grid;
+  grid-template-rows: 2rem;
+}
+
+.toggleEdit {
+  justify-self: end;
+  height: 2rem;
+}

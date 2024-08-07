@@ -4,14 +4,18 @@ function CreatorProfileForm({
   save,
   name,
   id,
+  about,
   updateName,
   updateId,
+  updateAbout,
 }: {
   save: Function;
   name: string;
   id: string;
+  about: string;
   updateName: Function;
   updateId: Function;
+  updateAbout: Function;
 }) {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -32,6 +36,12 @@ function CreatorProfileForm({
           type="text"
           value={id}
           onChange={(e) => updateId(e.target.value)}
+        />
+        <label>About</label>
+        <input
+          type="text"
+          value={about}
+          onChange={(e) => updateAbout(e.target.value)}
         />
         <input type="submit" value="save" className={styles.submit} />
       </form>

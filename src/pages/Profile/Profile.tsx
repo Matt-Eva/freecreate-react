@@ -1,10 +1,34 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import UserInfoForm from "../../components/UserInfoForm/UserInfoForm";
+
+import styles from "./Profile.module.css";
 
 function Profile() {
+  const [enableInfoEdit, setEnableInfoEdit] = useState(false);
+
+  function enableEdit() {
+    setEnableInfoEdit(true);
+  }
+
+  function disableEdit() {
+    setEnableInfoEdit(false);
+  }
+
+  function saveUserInfo() {}
+
   return (
-    <div>
-      <p>username</p>
-      <p>displayName</p>
+    <div className={styles.profile}>
+      {enableInfoEdit ? (
+        <button onClick={disableEdit} className={styles.toggleEdit}>
+          cancel
+        </button>
+      ) : (
+        <button onClick={enableEdit} className={styles.toggleEdit}>
+          edit profile info
+        </button>
+      )}
+      <UserInfoForm save={saveUserInfo} disabled={!enableInfoEdit} />
       <label>Creator Profiles</label>
       <ul>
         <li>
