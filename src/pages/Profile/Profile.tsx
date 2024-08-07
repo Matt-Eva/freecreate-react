@@ -19,6 +19,7 @@ function Profile() {
 
   return (
     <div className={styles.profile}>
+      <Link to="/create-account">Create Account</Link>
       {enableInfoEdit ? (
         <button onClick={disableEdit} className={styles.toggleEdit}>
           cancel

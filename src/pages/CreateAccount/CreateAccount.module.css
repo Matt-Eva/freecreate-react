@@ -1,0 +1,12 @@
+.header {
+  text-align: center;
+}
+
+.fieldset {
+  display: grid;
+  border: none;
+}
+
+.submit {
+  justify-self: end;
+}

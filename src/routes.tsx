@@ -1,5 +1,6 @@
 import App from "./App";
 import Home from "./pages/Home/Home";
+import CreateAccount from "./pages/CreateAccount/CreateAccount";
 import Library from "./pages/Library/Library";
 import About from "./pages/About/About";
 import Donate from "./pages/Donate/Donate";
@@ -30,6 +31,10 @@ const routes = [
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/create-account",
+        element: <CreateAccount />,
       },
       {
         path: "/about",
