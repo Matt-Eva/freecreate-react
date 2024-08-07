@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 
+import styles from "./LibraryNav.module.css";
+
 function LibraryNav() {
   return (
-    <nav>
+    <nav className={styles.nav}>
       <Link to="/library">writing</Link>
 
       <Link to="/library/bookshelves">bookshelves</Link>
