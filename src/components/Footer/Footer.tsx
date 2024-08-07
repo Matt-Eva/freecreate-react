@@ -8,7 +8,7 @@ function Footer() {
       <nav className={styles.nav}>
         <Link to="/">browse</Link>
         <Link to="/subscriptions">subscriptions</Link>
-        <Link to="/read">read</Link>
+        {/* <Link to="/read">read</Link> */}
         <Link to="/library">library</Link>
         <Link to="/write">write</Link>
       </nav>
