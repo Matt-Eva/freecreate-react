@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function SearchResultCard() {
   return (
     <div>
@@ -6,6 +8,7 @@ function SearchResultCard() {
       <p>Genres</p>
       <p>Description</p>
       <button>Add to reading list</button>
+      <Link to="/read">read</Link>
     </div>
   );
 }
