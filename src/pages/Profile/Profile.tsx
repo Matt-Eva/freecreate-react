@@ -1,17 +1,37 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import UserInfoForm from "../../components/UserInfoForm/UserInfoForm";
+import UserCreatorCard from "../../components/UserCreatorCard/UserCreatorCard";
 
 import styles from "./Profile.module.css";
 
+interface Creator {
+  uid: string;
+  creatorId: string;
+  about: string;
+  name: string;
+}
+
 function Profile() {
   const [enableInfoEdit, setEnableInfoEdit] = useState(false);
+  const [creators, setCreators] = useState<Creator[]>([]);
+
+  const displayCreators = creators.map((creator) => {
+    return (
+      <UserCreatorCard
+        key={creator.uid}
+        uid={creator.uid}
+        name={creator.name}
+        creatorId={creator.creatorId}
+      />
+    );
+  });
 
   useEffect(() => {
     async function fetchUserCreators() {
       const res = await fetch("/api/user/creators");
       const data = await res.json();
-      console.log(data);
+      setCreators(data);
     }
     fetchUserCreators();
   }, []);
@@ -46,12 +66,7 @@ function Profile() {
       <section>
         <h2>Creator Profiles</h2>
         <Link to="/new-creator-profile">Add Creator Profile</Link>
-        <ul>
-          <li>
-            example profile
-            <Link to="/edit-creator/1/1">edit</Link>
-          </li>
-        </ul>
+        {displayCreators}
       </section>
     </div>
   );

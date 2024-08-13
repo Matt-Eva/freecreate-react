@@ -1,5 +1,7 @@
 .profile {
   display: grid;
+  height: 100%;
+  overflow: auto;
   grid-template-rows: 2rem;
 }
 
