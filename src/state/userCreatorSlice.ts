@@ -3,7 +3,12 @@ import { PayloadAction } from "@reduxjs/toolkit";
 
 import { UserCreator } from "../types/userCreator";
 
-const initialValue: UserCreator[] = [];
+const initialCreators: UserCreator[] = [];
+
+const initialValue = {
+  isFetched: false,
+  creators: initialCreators,
+};
 
 const slice = createSlice({
   name: "userCreators",
@@ -12,15 +17,18 @@ const slice = createSlice({
   },
   reducers: {
     populateUserCreators(state, action: PayloadAction<UserCreator[]>) {
-      state.value = action.payload;
+      state.value.creators = action.payload;
+      state.value.isFetched = true;
     },
     addUserCreator(state, action: PayloadAction<UserCreator>) {
-      state.value = [...state.value, action.payload];
+      state.value.creators = [...state.value.creators, action.payload];
     },
     removeUserCreator(state, action: PayloadAction<string>) {
       const uid = action.payload;
-      const oneLess = state.value.filter((creator) => creator.uid !== uid);
-      state.value = oneLess;
+      const oneLess = state.value.creators.filter(
+        (creator) => creator.uid !== uid
+      );
+      state.value.creators = oneLess;
     },
   },
 });

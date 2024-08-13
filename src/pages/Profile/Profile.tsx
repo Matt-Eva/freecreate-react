@@ -1,17 +1,20 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../store";
+import { populateUserCreators } from "../../state/userCreatorSlice";
+
 import UserInfoForm from "../../components/UserInfoForm/UserInfoForm";
 import UserCreatorCard from "../../components/UserCreatorCard/UserCreatorCard";
-
-import { UserCreator } from "../../types/userCreator";
 
 import styles from "./Profile.module.css";
 
 function Profile() {
   const [enableInfoEdit, setEnableInfoEdit] = useState(false);
-  const [creators, setCreators] = useState<UserCreator[]>([]);
+  const userCreatorState = useAppSelector((state) => state.userCreators.value);
 
-  const displayCreators = creators.map((creator) => {
+  const dispatch = useAppDispatch();
+
+  const displayCreators = userCreatorState.creators.map((creator) => {
     return (
       <UserCreatorCard
         key={creator.uid}
@@ -26,9 +29,11 @@ function Profile() {
     async function fetchUserCreators() {
       const res = await fetch("/api/user/creators");
       const data = await res.json();
-      setCreators(data);
+      dispatch(populateUserCreators(data));
     }
-    fetchUserCreators();
+    if (!userCreatorState.isFetched) {
+      fetchUserCreators();
+    }
   }, []);
 
   function enableEdit() {
