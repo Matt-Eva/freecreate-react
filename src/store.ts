@@ -1,10 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector, useStore } from "react-redux";
+
 import SearchResultReducer from "./state/searchResultSlice";
+import UserCreatorReducer from "./state/userCreatorSlice";
 
 const store = configureStore({
   reducer: {
     searchResults: SearchResultReducer,
+    userCreators: UserCreatorReducer,
   },
 });
 

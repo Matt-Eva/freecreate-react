@@ -3,18 +3,13 @@ import { Link } from "react-router-dom";
 import UserInfoForm from "../../components/UserInfoForm/UserInfoForm";
 import UserCreatorCard from "../../components/UserCreatorCard/UserCreatorCard";
 
-import styles from "./Profile.module.css";
+import { UserCreator } from "../../types/userCreator";
 
-interface Creator {
-  uid: string;
-  creatorId: string;
-  about: string;
-  name: string;
-}
+import styles from "./Profile.module.css";
 
 function Profile() {
   const [enableInfoEdit, setEnableInfoEdit] = useState(false);
-  const [creators, setCreators] = useState<Creator[]>([]);
+  const [creators, setCreators] = useState<UserCreator[]>([]);
 
   const displayCreators = creators.map((creator) => {
     return (
