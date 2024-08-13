@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../store";
+import { addUserCreator } from "../../state/userCreatorSlice";
+
 import CreatorProfileForm from "../../components/CreatorProfileForm/CreatorProfileForm";
 
 function NewCreator() {
@@ -8,6 +11,7 @@ function NewCreator() {
   const [about, setAbout] = useState("");
 
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   function updateName(n: string) {
     setName(n);
@@ -34,8 +38,8 @@ function NewCreator() {
         body: JSON.stringify(postBody),
       });
       const data = await res.json();
+      dispatch(addUserCreator(data));
       alert("profile saved successfully!");
-      const creatorUid = data.uid;
       navigate(`/profile`);
     } catch (e) {
       console.error(e);
