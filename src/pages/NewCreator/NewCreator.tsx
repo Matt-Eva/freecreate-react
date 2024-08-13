@@ -37,9 +37,12 @@ function NewCreator() {
         },
         body: JSON.stringify(postBody),
       });
+
       const data = await res.json();
       dispatch(addUserCreator(data));
+
       alert("profile saved successfully!");
+
       navigate(`/profile`);
     } catch (e) {
       console.error(e);
