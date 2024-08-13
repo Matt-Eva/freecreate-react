@@ -36,7 +36,7 @@ function NewCreator() {
       const data = await res.json();
       alert("profile saved successfully!");
       const creatorUid = data.uid;
-      navigate(`/edit-creator/${creatorUid}`);
+      navigate(`/profile`);
     } catch (e) {
       console.error(e);
     }
