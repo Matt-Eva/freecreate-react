@@ -6,6 +6,7 @@ function ReadChapter() {
       <Link to="/read">Back</Link>
 
       <h2>Book title</h2>
+      <button>previous chapter</button>
       <button>like</button>
       <button>add to library</button>
       <button>add to reading list</button>
