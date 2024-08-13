@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import CreatorProfileForm from "../../components/CreatorProfileForm/CreatorProfileForm";
 
 function NewCreator() {
   const [name, setName] = useState("");
   const [id, setId] = useState("");
   const [about, setAbout] = useState("");
+
+  const navigate = useNavigate();
 
   function updateName(n: string) {
     setName(n);
@@ -22,16 +25,21 @@ function NewCreator() {
       creatorId: id,
       about: about,
     };
-    console.log(postBody);
-    const res = await fetch("/api/creator", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(postBody),
-    });
-    const data = await res.json();
-    console.log(data);
+    try {
+      const res = await fetch("/api/creator", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(postBody),
+      });
+      const data = await res.json();
+      alert("profile saved successfully!");
+      const creatorUid = data.uid;
+      navigate(`/edit-creator/${creatorUid}`);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   return (
