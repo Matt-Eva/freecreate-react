@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "./store";
-import { populateUser } from "./state/userSlice";
+import { populateUser, unauthorizedUser } from "./state/userSlice";
 
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
@@ -15,9 +15,20 @@ function App() {
 
   useEffect(() => {
     const testFetch = async () => {
-      const res = await fetch("/api/master-user");
-      const data = await res.json();
-      dispatch(populateUser(data));
+      try {
+        const res = await fetch("/api/master-user");
+        if (res.ok) {
+          const data = await res.json();
+          dispatch(populateUser(data));
+        } else {
+          const err = res.text();
+          console.error(err);
+          dispatch(unauthorizedUser());
+        }
+      } catch (e) {
+        console.error(e);
+        dispatch(unauthorizedUser());
+      }
     };
     if (!userState.isFetched) {
       testFetch();

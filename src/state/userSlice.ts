@@ -16,6 +16,7 @@ const initialUser: User = {
 const initialValue = {
   user: initialUser,
   isFetched: false,
+  authenticated: false,
 };
 
 const userSlice = createSlice({
@@ -24,9 +25,14 @@ const userSlice = createSlice({
     value: initialValue,
   },
   reducers: {
+    unauthorizedUser(state) {
+      state.value.authenticated = false;
+      state.value.isFetched = true;
+    },
     populateUser(state, action: PayloadAction<User>) {
       state.value.user = action.payload;
       state.value.isFetched = true;
+      state.value.authenticated = true;
     },
     updateUser(state, action: PayloadAction<User>) {
       state.value.user = action.payload;
@@ -38,6 +44,7 @@ const userSlice = createSlice({
   },
 });
 
-export const { populateUser, destroyUser, updateUser } = userSlice.actions;
+export const { populateUser, destroyUser, updateUser, unauthorizedUser } =
+  userSlice.actions;
 
 export default userSlice.reducer;
