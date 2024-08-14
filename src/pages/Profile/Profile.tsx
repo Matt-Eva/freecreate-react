@@ -11,7 +11,6 @@ import styles from "./Profile.module.css";
 function Profile() {
   const userCreatorState = useAppSelector((state) => state.userCreators.value);
   const userState = useAppSelector((state) => state.user.value);
-  console.log(userCreatorState);
 
   const dispatch = useAppDispatch();
 
