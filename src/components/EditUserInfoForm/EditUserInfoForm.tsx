@@ -48,12 +48,11 @@ function EditUserInfoForm({ user }: { user: User }) {
         const data = await res.json();
         dispatch(updateUser(data));
         alert("info updated!");
-        setFrozen(false);
       } else {
         const error = await res.json();
         console.error(error);
-        setFrozen(false);
       }
+      setFrozen(false);
     } catch (e) {
       console.error(e);
       setFrozen(false);
