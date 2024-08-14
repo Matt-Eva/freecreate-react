@@ -3,18 +3,18 @@ import styles from "./CreatorProfileForm.module.css";
 function CreatorProfileForm({
   save,
   name,
-  id,
+  creatorId,
   about,
   updateName,
-  updateId,
+  updateCreatorId,
   updateAbout,
 }: {
   save: Function;
   name: string;
-  id: string;
+  creatorId: string;
   about: string;
   updateName: Function;
-  updateId: Function;
+  updateCreatorId: Function;
   updateAbout: Function;
 }) {
   function handleSubmit(e: React.FormEvent) {
@@ -34,8 +34,8 @@ function CreatorProfileForm({
         <label>Creator Id</label>
         <input
           type="text"
-          value={id}
-          onChange={(e) => updateId(e.target.value)}
+          value={creatorId}
+          onChange={(e) => updateCreatorId(e.target.value)}
         />
         <label>About</label>
         <input

@@ -30,10 +30,25 @@ const slice = createSlice({
       );
       state.value.creators = oneLess;
     },
+    updateUserCreator(state, action: PayloadAction<UserCreator>) {
+      const updated = state.value.creators.map((creator) => {
+        if (creator.uid !== action.payload.uid) {
+          return creator;
+        } else {
+          return action.payload;
+        }
+      });
+
+      state.value.creators = updated;
+    },
   },
 });
 
-export const { populateUserCreators, addUserCreator, removeUserCreator } =
-  slice.actions;
+export const {
+  populateUserCreators,
+  addUserCreator,
+  removeUserCreator,
+  updateUserCreator,
+} = slice.actions;
 
 export default slice.reducer;
