@@ -16,7 +16,7 @@ function NewCreator() {
   function updateName(n: string) {
     setName(n);
   }
-  function updateId(i: string) {
+  function updateCreatorId(i: string) {
     setId(i);
   }
   function updateAbout(a: string) {
@@ -53,11 +53,11 @@ function NewCreator() {
     <div>
       <CreatorProfileForm
         name={name}
-        id={id}
+        creatorId={id}
         about={about}
         save={save}
         updateName={updateName}
-        updateId={updateId}
+        updateCreatorId={updateCreatorId}
         updateAbout={updateAbout}
       />
     </div>

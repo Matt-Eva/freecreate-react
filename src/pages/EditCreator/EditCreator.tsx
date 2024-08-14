@@ -1,18 +1,25 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Navigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store";
-import { updateUserCreator } from "../../state/userCreatorSlice";
+import {
+  updateUserCreator,
+  populateUserCreators,
+} from "../../state/userCreatorSlice";
 
 import CreatorProfileForm from "../../components/CreatorProfileForm/CreatorProfileForm";
 import { Link } from "react-router-dom";
+import { UserCreator } from "../../types/userCreator";
 
 function EditCreator() {
   const userState = useAppSelector((state) => state.user.value);
+  const userCreatorsState = useAppSelector((state) => state.userCreators.value);
   const [name, setName] = useState("");
   const [creatorId, setCreatorId] = useState("");
   const [about, setAbout] = useState("");
   const [uid, setUid] = useState("");
   const [errors, setErrors] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [loadingProblem, setLoadingProblem] = useState(false);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -20,25 +27,61 @@ function EditCreator() {
   const creatorUid = params.creatorUid;
 
   useEffect(() => {
-    async function fetchCreator() {
-      try {
-        const res = await fetch(`/api/user/creator?creatorId=${creatorUid}`);
-        if (res.ok) {
-          const data = await res.json();
-          setName(data.name);
-          setCreatorId(data.creatorId);
-          setAbout(data.about);
-          setUid(data.uid);
-        } else {
-          const err = await res.text();
-          console.error(err);
-        }
-      } catch (e) {
-        console.error(e);
+    if (!userCreatorsState.isFetched) {
+      fetchCreators();
+    } else {
+      const userCreators = userCreatorsState.creators;
+      const creator = userCreators.find(
+        (c: UserCreator) => c.uid === creatorUid
+      );
+      if (!creator) {
+        alert("You do not have access to this creator profile");
+        navigate("/profile");
+      } else {
+        setName(creator.name);
+        setCreatorId(creator.creatorId);
+        setAbout(creator.about);
+        setUid(creator.uid);
       }
+      setLoading(false);
     }
-    fetchCreator();
   }, []);
+
+  async function fetchCreators() {
+    try {
+      const res = await fetch(`/api/user/creators`);
+      if (res.ok) {
+        const data = await res.json();
+        dispatch(populateUserCreators(data));
+        const creator: UserCreator = data.find(
+          (c: UserCreator) => c.uid === creatorUid
+        );
+        if (!creator) {
+          alert("You do not have access to this creator profile");
+          navigate("/profile");
+        } else {
+          setName(creator.name);
+          setCreatorId(creator.creatorId);
+          setAbout(creator.about);
+          setUid(creator.uid);
+        }
+      } else if (res.status === 401) {
+        const err = await res.text();
+        console.error(err);
+        alert("You do not have access to this creator profile");
+        navigate("/profile");
+      } else {
+        const err = await res.text();
+        console.error(err);
+        setLoadingProblem(true);
+      }
+      setLoading(false);
+    } catch (e) {
+      console.error(e);
+      setLoading(false);
+      setLoadingProblem(true);
+    }
+  }
 
   function updateName(n: string) {
     setName(n);
@@ -85,8 +128,12 @@ function EditCreator() {
     }
   }
 
-  if (!userState.isFetched) {
+  if (loading) {
     return <div>loading</div>;
+  }
+
+  if (loadingProblem) {
+    return <div>there was a problem loading this page.</div>;
   }
 
   return (

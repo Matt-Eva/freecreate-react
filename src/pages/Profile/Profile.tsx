@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { populateUserCreators } from "../../state/userCreatorSlice";
@@ -11,6 +11,7 @@ import styles from "./Profile.module.css";
 function Profile() {
   const userCreatorState = useAppSelector((state) => state.userCreators.value);
   const userState = useAppSelector((state) => state.user.value);
+  console.log(userCreatorState);
 
   const dispatch = useAppDispatch();
 
@@ -28,8 +29,13 @@ function Profile() {
   useEffect(() => {
     async function fetchUserCreators() {
       const res = await fetch("/api/user/creators");
-      const data = await res.json();
-      dispatch(populateUserCreators(data));
+      if (res.ok) {
+        const data = await res.json();
+        dispatch(populateUserCreators(data));
+      } else {
+        const err = await res.text();
+        console.error(err);
+      }
     }
     if (!userCreatorState.isFetched) {
       fetchUserCreators();
