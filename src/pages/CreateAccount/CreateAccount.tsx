@@ -1,4 +1,4 @@
-import UserInfoForm from "../../components/UserInfoForm/UserInfoForm";
+import UserInfoForm from "../../components/EditUserInfoForm/EditUserInfoForm";
 
 import styles from "./CreateAccount.module.css";
 

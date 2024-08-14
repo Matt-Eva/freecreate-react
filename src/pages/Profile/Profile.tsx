@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { populateUserCreators } from "../../state/userCreatorSlice";
 
-import UserInfoForm from "../../components/UserInfoForm/UserInfoForm";
+import UserInfoForm from "../../components/EditUserInfoForm/EditUserInfoForm";
 import UserCreatorCard from "../../components/UserCreatorCard/UserCreatorCard";
 
 import styles from "./Profile.module.css";
 
 function Profile() {
-  const [enableInfoEdit, setEnableInfoEdit] = useState(false);
   const userCreatorState = useAppSelector((state) => state.userCreators.value);
+  const userState = useAppSelector((state) => state.user.value);
 
   const dispatch = useAppDispatch();
 
@@ -34,40 +34,35 @@ function Profile() {
     if (!userCreatorState.isFetched) {
       fetchUserCreators();
     }
-  }, []);
+  }, [userState]);
 
-  function enableEdit() {
-    setEnableInfoEdit(true);
+  async function logout() {
+    try {
+      await fetch("/api/logout", { method: "DELETE" });
+    } catch (e) {
+      console.error(e);
+    }
   }
-
-  function disableEdit() {
-    setEnableInfoEdit(false);
-  }
-
-  function saveUserInfo() {}
 
   return (
     <div className={styles.profile}>
-      <Link to="/create-account">Create Account</Link>
-      <Link to="/delete-account">Delete Account</Link>
-      <section>
-        <h2>User Info</h2>
-        {enableInfoEdit ? (
-          <button onClick={disableEdit} className={styles.toggleEdit}>
-            cancel
-          </button>
-        ) : (
-          <button onClick={enableEdit} className={styles.toggleEdit}>
-            edit profile info
-          </button>
-        )}
-        <UserInfoForm save={saveUserInfo} disabled={!enableInfoEdit} />
-      </section>
-      <section>
-        <h2>Creator Profiles</h2>
-        <Link to="/new-creator-profile">Add Creator Profile</Link>
-        {displayCreators}
-      </section>
+      {userState.isFetched ? (
+        <>
+          <button onClick={logout}>logout</button>
+          <Link to="/delete-account">Delete Account</Link>
+          <section>
+            <h2>User Info</h2>
+            <UserInfoForm user={userState.user} />
+          </section>
+          <section>
+            <h2>Creator Profiles</h2>
+            <Link to="/new-creator-profile">Add Creator Profile</Link>
+            {displayCreators}
+          </section>
+        </>
+      ) : (
+        <Link to="/create-account">Create Account</Link>
+      )}
     </div>
   );
 }
