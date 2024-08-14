@@ -56,6 +56,7 @@ function EditUserInfoForm({ user }: { user: User }) {
       }
     } catch (e) {
       console.error(e);
+      setFrozen(false);
     }
   }
 
