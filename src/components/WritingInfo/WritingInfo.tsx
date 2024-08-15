@@ -24,6 +24,8 @@ function WritingInfo({
   save,
   isNew,
   editable,
+  updateFont,
+  font,
 }: {
   writingType: string;
   updateWritingType: Function;
@@ -38,6 +40,8 @@ function WritingInfo({
   save: Function;
   isNew: boolean;
   editable: boolean;
+  updateFont: Function;
+  font: string;
 }) {
   const [isEditable, setIsEditable] = useState(editable);
 
@@ -83,11 +87,11 @@ function WritingInfo({
           />
         </div>
         <div className={styles.fontSelect}>
-          <FontSelect font="Helvetica" updateFont={() => {}} />
+          <FontSelect font={font} updateFont={updateFont} />
         </div>
         <div className={styles.editor}>
           <Editor
-            font="Helvetica"
+            font={font}
             readOnly={false}
             displayFullscreen={false}
             placeHolder="Test out font"
@@ -102,7 +106,7 @@ function WritingInfo({
           />
         </div>
         <div className={styles.tagInput}>
-          <TagInput tags={tags} updateTags={updateTags} />
+          <TagInput tags={tags} updateTags={updateTags} tagLimit={20} />
         </div>
       </div>
       <div className={styles.buttonBox}>

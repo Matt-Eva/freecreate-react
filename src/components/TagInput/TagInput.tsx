@@ -6,9 +6,11 @@ import styles from "./TagInput.module.css";
 function TagInput({
   tags,
   updateTags,
+  tagLimit,
 }: {
   tags: string[];
   updateTags: Function;
+  tagLimit: number;
 }) {
   const [tag, setTag] = useState("");
 
@@ -16,7 +18,7 @@ function TagInput({
     return <Tag key={tag} tag={tag} deleteTag={deleteTag} />;
   });
 
-  const inputDisabled = tags.length >= 20;
+  const inputDisabled = tags.length >= tagLimit;
 
   function updateTag(t: string) {
     const lower = t.toLocaleLowerCase();
@@ -45,7 +47,7 @@ function TagInput({
   return (
     <section className={styles.container}>
       <form onSubmit={addTag} className={styles.form}>
-        <label>Add Tag</label>
+        <label>Add Tag {`(up to ${tagLimit})`}</label>
         <div className={styles.inputBox}>
           <input
             type="text"
@@ -53,6 +55,7 @@ function TagInput({
             onChange={(e) => updateTag(e.target.value)}
             disabled={inputDisabled}
             className={styles.textInput}
+            placeholder={`add up to ${tagLimit} tags`}
           />
           <input type="submit" value="add tag" className={styles.submit} />
         </div>

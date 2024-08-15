@@ -107,6 +107,7 @@ function SearchBox() {
           <WritingTypeSelect
             writingType={writingType}
             updateWritingType={updateWritingType}
+            disabled={false}
           />
         ) : null}
         {searchType === "writing" ? (
@@ -122,9 +123,12 @@ function SearchBox() {
           <WritingSearchInput
             writingTitle={writingTitle}
             updateWritingTitle={updateWritingTitle}
+            disabled={false}
           />
         ) : null}
-        {simpleSearch ? null : <TagInput tags={tags} updateTags={updateTags} />}
+        {simpleSearch ? null : (
+          <TagInput tags={tags} updateTags={updateTags} tagLimit={5} />
+        )}
       </section>
       <GenreSelect
         selectedGenres={selectedGenres}
