@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Info from "../../components/WritingInfo/WritingInfo";
+import WritingInfo from "../../components/WritingInfo/WritingInfo";
 
 import styles from "./NewWriting.module.css";
 
@@ -30,13 +30,13 @@ function NewWriting() {
     setTags(tags);
   }
 
-  function handleSave() {
-    navigate("/edit-writing");
+  function save() {
+    // navigate("/edit-writing");
   }
 
   return (
     <div className={styles.container}>
-      <Info
+      <WritingInfo
         writingType={writingType}
         updateWritingType={updateWritingType}
         title={title}
@@ -47,6 +47,9 @@ function NewWriting() {
         updateSelectedGenres={updateSelectedGenres}
         tags={tags}
         updateTags={updateTags}
+        save={save}
+        isNew={true}
+        editable={true}
       />
     </div>
   );

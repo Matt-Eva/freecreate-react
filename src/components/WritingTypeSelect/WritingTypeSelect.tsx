@@ -3,9 +3,11 @@ import styles from "./WritingTypeSelect.module.css";
 function WritingTypeSelect({
   writingType,
   updateWritingType,
+  disabled,
 }: {
   writingType: string;
   updateWritingType: Function;
+  disabled: boolean;
 }) {
   const handleChange = (e: React.ChangeEvent) => {
     const target = e.target as HTMLSelectElement;
@@ -15,7 +17,7 @@ function WritingTypeSelect({
   return (
     <section className={styles.container}>
       <label>Writing type</label>
-      <select value={writingType} onChange={handleChange}>
+      <select value={writingType} onChange={handleChange} disabled={disabled}>
         {/* <option value="flashFiction">Flash Fiction</option> */}
         <option value="shortStory">Short Story</option>
         <option value="novelette">Novelette</option>

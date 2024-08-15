@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import WritingTypeSelect from "../WritingTypeSelect/WritingTypeSelect";
 import GenreSelect from "../GenreSelect/GenreSelect";
 import TitleInput from "../TitleInput/TitleInput";
@@ -19,6 +21,9 @@ function WritingInfo({
   updateSelectedGenres,
   tags,
   updateTags,
+  save,
+  isNew,
+  editable,
 }: {
   writingType: string;
   updateWritingType: Function;
@@ -30,7 +35,24 @@ function WritingInfo({
   updateSelectedGenres: Function;
   tags: string[];
   updateTags: Function;
+  save: Function;
+  isNew: boolean;
+  editable: boolean;
 }) {
+  const [isEditable, setIsEditable] = useState(editable);
+
+  function makeEditable() {
+    setIsEditable(true);
+  }
+
+  function disableEdit() {
+    setIsEditable(false);
+  }
+
+  function handleSave() {
+    save();
+  }
+
   return (
     <section className={styles.container}>
       <h2 className={styles.header}>Writing Info</h2>
@@ -43,10 +65,15 @@ function WritingInfo({
           <WritingTypeSelect
             writingType={writingType}
             updateWritingType={updateWritingType}
+            disabled={!isEditable}
           />
         </div>
         <div className={styles.titleInput}>
-          <TitleInput writingTitle={title} updateWritingTitle={updateTitle} />
+          <TitleInput
+            writingTitle={title}
+            updateWritingTitle={updateTitle}
+            disabled={!isEditable}
+          />
         </div>
         <div className={styles.description}>
           <label>Description</label>
@@ -78,7 +105,16 @@ function WritingInfo({
           <TagInput tags={tags} updateTags={updateTags} />
         </div>
       </div>
-      <button className={styles.saveButton}>save</button>
+      <div className={styles.buttonBox}>
+        <button onClick={handleSave} className={styles.saveButton}>
+          save
+        </button>
+        {isNew ? null : isEditable ? (
+          <button onClick={disableEdit}>cancel</button>
+        ) : (
+          <button onClick={makeEditable}>edit</button>
+        )}
+      </div>
       <div className={styles.chapterSection}>
         <h2>Chapters</h2>
         <section>

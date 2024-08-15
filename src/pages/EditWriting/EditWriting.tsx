@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Info from "../components/WritingInfo/WritingInfo";
 
-import FontSelect from "../components/FontSelect/FontSelect";
+import Info from "../../components/WritingInfo/WritingInfo";
+import FontSelect from "../../components/FontSelect/FontSelect";
+
+import styles from "./EditWriting.module.css";
 
 function EditWriting() {
   const [writingType, setWritingType] = useState("");
@@ -42,7 +44,7 @@ function EditWriting() {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <Info
         writingType={writingType}
         updateWritingType={updateWritingType}
@@ -54,6 +56,9 @@ function EditWriting() {
         updateSelectedGenres={updateSelectedGenres}
         tags={tags}
         updateTags={updateTags}
+        isNew={false}
+        save={handleInfoSave}
+        editable={false}
       />
       <button onClick={handleInfoSave}>Save changes</button>
       <button onClick={addNewChapter}>New Chapter</button>

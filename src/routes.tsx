@@ -10,7 +10,7 @@ import Write from "./pages/Write/Write";
 import Published from "./pages/Published";
 import Drafts from "./pages/Drafts";
 import NewWriting from "./pages/NewWriting/NewWriting";
-import Edit from "./pages/EditWriting";
+import Edit from "./pages/EditWriting/EditWriting";
 import NewChapter from "./pages/NewChapter";
 import EditChapter from "./pages/EditChapter";
 import Profile from "./pages/Profile/Profile";
