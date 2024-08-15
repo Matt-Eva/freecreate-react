@@ -26,7 +26,7 @@ function NewCreator() {
   async function save() {
     const postBody = {
       name: name,
-      creatorId: id,
+      uniqueName: id,
       about: about,
     };
     try {

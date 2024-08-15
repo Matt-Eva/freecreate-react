@@ -7,7 +7,7 @@ const initialUser: User = {
   uid: "",
   username: "",
   email: "",
-  userId: "",
+  uniqueName: "",
   birthDay: 0,
   birthMonth: 0,
   birthYear: 0,

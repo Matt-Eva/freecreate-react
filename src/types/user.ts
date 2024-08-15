@@ -1,7 +1,7 @@
 export interface User {
   uid: string;
   username: string;
-  userId: string;
+  uniqueName: string;
   email: string;
   birthDay: number;
   birthMonth: number;

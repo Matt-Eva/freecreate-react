@@ -99,7 +99,7 @@ function EditCreator() {
       uid: uid,
       name: name,
       about: about,
-      creatorId: creatorId,
+      uniqueName: creatorId,
     };
     try {
       const res = await fetch("/api/creator", {

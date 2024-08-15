@@ -53,7 +53,7 @@ function Profile() {
     <div className={styles.profile}>
       {userState.isFetched ? (
         <>
-          <button onClick={logout} disabled={true}>
+          <button onClick={logout} disabled={false}>
             logout
           </button>
           <Link to="/delete-account">Delete Account</Link>
