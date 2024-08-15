@@ -1,11 +1,19 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, Navigate, Link } from "react-router-dom";
+import { useAppSelector, useAppDispatch } from "../../store";
+import { populateUserCreators } from "../../state/userCreatorSlice";
 
 import WritingInfo from "../../components/WritingInfo/WritingInfo";
 
 import styles from "./NewWriting.module.css";
+import { UserCreator } from "../../types/userCreator";
 
 function NewWriting() {
+  const userState = useAppSelector((state) => state.user.value);
+  const userCreatorState = useAppSelector((state) => state.userCreators.value);
+
+  const [loading, setLoading] = useState(true);
+  const [userCreatorUid, setUserCreatorUid] = useState("");
   const [writingType, setWritingType] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -14,6 +22,42 @@ function NewWriting() {
   const [tags, setTags] = useState<string[]>([]);
 
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (!userCreatorState.isFetched) {
+      fetchUserCreators();
+    } else {
+      setLoading(false);
+      if (userCreatorState.creators.length > 0) {
+        setUserCreatorUid(userCreatorState.creators[0].uid);
+      }
+    }
+  }, []);
+
+  async function fetchUserCreators() {
+    try {
+      const res = await fetch("/api/user/creators");
+      if (res.ok) {
+        const creators: UserCreator[] = await res.json();
+        dispatch(populateUserCreators(creators));
+        if (creators.length > 0) {
+          setUserCreatorUid(creators[0].uid);
+        }
+      } else {
+        const error = await res.text();
+        console.error(error);
+      }
+      setLoading(false);
+    } catch (e) {
+      console.error(e);
+      setLoading(false);
+    }
+  }
+
+  function updateUserCreatorUid(uid: string) {
+    setUserCreatorUid(uid);
+  }
 
   function updateWritingType(type: string) {
     setWritingType(type);
@@ -43,9 +87,30 @@ function NewWriting() {
     // navigate("/edit-writing");
   }
 
+  if (!userState.isFetched || loading) {
+    return <div>loading...</div>;
+  }
+
+  if (!userState.authenticated) {
+    alert("please log in or create an account to view this page");
+    return <Navigate to="/" />;
+  }
+
+  if (userCreatorState.isFetched && userCreatorState.creators.length === 0) {
+    return (
+      <div>
+        <p>you must create a creator profile before you can start writing</p>
+        <Link to="/new-creator">make a profile</Link>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.container}>
       <WritingInfo
+        updateUserCreatorUid={updateUserCreatorUid}
+        userCreatorUid={userCreatorUid}
+        userCreators={userCreatorState.creators}
         updateFont={updateFont}
         font={font}
         writingType={writingType}

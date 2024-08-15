@@ -1,14 +1,16 @@
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
 import WritingTypeSelect from "../WritingTypeSelect/WritingTypeSelect";
 import GenreSelect from "../GenreSelect/GenreSelect";
 import TitleInput from "../TitleInput/TitleInput";
 import TagInput from "../TagInput/TagInput";
 import FontSelect from "../FontSelect/FontSelect";
+import Editor from "../Editor/Editor";
+import UserCreatorSelect from "../UserCreatorSelect/UserCreatorSelect";
+
+import { UserCreator } from "../../types/userCreator";
 
 import styles from "./WritingInfo.module.css";
-import Editor from "../Editor/Editor";
-import { Link } from "react-router-dom";
 
 function WritingInfo({
   writingType,
@@ -26,6 +28,9 @@ function WritingInfo({
   editable,
   updateFont,
   font,
+  userCreators,
+  userCreatorUid,
+  updateUserCreatorUid,
 }: {
   writingType: string;
   updateWritingType: Function;
@@ -42,6 +47,9 @@ function WritingInfo({
   editable: boolean;
   updateFont: Function;
   font: string;
+  userCreators: UserCreator[];
+  userCreatorUid: string;
+  updateUserCreatorUid: Function;
 }) {
   const [isEditable, setIsEditable] = useState(editable);
 
@@ -62,8 +70,11 @@ function WritingInfo({
       <h2 className={styles.header}>Writing Info</h2>
       <div>
         <div className={styles.creatorSelect}>
-          <label>Creator Profile</label>
-          <select></select>
+          <UserCreatorSelect
+            userCreatorUid={userCreatorUid}
+            updateUserCreatorUid={updateUserCreatorUid}
+            userCreators={userCreators}
+          />
         </div>
         <div className={styles.writingSelect}>
           <WritingTypeSelect
