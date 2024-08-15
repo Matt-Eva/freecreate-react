@@ -32,6 +32,7 @@ function App() {
     };
     if (!userState.isFetched) {
       testFetch();
+      dispatch(unauthorizedUser());
     }
   }, []);
 
@@ -42,7 +43,13 @@ function App() {
         <Sidebar />
         <Outlet />
       </div>
-      <Footer />
+      {userState.isFetched ? (
+        userState.authenticated ? (
+          <Footer />
+        ) : null
+      ) : (
+        <div>loading...</div>
+      )}
     </div>
   );
 }
