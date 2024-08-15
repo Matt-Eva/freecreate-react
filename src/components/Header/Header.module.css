@@ -12,10 +12,6 @@
   align-items: center;
 }
 
-.browse {
-  display: none;
-}
-
 @media (min-width: 640px) {
   .navGrid {
     grid-template-columns: 4rem 4rem 4rem calc(100% - 12rem);
