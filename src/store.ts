@@ -4,12 +4,14 @@ import { useDispatch, useSelector, useStore } from "react-redux";
 import SearchResultReducer from "./state/searchResultSlice";
 import UserCreatorReducer from "./state/userCreatorSlice";
 import UserReducer from "./state/userSlice";
+import EditWritingReducer from "./state/editWriting";
 
 const store = configureStore({
   reducer: {
     searchResults: SearchResultReducer,
     userCreators: UserCreatorReducer,
     user: UserReducer,
+    editWriting: EditWritingReducer,
   },
 });
 
