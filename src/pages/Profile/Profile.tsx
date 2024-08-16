@@ -63,7 +63,7 @@ function Profile() {
           </section>
           <section>
             <h2>Creator Profiles</h2>
-            <Link to="/new-creator-profile">Add Creator Profile</Link>
+            <Link to="/new-creator">Add Creator Profile</Link>
             {displayCreators}
           </section>
         </>

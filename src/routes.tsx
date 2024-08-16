@@ -88,7 +88,7 @@ const routes = [
         element: <Profile />,
       },
       {
-        path: "/new-creator-profile",
+        path: "/new-creator",
         element: <NewCreator />,
       },
       {
