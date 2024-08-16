@@ -14,7 +14,7 @@ function NewWriting() {
 
   const [loading, setLoading] = useState(true);
   const [userCreatorUid, setUserCreatorUid] = useState("");
-  const [writingType, setWritingType] = useState("");
+  const [writingType, setWritingType] = useState("shortStory");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [font, setFont] = useState("Helvetica");
@@ -83,7 +83,35 @@ function NewWriting() {
     setTags(tags);
   }
 
-  function save() {
+  async function save() {
+    const postBody = {
+      creatorId: userCreatorUid,
+      writingType: writingType,
+      title: title,
+      description: description,
+      genres: selectedGenres,
+      tags: tags,
+      font: font,
+    };
+    try {
+      const res = await fetch("/api/writing", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(postBody),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        console.log(data);
+      } else {
+        const e = await res.text();
+        console.error(e);
+      }
+    } catch (e) {
+      console.error(e);
+    }
     // navigate("/edit-writing");
   }
 
