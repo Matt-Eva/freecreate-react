@@ -1,4 +1,5 @@
 import App from "./App";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Home from "./pages/Home/Home";
 import CreateAccount from "./pages/CreateAccount/CreateAccount";
 import DeleteAccount from "./pages/DeleteAccount/DeleteAccount";
@@ -28,6 +29,7 @@ const routes = [
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
