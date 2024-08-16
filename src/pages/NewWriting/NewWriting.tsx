@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../store";
 import { populateUserCreators } from "../../state/userCreatorSlice";
+import { populateEditWriting } from "../../state/editWriting";
 
 import WritingInfo from "../../components/WritingInfo/WritingInfo";
 
@@ -105,6 +106,8 @@ function NewWriting() {
       if (res.ok) {
         const data = await res.json();
         console.log(data);
+        populateEditWriting(data);
+        navigate(`/edit-writing/${data.Uid}`);
       } else {
         const e = await res.text();
         console.error(e);
@@ -112,7 +115,6 @@ function NewWriting() {
     } catch (e) {
       console.error(e);
     }
-    // navigate("/edit-writing");
   }
 
   if (!userState.isFetched || loading) {
