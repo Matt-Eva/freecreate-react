@@ -107,7 +107,7 @@ function NewWriting() {
         const data = await res.json();
         console.log(data);
         populateEditWriting(data);
-        navigate(`/edit-writing/${data.Uid}`);
+        navigate(`/edit-writing/${data.uid}`);
       } else {
         const e = await res.text();
         console.error(e);
