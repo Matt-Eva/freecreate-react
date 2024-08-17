@@ -96,6 +96,7 @@ function WritingInfo({
           <textarea
             value={description}
             onChange={(e) => updateDescription(e.target.value)}
+            disabled={!editable}
           />
         </div>
         <div className={styles.fontSelect}>
@@ -113,6 +114,7 @@ function WritingInfo({
       <div>
         <div className={styles.genreSelect}>
           <GenreSelect
+            disabled={!editable}
             updateGenres={updateGenres}
             genres={genres}
             selectedGenres={selectedGenres}

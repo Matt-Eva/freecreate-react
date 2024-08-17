@@ -9,15 +9,14 @@ function GenreSelect({
   updateSelectedGenres,
   genres,
   updateGenres,
+  disabled,
 }: {
   selectedGenres: string[];
   updateSelectedGenres: Function;
   genres: GenreObject;
   updateGenres: Function;
+  disabled: boolean;
 }) {
-  const [displaySelectedGenres, setDisplaySelectedGenres] =
-    useState<string[]>(selectedGenres);
-
   const handleSelection = (e: React.ChangeEvent) => {
     const target = e.target as HTMLInputElement;
     const name: string = target.name;
@@ -29,10 +28,6 @@ function GenreSelect({
 
     if (selected && selectedGenres.length < 3) {
       const updatedSelectedGenres = [...selectedGenres, genres[name].value];
-      const updatedDisplaySelectedGenres = [
-        ...displaySelectedGenres,
-        genres[name].display,
-      ];
 
       if (updatedSelectedGenres.length === 3) {
         for (const key in updated) {
@@ -48,17 +43,12 @@ function GenreSelect({
       }
 
       updateSelectedGenres(updatedSelectedGenres);
-      setDisplaySelectedGenres(updatedDisplaySelectedGenres);
     } else {
       const oneLess = selectedGenres.filter(
         (genre) => genre !== genres[name].value
       );
-      const oneLessDisplay = displaySelectedGenres.filter(
-        (genre) => genre !== genres[name].display
-      );
 
       updateSelectedGenres(oneLess);
-      setDisplaySelectedGenres(oneLessDisplay);
 
       for (const key in updated) {
         updated[key].disabled = false;
@@ -70,6 +60,7 @@ function GenreSelect({
 
   const displayGenres: React.ReactElement[] = [];
   for (const key in genres) {
+    const isDisabled = disabled ? disabled : genres[key].disabled;
     displayGenres.push(
       <li key={key}>
         <input
@@ -77,7 +68,7 @@ function GenreSelect({
           type="checkbox"
           name={key}
           checked={genres[key].selected}
-          disabled={genres[key].disabled}
+          disabled={isDisabled}
           className={styles.checkbox}
         />
         <label htmlFor={key} className={styles.genreLabel}>
@@ -87,7 +78,7 @@ function GenreSelect({
     );
   }
 
-  const selectedGenresString = displaySelectedGenres.join(", ");
+  const selectedGenresString = selectedGenres.join(", ");
 
   return (
     <div className={styles.container}>
