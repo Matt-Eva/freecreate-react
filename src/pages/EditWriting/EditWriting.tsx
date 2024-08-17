@@ -4,7 +4,6 @@ import { useAppSelector, useAppDispatch } from "../../store";
 import { populateUserCreators } from "../../state/userCreatorSlice";
 
 import Info from "../../components/WritingInfo/WritingInfo";
-import FontSelect from "../../components/FontSelect/FontSelect";
 
 import { UserCreator } from "../../types/userCreator";
 

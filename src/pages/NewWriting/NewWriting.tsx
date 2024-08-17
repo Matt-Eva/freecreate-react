@@ -167,6 +167,8 @@ function NewWriting() {
         save={save}
         isNew={true}
         editable={true}
+        makeEditable={() => {}}
+        disableEdit={() => {}}
       />
     </div>
   );
