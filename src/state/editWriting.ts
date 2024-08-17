@@ -8,6 +8,7 @@ const initialEditWriting: Writing = {
   description: "",
   author: "",
   uniqueAuthorName: "",
+  writingType: "",
   creatorId: "",
   font: "",
   genres: [],

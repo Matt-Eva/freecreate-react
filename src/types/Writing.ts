@@ -2,6 +2,7 @@ interface Writing {
   uid: string;
   title: string;
   description: string;
+  writingType: string;
   author: string;
   uniqueAuthorName: string;
   font: string;

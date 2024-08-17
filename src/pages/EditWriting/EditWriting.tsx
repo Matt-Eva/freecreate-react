@@ -66,6 +66,13 @@ function EditWriting() {
         if (res.ok) {
           const data: Writing = await res.json();
           console.log(data);
+          updateUserCreatorUid(data.creatorId);
+          updateTitle(data.title);
+          updateWritingType(data.writingType);
+          updateDescription(data.description);
+          updateSelectedGenres(data.genres);
+          updateTags(data.tags);
+          updateFont(data.font);
         } else {
           const err = await res.text();
           console.error(err);
