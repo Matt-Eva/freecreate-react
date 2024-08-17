@@ -20,6 +20,20 @@ function EditWriting() {
   const editWritingState = useAppSelector((state) => state.editWriting.value);
 
   const defaultGenreState: GenreObject = getDefaultGenreState();
+  const initialStartingState: Writing = {
+    author: "",
+    title: "",
+    uniqueAuthorName: "",
+    description: "",
+    genres: [],
+    tags: [],
+    writingType: "",
+    font: "",
+    uid: "",
+    creatorId: "",
+  };
+  const [startingState, setStartingState] =
+    useState<Writing>(initialStartingState);
   const [genres, setGenres] = useState<GenreObject>({ ...defaultGenreState });
   const [loadingCreators, setLoadingCreators] = useState(true);
   const [loadingWriting, setLoadingWriting] = useState(true);
@@ -30,6 +44,7 @@ function EditWriting() {
   const [tags, setTags] = useState<string[]>([]);
   const [font, setFont] = useState("Helvetica");
   const [userCreatorUid, setUserCreatorUid] = useState("");
+  const [editable, setEditable] = useState(false);
 
   const writingId = useParams().writingId;
   const creatorId = useParams().creatorId;
@@ -69,7 +84,7 @@ function EditWriting() {
         if (res.ok) {
           console.log(defaultGenreState);
           const data: Writing = await res.json();
-          console.log(data);
+          setStartingState(data);
           updateUserCreatorUid(data.creatorId);
           updateTitle(data.title);
           updateWritingType(data.writingType);
@@ -93,6 +108,7 @@ function EditWriting() {
     } else {
       setLoadingWriting(false);
       const genres = editWritingState.editWriting.genres;
+      setStartingState(editWritingState.editWriting);
       updateUserCreatorUid(editWritingState.editWriting.creatorId);
       updateTitle(editWritingState.editWriting.title);
       updateWritingType(editWritingState.editWriting.writingType);
@@ -112,14 +128,26 @@ function EditWriting() {
       defaultGenres[lower].selected = true;
     });
 
+    for (const key in defaultGenres) {
+      const upper = key.charAt(0).toUpperCase + key.slice(1);
+      const exists = g.find((genre) => genre === upper);
+      if (!exists) {
+        defaultGenres[key].selected = false;
+      }
+    }
+
     if (g.length >= 3) {
       for (const key in defaultGenres) {
         if (defaultGenreState[key].selected !== true) {
           defaultGenreState[key].disabled = true;
         }
       }
+    } else {
+      for (const key in defaultGenres) {
+        defaultGenres[key].disabled = false;
+      }
     }
-
+    console.log(defaultGenres);
     setGenres(defaultGenres);
   }
 
@@ -148,6 +176,21 @@ function EditWriting() {
 
   function updateGenres(g: GenreObject) {
     setGenres(g);
+  }
+
+  function makeEditable() {
+    setEditable(true);
+  }
+
+  function disableEdit() {
+    setEditable(false);
+    setExistingGenres(startingState.genres);
+    updateSelectedGenres(startingState.genres);
+    updateDescription(startingState.description);
+    updateFont(startingState.font);
+    updateTags(startingState.tags);
+    updateTitle(startingState.title);
+    updateUserCreatorUid(startingState.creatorId);
   }
 
   function handleInfoSave() {
@@ -194,6 +237,8 @@ function EditWriting() {
   return (
     <div className={styles.container}>
       <Info
+        makeEditable={makeEditable}
+        disableEdit={disableEdit}
         genres={genres}
         updateGenres={updateGenres}
         userCreators={userCreatorState.creators}
@@ -213,7 +258,7 @@ function EditWriting() {
         updateTags={updateTags}
         isNew={false}
         save={handleInfoSave}
-        editable={false}
+        editable={editable}
       />
       <button onClick={handleInfoSave}>Save changes</button>
       <button onClick={addNewChapter}>New Chapter</button>

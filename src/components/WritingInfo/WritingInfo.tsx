@@ -34,6 +34,8 @@ function WritingInfo({
   updateUserCreatorUid,
   genres,
   updateGenres,
+  makeEditable,
+  disableEdit,
 }: {
   writingType: string;
   updateWritingType: Function;
@@ -55,17 +57,9 @@ function WritingInfo({
   updateUserCreatorUid: Function;
   genres: GenreObject;
   updateGenres: Function;
+  makeEditable: Function;
+  disableEdit: Function;
 }) {
-  const [isEditable, setIsEditable] = useState(editable);
-
-  function makeEditable() {
-    setIsEditable(true);
-  }
-
-  function disableEdit() {
-    setIsEditable(false);
-  }
-
   function handleSave() {
     save();
   }
@@ -87,14 +81,14 @@ function WritingInfo({
             allowAny={false}
             writingType={writingType}
             updateWritingType={updateWritingType}
-            disabled={!isEditable}
+            disabled={!editable}
           />
         </div>
         <div className={styles.titleInput}>
           <TitleInput
             writingTitle={title}
             updateWritingTitle={updateTitle}
-            disabled={!isEditable}
+            disabled={!editable}
           />
         </div>
         <div className={styles.description}>
@@ -133,10 +127,10 @@ function WritingInfo({
         <button onClick={handleSave} className={styles.saveButton}>
           save
         </button>
-        {isNew ? null : isEditable ? (
-          <button onClick={disableEdit}>cancel</button>
+        {isNew ? null : editable ? (
+          <button onClick={() => disableEdit()}>cancel</button>
         ) : (
-          <button onClick={makeEditable}>edit</button>
+          <button onClick={() => makeEditable()}>edit</button>
         )}
       </div>
       <div className={styles.chapterSection}>
