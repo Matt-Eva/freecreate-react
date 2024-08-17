@@ -76,6 +76,7 @@ function WritingInfo({
       <div>
         <div className={styles.creatorSelect}>
           <UserCreatorSelect
+            disabled={!editable}
             userCreatorUid={userCreatorUid}
             updateUserCreatorUid={updateUserCreatorUid}
             userCreators={userCreators}

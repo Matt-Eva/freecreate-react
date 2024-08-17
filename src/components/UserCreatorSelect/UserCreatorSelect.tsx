@@ -4,10 +4,12 @@ function UserCreatorSelect({
   updateUserCreatorUid,
   userCreatorUid,
   userCreators,
+  disabled,
 }: {
   userCreators: UserCreator[];
   userCreatorUid: string;
   updateUserCreatorUid: Function;
+  disabled: boolean;
 }) {
   const displayUserCreators = userCreators.map((creator) => {
     return (
@@ -25,7 +27,11 @@ function UserCreatorSelect({
   return (
     <>
       <label>Creator Profile</label>
-      <select value={userCreatorUid} onChange={handleChange}>
+      <select
+        value={userCreatorUid}
+        onChange={handleChange}
+        disabled={disabled}
+      >
         {displayUserCreators}
       </select>
     </>
