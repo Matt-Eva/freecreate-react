@@ -30,7 +30,6 @@ function EditWriting() {
   const [tags, setTags] = useState<string[]>([]);
   const [font, setFont] = useState("Helvetica");
   const [userCreatorUid, setUserCreatorUid] = useState("");
-  console.log(selectedGenres);
 
   const writingId = useParams().writingId;
   const creatorId = useParams().creatorId;
@@ -99,7 +98,6 @@ function EditWriting() {
       updateWritingType(editWritingState.editWriting.writingType);
       updateDescription(editWritingState.editWriting.description);
       updateSelectedGenres(editWritingState.editWriting.genres);
-      console.log(editWritingState.editWriting.genres);
       updateTags(editWritingState.editWriting.tags);
       updateFont(editWritingState.editWriting.font);
       setExistingGenres(genres);
@@ -111,7 +109,6 @@ function EditWriting() {
     const defaultGenres = { ...genres };
     g.forEach((genre) => {
       const lower = genre.charAt(0).toLowerCase() + genre.slice(1);
-      console.log(lower);
       defaultGenres[lower].selected = true;
     });
 
