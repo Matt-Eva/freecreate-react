@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../store";
 import { populateUserCreators } from "../../state/userCreatorSlice";
 
@@ -10,6 +10,7 @@ import { UserCreator } from "../../types/userCreator";
 
 import styles from "./EditWriting.module.css";
 import Writing from "../../types/Writing";
+import { Link } from "react-router-dom";
 
 function EditWriting() {
   const userState = useAppSelector((state) => state.user.value);
@@ -51,9 +52,6 @@ function EditWriting() {
       fetchUserCreators();
     } else {
       setLoadingCreators(false);
-      if (userCreatorState.creators.length > 0) {
-        setUserCreatorUid(userCreatorState.creators[0].uid);
-      }
     }
   }, []);
 
@@ -117,6 +115,37 @@ function EditWriting() {
 
   if (!userState.isFetched || loadingCreators || loadingWriting) {
     return <div>loading...</div>;
+  }
+
+  if (!userState.authenticated) {
+    alert("please login or create an account to view this page");
+    return <Navigate to="/" />;
+  }
+
+  if (userCreatorState.isFetched && userCreatorState.creators.length === 0) {
+    return (
+      <div>
+        <p>
+          You haven't created any creator profiles yet. Please create a profile
+          to start writing.
+        </p>
+        <Link to="/new-creator">create a profile</Link>
+      </div>
+    );
+  }
+
+  if (
+    userCreatorState.isFetched &&
+    userCreatorState.creators.length !== 0 &&
+    userCreatorUid !== ""
+  ) {
+    const valid = userCreatorState.creators.find(
+      (creator) => creator.uid === userCreatorUid
+    );
+    if (!valid) {
+      alert("You are not authorized to edit this piece of writing");
+      return <Navigate to="/" />;
+    }
   }
 
   return (
