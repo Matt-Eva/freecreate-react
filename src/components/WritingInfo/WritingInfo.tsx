@@ -11,6 +11,7 @@ import UserCreatorSelect from "../UserCreatorSelect/UserCreatorSelect";
 import { UserCreator } from "../../types/userCreator";
 
 import styles from "./WritingInfo.module.css";
+import GenreObject from "../../types/genreObject";
 
 function WritingInfo({
   writingType,
@@ -31,6 +32,8 @@ function WritingInfo({
   userCreators,
   userCreatorUid,
   updateUserCreatorUid,
+  genres,
+  updateGenres,
 }: {
   writingType: string;
   updateWritingType: Function;
@@ -50,6 +53,8 @@ function WritingInfo({
   userCreators: UserCreator[];
   userCreatorUid: string;
   updateUserCreatorUid: Function;
+  genres: GenreObject;
+  updateGenres: Function;
 }) {
   const [isEditable, setIsEditable] = useState(editable);
 
@@ -112,6 +117,8 @@ function WritingInfo({
       <div>
         <div className={styles.genreSelect}>
           <GenreSelect
+            updateGenres={updateGenres}
+            genres={genres}
             selectedGenres={selectedGenres}
             updateSelectedGenres={updateSelectedGenres}
           />

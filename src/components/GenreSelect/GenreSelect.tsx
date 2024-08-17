@@ -1,20 +1,22 @@
 import { useState } from "react";
 
-import { defaultGenreState } from "./UtilsGenreSelect";
+import GenreObject from "../../types/genreObject";
 
 import styles from "./GenreSelect.module.css";
 
 function GenreSelect({
   selectedGenres,
   updateSelectedGenres,
+  genres,
+  updateGenres,
 }: {
   selectedGenres: string[];
   updateSelectedGenres: Function;
+  genres: GenreObject;
+  updateGenres: Function;
 }) {
-  const [genres, setGenres] = useState(defaultGenreState);
-  const [displaySelectedGenres, setDisplaySelectedGenres] = useState<string[]>(
-    []
-  );
+  const [displaySelectedGenres, setDisplaySelectedGenres] =
+    useState<string[]>(selectedGenres);
 
   const handleSelection = (e: React.ChangeEvent) => {
     const target = e.target as HTMLInputElement;
@@ -63,7 +65,7 @@ function GenreSelect({
       }
     }
 
-    setGenres(updated);
+    updateGenres(updated);
   };
 
   const displayGenres: React.ReactElement[] = [];

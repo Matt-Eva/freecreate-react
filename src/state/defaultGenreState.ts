@@ -1,11 +1,5 @@
-export interface GenreObject {
-  [index: string]: {
-    selected: boolean;
-    disabled: boolean;
-    value: string;
-    display: string;
-  };
-}
+import GenreObject from "../types/genreObject";
+
 export const defaultGenreState: GenreObject = {
   action: {
     selected: false,

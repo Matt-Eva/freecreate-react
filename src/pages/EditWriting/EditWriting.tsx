@@ -11,11 +11,119 @@ import { UserCreator } from "../../types/userCreator";
 import styles from "./EditWriting.module.css";
 import Writing from "../../types/Writing";
 import { Link } from "react-router-dom";
+import GenreObject from "../../types/genreObject";
 
 function EditWriting() {
   const userState = useAppSelector((state) => state.user.value);
   const userCreatorState = useAppSelector((state) => state.userCreators.value);
+  const editWritingState = useAppSelector((state) => state.editWriting.value);
 
+  const defaultGenreState: GenreObject = {
+    action: {
+      selected: false,
+      disabled: false,
+      value: "Action",
+      display: "Action",
+    },
+    adventure: {
+      selected: false,
+      disabled: false,
+      value: "Adventure",
+      display: "Adventure",
+    },
+    comedy: {
+      selected: false,
+      disabled: false,
+      value: "Comedy",
+      display: "Comedy",
+    },
+    drama: {
+      selected: false,
+      disabled: false,
+      value: "Drama",
+      display: "Drama",
+    },
+    historical: {
+      selected: false,
+      disabled: false,
+      value: "HistoricalFiction",
+      display: "Historical Fiction",
+    },
+    horror: {
+      selected: false,
+      disabled: false,
+      value: "Horror",
+      display: "Horror",
+    },
+    fantasy: {
+      selected: false,
+      disabled: false,
+      value: "Fantasy",
+      display: "Fantasy",
+    },
+    literary: {
+      selected: false,
+      disabled: false,
+      value: "LiteraryFiction",
+      display: "Literary Fiction",
+    },
+    magicalRealism: {
+      selected: false,
+      disabled: false,
+      value: "MagicalRealism",
+      display: "Magical Realism",
+    },
+    mystery: {
+      selected: false,
+      disabled: false,
+      value: "Mystery",
+      display: "Mystery",
+    },
+    realism: {
+      selected: false,
+      disabled: false,
+      value: "Realism",
+      display: "Realism",
+    },
+    romance: {
+      selected: false,
+      disabled: false,
+      value: "Romance",
+      display: "Romance",
+    },
+    sciFi: {
+      selected: false,
+      disabled: false,
+      value: "ScienceFiction",
+      display: "Science Fiction",
+    },
+    sliceOfLife: {
+      selected: false,
+      disabled: false,
+      value: "SliceOfLife",
+      display: "Slice of Life",
+    },
+    social: {
+      selected: false,
+      disabled: false,
+      value: "SocialFiction",
+      display: "Social Fiction",
+    },
+    superhero: {
+      selected: false,
+      disabled: false,
+      value: "Superhero",
+      display: "Superhero",
+    },
+    thriller: {
+      selected: false,
+      disabled: false,
+      value: "Thriller",
+      display: "Thriller",
+    },
+  };
+
+  const [genres, setGenres] = useState<GenreObject>({ ...defaultGenreState });
   const [loadingCreators, setLoadingCreators] = useState(true);
   const [loadingWriting, setLoadingWriting] = useState(true);
   const [writingType, setWritingType] = useState("");
@@ -25,6 +133,7 @@ function EditWriting() {
   const [tags, setTags] = useState<string[]>([]);
   const [font, setFont] = useState("Helvetica");
   const [userCreatorUid, setUserCreatorUid] = useState("");
+  console.log(selectedGenres);
 
   const writingId = useParams().writingId;
   const creatorId = useParams().creatorId;
@@ -62,6 +171,7 @@ function EditWriting() {
           `/api/writing?creatorId=${creatorId}&writingId=${writingId}`
         );
         if (res.ok) {
+          console.log(defaultGenreState);
           const data: Writing = await res.json();
           console.log(data);
           updateUserCreatorUid(data.creatorId);
@@ -71,6 +181,7 @@ function EditWriting() {
           updateSelectedGenres(data.genres);
           updateTags(data.tags);
           updateFont(data.font);
+          setExistingGenres(data.genres);
         } else {
           const err = await res.text();
           console.error(err);
@@ -81,8 +192,41 @@ function EditWriting() {
         console.error(e);
       }
     }
-    loadWriting();
+    if (!editWritingState.isFetched) {
+      loadWriting();
+    } else {
+      setLoadingWriting(false);
+      const genres = editWritingState.editWriting.genres;
+      updateUserCreatorUid(editWritingState.editWriting.creatorId);
+      updateTitle(editWritingState.editWriting.title);
+      updateWritingType(editWritingState.editWriting.writingType);
+      updateDescription(editWritingState.editWriting.description);
+      updateSelectedGenres(editWritingState.editWriting.genres);
+      console.log(editWritingState.editWriting.genres);
+      updateTags(editWritingState.editWriting.tags);
+      updateFont(editWritingState.editWriting.font);
+      setExistingGenres(genres);
+    }
   }, []);
+
+  function setExistingGenres(g: string[]) {
+    console.log(defaultGenreState);
+    const defaultGenres = { ...defaultGenreState };
+    g.forEach((genre) => {
+      const lower = genre.toLowerCase();
+      defaultGenres[lower].selected = true;
+    });
+
+    if (g.length >= 3) {
+      for (const key in defaultGenres) {
+        if (defaultGenreState[key].selected !== true) {
+          defaultGenreState[key].disabled = true;
+        }
+      }
+    }
+
+    setGenres(defaultGenres);
+  }
 
   function updateUserCreatorUid(i: string) {
     setUserCreatorUid(i);
@@ -105,6 +249,10 @@ function EditWriting() {
   }
   function updateFont(f: string) {
     setFont(f);
+  }
+
+  function updateGenres(g: GenreObject) {
+    setGenres(g);
   }
 
   function handleInfoSave() {
@@ -151,6 +299,8 @@ function EditWriting() {
   return (
     <div className={styles.container}>
       <Info
+        genres={genres}
+        updateGenres={updateGenres}
         userCreators={userCreatorState.creators}
         userCreatorUid={userCreatorUid}
         updateUserCreatorUid={updateUserCreatorUid}
