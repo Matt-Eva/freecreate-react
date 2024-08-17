@@ -8,6 +8,7 @@ import WritingInfo from "../../components/WritingInfo/WritingInfo";
 
 import styles from "./NewWriting.module.css";
 import { UserCreator } from "../../types/userCreator";
+import Writing from "../../types/Writing";
 
 function NewWriting() {
   const userState = useAppSelector((state) => state.user.value);
@@ -104,10 +105,10 @@ function NewWriting() {
       });
 
       if (res.ok) {
-        const data = await res.json();
+        const data: Writing = await res.json();
         console.log(data);
         populateEditWriting(data);
-        navigate(`/edit-writing/${data.uid}`);
+        navigate(`/edit-writing/${data.creatorId}/${data.uid}`);
       } else {
         const e = await res.text();
         console.error(e);

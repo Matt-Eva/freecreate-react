@@ -120,7 +120,7 @@ const routes = [
         element: <NewWriting />,
       },
       {
-        path: "/edit-writing/:writing-id",
+        path: "/edit-writing/:creatorId/:writingId",
         element: <Edit />,
       },
       {

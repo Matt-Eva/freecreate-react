@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { EditWriting } from "../types/editWriting";
+import Writing from "../types/Writing";
 
-const initialEditWriting: EditWriting = {
-  Uid: "",
-  Title: "",
-  Description: "",
-  Author: "",
-  UniqueAuthorName: "",
-  CreatorId: "",
-  Font: "",
-  Genres: [],
-  Tags: [],
+const initialEditWriting: Writing = {
+  uid: "",
+  title: "",
+  description: "",
+  author: "",
+  uniqueAuthorName: "",
+  creatorId: "",
+  font: "",
+  genres: [],
+  tags: [],
 };
 
 const initialValue = {
@@ -23,7 +23,7 @@ const slice = createSlice({
   name: "editWriting",
   initialState: { value: initialValue },
   reducers: {
-    populateEditWriting(state, action: PayloadAction<EditWriting>) {
+    populateEditWriting(state, action: PayloadAction<Writing>) {
       state.value.isFetched = true;
       state.value.editWriting = action.payload;
     },
