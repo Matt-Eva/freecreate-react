@@ -7,10 +7,12 @@ function TagInput({
   tags,
   updateTags,
   tagLimit,
+  disabled,
 }: {
   tags: string[];
   updateTags: Function;
   tagLimit: number;
+  disabled: boolean;
 }) {
   const [tag, setTag] = useState("");
 
@@ -18,7 +20,7 @@ function TagInput({
     return <Tag key={tag} tag={tag} deleteTag={deleteTag} />;
   });
 
-  const inputDisabled = tags.length >= tagLimit;
+  const inputDisabled = disabled ? disabled : tags.length >= tagLimit;
 
   function updateTag(t: string) {
     const lower = t.toLocaleLowerCase();

@@ -262,7 +262,6 @@ function EditWriting() {
       />
       <button onClick={handleInfoSave}>Save changes</button>
       <button onClick={addNewChapter}>New Chapter</button>
-      <FontSelect font={font} updateFont={updateFont} />
     </div>
   );
 }

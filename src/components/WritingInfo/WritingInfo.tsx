@@ -100,7 +100,11 @@ function WritingInfo({
           />
         </div>
         <div className={styles.fontSelect}>
-          <FontSelect font={font} updateFont={updateFont} />
+          <FontSelect
+            font={font}
+            updateFont={updateFont}
+            disabled={!editable}
+          />
         </div>
         <div className={styles.editor}>
           <Editor
@@ -122,7 +126,12 @@ function WritingInfo({
           />
         </div>
         <div className={styles.tagInput}>
-          <TagInput tags={tags} updateTags={updateTags} tagLimit={20} />
+          <TagInput
+            tags={tags}
+            updateTags={updateTags}
+            tagLimit={20}
+            disabled={!editable}
+          />
         </div>
       </div>
       <div className={styles.buttonBox}>
