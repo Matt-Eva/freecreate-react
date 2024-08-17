@@ -4,14 +4,15 @@ function WritingTypeSelect({
   writingType,
   updateWritingType,
   disabled,
+  allowAny,
 }: {
   writingType: string;
   updateWritingType: Function;
   disabled: boolean;
+  allowAny: boolean;
 }) {
   const handleChange = (e: React.ChangeEvent) => {
     const target = e.target as HTMLSelectElement;
-    console.log(target.value);
     updateWritingType(target.value);
   };
   return (
@@ -19,6 +20,7 @@ function WritingTypeSelect({
       <label>Writing type</label>
       <select value={writingType} onChange={handleChange} disabled={disabled}>
         {/* <option value="flashFiction">Flash Fiction</option> */}
+        {allowAny ? <option value="">Any</option> : null}
         <option value="shortStory">Short Story</option>
         <option value="novelette">Novelette</option>
         <option value="novella">Novella</option>

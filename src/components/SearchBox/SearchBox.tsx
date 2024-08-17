@@ -112,6 +112,7 @@ function SearchBox() {
         )}
         {searchType === "writing" ? (
           <WritingTypeSelect
+            allowAny={true}
             writingType={writingType}
             updateWritingType={updateWritingType}
             disabled={false}

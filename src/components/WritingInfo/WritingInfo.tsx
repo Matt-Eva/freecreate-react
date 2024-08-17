@@ -83,6 +83,7 @@ function WritingInfo({
         </div>
         <div className={styles.writingSelect}>
           <WritingTypeSelect
+            allowAny={false}
             writingType={writingType}
             updateWritingType={updateWritingType}
             disabled={!isEditable}
