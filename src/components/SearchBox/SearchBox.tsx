@@ -135,10 +135,16 @@ function SearchBox() {
           />
         ) : null}
         {simpleSearch ? null : (
-          <TagInput tags={tags} updateTags={updateTags} tagLimit={5} />
+          <TagInput
+            tags={tags}
+            updateTags={updateTags}
+            tagLimit={5}
+            disabled={false}
+          />
         )}
       </section>
       <GenreSelect
+        disabled={false}
         genres={genres}
         updateGenres={updateGenres}
         selectedGenres={selectedGenres}
