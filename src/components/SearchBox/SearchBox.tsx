@@ -9,8 +9,12 @@ import GenreSelect from "../GenreSelect/GenreSelect";
 import TagInput from "../TagInput/TagInput";
 
 import styles from "./SearchBox.module.css";
+import GenreObject from "../../types/genreObject";
+import getDefaultGenreState from "../../state/defaultGenreState";
 
 function SearchBox() {
+  const defaultGenreState = getDefaultGenreState();
+  const [genres, setGenres] = useState<GenreObject>(defaultGenreState);
   const [simpleSearch, setSimpleSearch] = useState(true);
   const [searchType, setSearchType] = useState("writing");
   const [writerName, setWriterName] = useState("");
@@ -25,6 +29,10 @@ function SearchBox() {
     if (bool) {
       setSearchType("writing");
     }
+  };
+
+  const updateGenres = (g: GenreObject) => {
+    setGenres(g);
   };
 
   const updateSearchType = (newType: string) => {
@@ -130,6 +138,8 @@ function SearchBox() {
         )}
       </section>
       <GenreSelect
+        genres={genres}
+        updateGenres={updateGenres}
         selectedGenres={selectedGenres}
         updateSelectedGenres={updateSelectedGenres}
       />
