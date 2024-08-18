@@ -3,7 +3,7 @@ import { Link, useOutletContext } from "react-router-dom";
 import Writing from "../types/writing";
 
 function Drafts() {
-  const drafts: Writing[] = useOutletContext();
+  const { drafts }: { drafts: Writing[] } = useOutletContext();
   console.log(drafts);
   const displayCards = drafts.map((d) => {
     return (
