@@ -1,15 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
+
+import Writing from "../types/writing";
 
 function Drafts() {
-  const displayCards = [];
-  for (let i = 0; i < 10; i++) {
-    displayCards.push(
-      <div key={i}>
-        Example
-        <Link to="/edit-writing">edit</Link>
+  const drafts: Writing[] = useOutletContext();
+  console.log(drafts);
+  const displayCards = drafts.map((d) => {
+    return (
+      <div key={d.uid}>
+        {d.title}
+        <Link to={`/edit-writing/${d.creatorId}/${d.uid}`}>edit</Link>
       </div>
     );
-  }
+  });
 
   return (
     <div>

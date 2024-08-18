@@ -7,6 +7,7 @@ interface Writing {
   uniqueAuthorName: string;
   font: string;
   creatorId: string;
+  published: boolean;
   genres: string[];
   tags: string[];
 }

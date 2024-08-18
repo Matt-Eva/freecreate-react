@@ -1,21 +1,26 @@
 import { useEffect, useState } from "react";
-
-import { Outlet, Link } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../store";
+import { populateDrafts } from "../../state/userWritingDrafts";
+import { Outlet, Link, useOutletContext } from "react-router-dom";
 
 import styles from "./Write.module.css";
 import Writing from "../../types/writing";
 
 function Write() {
-  const [drafts, setDrafts] = useState([]);
-  const [published, setPublished] = useState([]);
+  const draftState = useAppSelector((state) => state.userDrafts.value);
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     async function getUserWriting() {
       try {
         const res = await fetch("/api/writing/user");
         if (res.ok) {
-          const data: Writing = await res.json();
+          const data: Writing[] = await res.json();
           console.log(data);
+          const drafts = data.filter((w) => w.published === false);
+          const published = data.filter((w) => w.published === true);
+          dispatch(populateDrafts(drafts));
         } else {
           const err = await res.text();
           console.error(err);
@@ -34,7 +39,7 @@ function Write() {
         <Link to="/write/published">Published</Link>
         <Link to="/new-writing">New</Link>
       </nav>
-      <Outlet />
+      <Outlet context={draftState.drafts} />
     </div>
   );
 }

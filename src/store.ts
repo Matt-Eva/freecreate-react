@@ -5,6 +5,7 @@ import SearchResultReducer from "./state/searchResultSlice";
 import UserCreatorReducer from "./state/userCreatorSlice";
 import UserReducer from "./state/userSlice";
 import EditWritingReducer from "./state/editWriting";
+import UserWritingDraftReducer from "./state/userWritingDrafts.ts";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     userCreators: UserCreatorReducer,
     user: UserReducer,
     editWriting: EditWritingReducer,
+    userDrafts: UserWritingDraftReducer,
   },
 });
 
