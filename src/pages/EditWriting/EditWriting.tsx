@@ -8,7 +8,7 @@ import Info from "../../components/WritingInfo/WritingInfo";
 import { UserCreator } from "../../types/userCreator";
 
 import styles from "./EditWriting.module.css";
-import Writing from "../../types/Writing";
+import Writing from "../../types/writing";
 import { Link } from "react-router-dom";
 import GenreObject from "../../types/genreObject";
 import getDefaultGenreState from "../../state/defaultGenreState";

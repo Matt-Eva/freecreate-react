@@ -8,7 +8,7 @@ import WritingInfo from "../../components/WritingInfo/WritingInfo";
 
 import styles from "./NewWriting.module.css";
 import { UserCreator } from "../../types/userCreator";
-import Writing from "../../types/Writing";
+import Writing from "../../types/writing";
 import GenreObject from "../../types/genreObject";
 import getDefaultGenreState from "../../state/defaultGenreState";
 

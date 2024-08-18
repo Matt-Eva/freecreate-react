@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
-import Writing from "../types/Writing";
+import Writing from "../types/writing";
 
 const initialEditWriting: Writing = {
   uid: "",
