@@ -39,7 +39,7 @@ function EditCreator() {
         navigate("/profile");
       } else {
         setName(creator.name);
-        setCreatorId(creator.creatorId);
+        setCreatorId(creator.uniqueName);
         setAbout(creator.about);
         setUid(creator.uid);
       }
@@ -61,7 +61,7 @@ function EditCreator() {
           navigate("/profile");
         } else {
           setName(creator.name);
-          setCreatorId(creator.creatorId);
+          setCreatorId(creator.uniqueName);
           setAbout(creator.about);
           setUid(creator.uid);
         }

@@ -1,6 +1,6 @@
 export interface UserCreator {
   uid: string;
-  creatorId: string;
+  uniqueName: string;
   about: string;
   name: string;
 }

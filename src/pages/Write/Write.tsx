@@ -19,7 +19,6 @@ function Write() {
         const res = await fetch("/api/writing/user");
         if (res.ok) {
           const data: Writing[] = await res.json();
-          console.log(data);
           const drafts = data.filter((w) => w.published === false);
           const published = data.filter((w) => w.published === true);
           dispatch(populateDrafts(drafts));

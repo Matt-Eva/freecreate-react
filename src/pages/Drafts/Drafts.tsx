@@ -6,7 +6,6 @@ import styles from "./Drafts.module.css";
 
 function Drafts() {
   const { drafts }: { drafts: Writing[] } = useOutletContext();
-  console.log(drafts);
   const displayCards = drafts.map((d) => {
     return (
       <div key={d.uid}>

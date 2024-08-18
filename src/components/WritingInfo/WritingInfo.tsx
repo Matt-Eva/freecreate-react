@@ -35,6 +35,7 @@ function WritingInfo({
   updateGenres,
   makeEditable,
   disableEdit,
+  error,
 }: {
   writingType: string;
   updateWritingType: Function;
@@ -58,6 +59,7 @@ function WritingInfo({
   updateGenres: Function;
   makeEditable: Function;
   disableEdit: Function;
+  error: string;
 }) {
   function handleSave() {
     save();
@@ -142,6 +144,8 @@ function WritingInfo({
         ) : (
           <button onClick={() => makeEditable()}>edit</button>
         )}
+
+        <span>{error}</span>
       </div>
     </section>
   );

@@ -17,6 +17,7 @@ function NewWriting() {
   const userCreatorState = useAppSelector((state) => state.userCreators.value);
 
   const defaultGenreState: GenreObject = getDefaultGenreState();
+  const [error, setError] = useState("");
   const [genres, setGenres] = useState<GenreObject>({ ...defaultGenreState });
   const [loading, setLoading] = useState(true);
   const [userCreatorUid, setUserCreatorUid] = useState("");
@@ -117,6 +118,10 @@ function NewWriting() {
         console.log(data);
         dispatch(populateEditWriting(data));
         navigate(`/edit-writing/${data.creatorId}/${data.uid}`);
+        setError("");
+      } else if (res.status === 422) {
+        const error = await res.text();
+        setError(error);
       } else {
         const e = await res.text();
         console.error(e);
@@ -147,6 +152,7 @@ function NewWriting() {
   return (
     <div className={styles.container}>
       <WritingInfo
+        error={error}
         genres={genres}
         updateGenres={updateGenres}
         updateUserCreatorUid={updateUserCreatorUid}
