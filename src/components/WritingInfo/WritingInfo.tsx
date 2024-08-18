@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import WritingTypeSelect from "../WritingTypeSelect/WritingTypeSelect";
 import GenreSelect from "../GenreSelect/GenreSelect";
 import TitleInput from "../TitleInput/TitleInput";
