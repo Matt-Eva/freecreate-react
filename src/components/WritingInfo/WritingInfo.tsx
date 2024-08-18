@@ -143,31 +143,6 @@ function WritingInfo({
           <button onClick={() => makeEditable()}>edit</button>
         )}
       </div>
-      <div className={styles.chapterSection}>
-        <h2>Chapters</h2>
-        <section>
-          <h3>Add Chapter</h3>
-          <form className={styles.chapterForm}>
-            <label>Chapter Title</label>
-            <input type="text" disabled={true} />
-            <label>Chapter Number</label>
-            <input type="text" placeholder="chapter number" disabled={true} />
-            <input type="submit" value="create" disabled={true} />
-          </form>
-        </section>
-        <div>
-          <div>
-            <h3>Chapter title</h3>
-            <p>Chapter number</p>
-            <Link to="/edit-chapter">Edit</Link>
-            <form>
-              <label>Edit chapter number</label>
-              <input type="number" />
-              <input type="submit" value="save" />
-            </form>
-          </div>
-        </div>
-      </div>
     </section>
   );
 }
