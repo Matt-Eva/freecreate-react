@@ -1,6 +1,8 @@
 import { Link, useOutletContext } from "react-router-dom";
 
-import Writing from "../types/writing";
+import Writing from "../../types/writing";
+
+import styles from "./Drafts.module.css";
 
 function Drafts() {
   const { drafts }: { drafts: Writing[] } = useOutletContext();
@@ -8,14 +10,16 @@ function Drafts() {
   const displayCards = drafts.map((d) => {
     return (
       <div key={d.uid}>
-        {d.title}
+        <p>{d.title}</p>
+        <p>{d.author}</p>
+        <p>{d.uniqueAuthorName}</p>
         <Link to={`/edit-writing/${d.creatorId}/${d.uid}`}>edit</Link>
       </div>
     );
   });
 
   return (
-    <div>
+    <div className={styles.container}>
       Drafts
       {displayCards}
     </div>

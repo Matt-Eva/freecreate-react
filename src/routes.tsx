@@ -9,7 +9,7 @@ import Donate from "./pages/Donate/Donate";
 import Read from "./pages/Read/Read";
 import Write from "./pages/Write/Write";
 import Published from "./pages/Published";
-import Drafts from "./pages/Drafts";
+import Drafts from "./pages/Drafts/Drafts";
 import NewWriting from "./pages/NewWriting/NewWriting";
 import Edit from "./pages/EditWriting/EditWriting";
 import NewChapter from "./pages/NewChapter";
