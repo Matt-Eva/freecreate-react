@@ -30,9 +30,11 @@ function EditWriting() {
     font: "",
     uid: "",
     creatorId: "",
+    published: false,
   };
   const [startingState, setStartingState] =
     useState<Writing>(initialStartingState);
+  const [error, setError] = useState("");
   const [genres, setGenres] = useState<GenreObject>({ ...defaultGenreState });
   const [loadingCreators, setLoadingCreators] = useState(true);
   const [loadingWriting, setLoadingWriting] = useState(true);
@@ -236,6 +238,7 @@ function EditWriting() {
   return (
     <div className={styles.container}>
       <Info
+        error={error}
         makeEditable={makeEditable}
         disableEdit={disableEdit}
         genres={genres}
