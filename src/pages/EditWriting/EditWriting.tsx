@@ -83,7 +83,6 @@ function EditWriting() {
           `/api/writing?creatorId=${creatorId}&writingId=${writingId}`
         );
         if (res.ok) {
-          console.log(defaultGenreState);
           const data: Writing = await res.json();
           setStartingState(data);
           updateUserCreatorUid(data.creatorId);
@@ -122,15 +121,17 @@ function EditWriting() {
   }, []);
 
   function setExistingGenres(g: string[]) {
-    console.log(genres);
+    console.log(g);
     const defaultGenres = { ...genres };
     g.forEach((genre) => {
       const lower = genre.charAt(0).toLowerCase() + genre.slice(1);
       defaultGenres[lower].selected = true;
     });
+    console.log(defaultGenres);
 
     for (const key in defaultGenres) {
-      const upper = key.charAt(0).toUpperCase + key.slice(1);
+      const upper = key.charAt(0).toUpperCase() + key.slice(1);
+      console.log(upper);
       const exists = g.find((genre) => genre === upper);
       if (!exists) {
         defaultGenres[key].selected = false;
@@ -141,6 +142,8 @@ function EditWriting() {
       for (const key in defaultGenres) {
         if (defaultGenreState[key].selected !== true) {
           defaultGenreState[key].disabled = true;
+        } else {
+          defaultGenreState[key].disabled = false;
         }
       }
     } else {
@@ -148,7 +151,9 @@ function EditWriting() {
         defaultGenres[key].disabled = false;
       }
     }
+
     console.log(defaultGenres);
+
     setGenres(defaultGenres);
   }
 
@@ -194,8 +199,59 @@ function EditWriting() {
     updateUserCreatorUid(startingState.creatorId);
   }
 
-  function handleInfoSave() {
-    console.log("saving");
+  async function handleInfoSave() {
+    interface PatchBody {
+      uid: string;
+      creatorId: string;
+      writingType: string;
+      description: string;
+      title: string;
+      tags: string[];
+      genres: string[];
+      font: string;
+    }
+    const patchBody: PatchBody = {
+      uid: startingState.uid,
+      creatorId: userCreatorUid,
+      writingType: writingType,
+      description: description,
+      title: title,
+      font: font,
+      tags: tags,
+      genres: selectedGenres,
+    };
+    try {
+      const res = await fetch("/api/writing", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(patchBody),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        console.log(data);
+        setEditable(false);
+        setStartingState(data);
+        updateUserCreatorUid(data.creatorId);
+        updateTitle(data.title);
+        updateWritingType(data.writingType);
+        updateDescription(data.description);
+        updateSelectedGenres(data.genres);
+        updateTags(data.tags);
+        updateFont(data.font);
+        setExistingGenres(data.genres);
+        alert("info saved!");
+      } else if (res.status == 422) {
+        const err = await res.text();
+        console.error(err);
+      } else {
+        const err = await res.text();
+        console.error(err);
+      }
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   function addNewChapter() {}
