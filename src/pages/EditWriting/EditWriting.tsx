@@ -244,6 +244,7 @@ function EditWriting() {
         alert("info saved!");
       } else if (res.status == 422) {
         const err = await res.text();
+        setError(err);
         console.error(err);
       } else {
         const err = await res.text();
