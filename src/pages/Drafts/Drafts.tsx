@@ -12,7 +12,7 @@ function Drafts() {
         <p>{d.title}</p>
         <p>{d.author}</p>
         <p>{d.uniqueAuthorName}</p>
-        <Link to={`/edit-writing/${d.creatorId}/${d.uid}`}>edit</Link>
+        <Link to={`/edit-writing/${d.uid}`}>edit</Link>
       </div>
     );
   });
