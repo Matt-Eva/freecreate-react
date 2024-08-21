@@ -4,6 +4,7 @@ import { useAppSelector, useAppDispatch } from "../../store";
 import { populateUserCreators } from "../../state/userCreatorSlice";
 
 import Info from "../../components/WritingInfo/WritingInfo";
+import NewChapterForm from "../../components/NewChapterForm/NewChapterForm";
 
 import { UserCreator } from "../../types/userCreator";
 
@@ -255,8 +256,6 @@ function EditWriting() {
     }
   }
 
-  function addNewChapter() {}
-
   if (!userState.isFetched || loadingCreators || loadingWriting) {
     return <div>loading...</div>;
   }
@@ -321,16 +320,13 @@ function EditWriting() {
       />
       <div className={styles.chapterSection}>
         <h2>Chapters</h2>
-        <section>
-          <h3>Add Chapter</h3>
-          <form className={styles.chapterForm}>
-            <label>Chapter Title</label>
-            <input type="text" />
-            <label>Chapter Number</label>
-            <input type="text" placeholder="chapter number" />
-            <input type="submit" value="create" />
-          </form>
-        </section>
+        {writingId && creatorId ? (
+          <NewChapterForm
+            creatorId={userCreatorUid}
+            writingId={writingId}
+            disabled={!editable}
+          />
+        ) : null}
         <div>
           <div>
             <h3>Chapter title</h3>
