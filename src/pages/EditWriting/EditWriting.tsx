@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useParams, useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../store";
 import { populateUserCreators } from "../../state/userCreatorSlice";
 
@@ -49,8 +49,8 @@ function EditWriting() {
   const [editable, setEditable] = useState(false);
 
   const writingId = useParams().writingId;
-  const creatorId = useParams().creatorId;
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchUserCreators() {
@@ -80,11 +80,10 @@ function EditWriting() {
   useEffect(() => {
     async function loadWriting() {
       try {
-        const res = await fetch(
-          `/api/writing?creatorId=${creatorId}&writingId=${writingId}`
-        );
+        const res = await fetch(`/api/writing?writingId=${writingId}`);
         if (res.ok) {
           const data: Writing = await res.json();
+          console.log(data);
           setStartingState(data);
           updateUserCreatorUid(data.creatorId);
           updateTitle(data.title);
@@ -96,7 +95,9 @@ function EditWriting() {
           setExistingGenres(data.genres);
         } else {
           const err = await res.text();
+          alert("there was a problem loading this writing");
           console.error(err);
+          navigate("/write");
         }
         setLoadingWriting(false);
       } catch (e) {
@@ -128,11 +129,9 @@ function EditWriting() {
       const lower = genre.charAt(0).toLowerCase() + genre.slice(1);
       defaultGenres[lower].selected = true;
     });
-    console.log(defaultGenres);
 
     for (const key in defaultGenres) {
       const upper = key.charAt(0).toUpperCase() + key.slice(1);
-      console.log(upper);
       const exists = g.find((genre) => genre === upper);
       if (!exists) {
         defaultGenres[key].selected = false;
@@ -152,8 +151,6 @@ function EditWriting() {
         defaultGenres[key].disabled = false;
       }
     }
-
-    console.log(defaultGenres);
 
     setGenres(defaultGenres);
   }
@@ -221,6 +218,7 @@ function EditWriting() {
       tags: tags,
       genres: selectedGenres,
     };
+    console.log("writingType", writingType);
     try {
       const res = await fetch("/api/writing", {
         method: "PATCH",
@@ -320,11 +318,11 @@ function EditWriting() {
       />
       <div className={styles.chapterSection}>
         <h2>Chapters</h2>
-        {writingId && creatorId ? (
+        {writingId ? (
           <NewChapterForm
             creatorId={userCreatorUid}
             writingId={writingId}
-            disabled={!editable}
+            disabled={editable}
           />
         ) : null}
         <div>

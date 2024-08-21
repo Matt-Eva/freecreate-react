@@ -20,10 +20,10 @@ function NewChapterForm({
       <h3>Add Chapter</h3>
       <form className={styles.chapterForm} onSubmit={addNewChapter}>
         <label>Chapter Title</label>
-        <input type="text" />
+        <input type="text" disabled={disabled} />
         <label>Chapter Number</label>
-        <input type="text" placeholder="chapter number" />
-        <input type="submit" value="create" />
+        <input type="text" placeholder="chapter number" disabled={disabled} />
+        <input type="submit" value="create" disabled={disabled} />
       </form>
     </section>
   );

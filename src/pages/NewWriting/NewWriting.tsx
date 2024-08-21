@@ -117,7 +117,8 @@ function NewWriting() {
         const data: Writing = await res.json();
         console.log(data);
         dispatch(populateEditWriting(data));
-        navigate(`/edit-writing/${data.creatorId}/${data.uid}`);
+        alert("writing successfully created!");
+        navigate(`/edit-writing/${data.uid}`);
         setError("");
       } else if (res.status === 422) {
         const error = await res.text();
