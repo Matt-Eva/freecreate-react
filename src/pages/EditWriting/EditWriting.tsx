@@ -319,11 +319,7 @@ function EditWriting() {
       <div className={styles.chapterSection}>
         <h2>Chapters</h2>
         {writingId ? (
-          <NewChapterForm
-            creatorId={userCreatorUid}
-            writingId={writingId}
-            disabled={editable}
-          />
+          <NewChapterForm writingId={writingId} disabled={editable} />
         ) : null}
         <div>
           <div>
