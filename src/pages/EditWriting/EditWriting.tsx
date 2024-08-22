@@ -13,6 +13,8 @@ import Writing from "../../types/writing";
 import { Link } from "react-router-dom";
 import GenreObject from "../../types/genreObject";
 import getDefaultGenreState from "../../state/defaultGenreState";
+import Chapter from "../../types/chapter";
+import EditChapterCard from "../../components/EditChapterCard/EditChapterCard";
 
 function EditWriting() {
   const userState = useAppSelector((state) => state.user.value);
@@ -47,10 +49,22 @@ function EditWriting() {
   const [font, setFont] = useState("Helvetica");
   const [userCreatorUid, setUserCreatorUid] = useState("");
   const [editable, setEditable] = useState(false);
+  const [chapters, setChapters] = useState<Chapter[]>([]);
 
   const writingId = useParams().writingId;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const displayChapters = chapters.map((chapter) => {
+    return (
+      <EditChapterCard
+        key={chapter.uid}
+        title={chapter.title}
+        uid={chapter.uid}
+        chapterNumber={chapter.chapterNumber}
+      />
+    );
+  });
 
   useEffect(() => {
     async function fetchUserCreators() {
@@ -186,6 +200,10 @@ function EditWriting() {
     setEditable(true);
   }
 
+  function addChapter(newChapter: Chapter) {
+    setChapters([...chapters, newChapter]);
+  }
+
   function disableEdit() {
     setEditable(false);
     setExistingGenres(startingState.genres);
@@ -317,22 +335,15 @@ function EditWriting() {
         editable={editable}
       />
       <div className={styles.chapterSection}>
-        <h2>Chapters</h2>
         {writingId ? (
-          <NewChapterForm writingId={writingId} disabled={editable} />
+          <NewChapterForm
+            writingId={writingId}
+            disabled={editable}
+            addChapter={addChapter}
+          />
         ) : null}
-        <div>
-          <div>
-            <h3>Chapter title</h3>
-            <p>Chapter number</p>
-            <Link to="/edit-chapter">Edit</Link>
-            <form>
-              <label>Edit chapter number</label>
-              <input type="number" />
-              <input type="submit" value="save" />
-            </form>
-          </div>
-        </div>
+        <h2>Chapters</h2>
+        {displayChapters}
       </div>
     </div>
   );

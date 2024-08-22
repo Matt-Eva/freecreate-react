@@ -1,13 +1,17 @@
 import { useState } from "react";
 
+import Chapter from "../../types/chapter";
+
 import styles from "./NewChapterForm.module.css";
 
 function NewChapterForm({
   writingId,
   disabled,
+  addChapter,
 }: {
   writingId: string;
   disabled: boolean;
+  addChapter: Function;
 }) {
   const [title, setTitle] = useState("");
   const [number, setNumber] = useState("");
@@ -28,16 +32,55 @@ function NewChapterForm({
     }
   }
 
-  function addNewChapter(e: React.FormEvent) {
+  async function createChapter(e: React.FormEvent) {
     e.preventDefault();
-    console.log(writingId);
+
     if (title === "") {
       setErrors([...errors, "title cannot be empty"]);
     }
+
     if (number === "") {
       setErrors([...errors, "chapter number cannot be empty"]);
     }
+
     if (title && number) {
+      try {
+        const postBody = {
+          writingId: writingId,
+          title: title,
+          chapterNumber: parseInt(number),
+        };
+        const res = await fetch("/api/chapter", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(postBody),
+        });
+
+        if (res.ok) {
+          const data: Chapter = await res.json();
+          console.log(data);
+          addChapter({
+            title: data.title,
+            writingId: data.writingId,
+            chapterNumber: data.chapterNumber,
+            uid: data.uid,
+            content: {},
+          });
+          alert("chapter created!");
+          setNumber("");
+          setTitle("");
+        } else {
+          const err = await res.text();
+          console.error(err);
+          if (res.status === 422) {
+            setErrors([...errors, err]);
+          }
+        }
+      } catch (e) {
+        console.error(e);
+      }
     }
   }
 
@@ -45,8 +88,8 @@ function NewChapterForm({
 
   return (
     <section>
-      <h3>Add Chapter</h3>
-      <form className={styles.chapterForm} onSubmit={addNewChapter}>
+      <h2>Add Chapter</h2>
+      <form className={styles.chapterForm} onSubmit={createChapter}>
         <label>Chapter Title</label>
         <input
           type="text"
