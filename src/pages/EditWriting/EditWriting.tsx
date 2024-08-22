@@ -67,6 +67,25 @@ function EditWriting() {
   });
 
   useEffect(() => {
+    async function loadChapters() {
+      try {
+        const res = await fetch(`/api/chapters?writingId=${writingId}`);
+        if (res.ok) {
+          const data: Chapter[] = await res.json();
+          console.log(data);
+          setChapters(data);
+        } else {
+          const err = await res.text();
+          console.error(err);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    loadChapters();
+  }, []);
+
+  useEffect(() => {
     async function fetchUserCreators() {
       try {
         const res = await fetch("/api/user/creators");
