@@ -62,6 +62,7 @@ function EditWriting() {
         title={chapter.title}
         uid={chapter.uid}
         chapterNumber={chapter.chapterNumber}
+        writingId={writingId!}
       />
     );
   });
